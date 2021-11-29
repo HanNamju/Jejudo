@@ -31,6 +31,13 @@
         a {
             color: black;
         }
+        
+
+
+section {
+    padding-top: 5em;
+    padding-bottom: 8.125em;
+}
      
         </style>
       
@@ -170,24 +177,30 @@
                     <!--nav-->
 
                     <!--section-->
-                    <section>
+                    <section style="padding: 0em;">
                    
                             <!--바디 영역-->
                             <div class="container">
                               <div class="input-form-backgroud row">
-                                <div class="input-form col-md-12 mx-auto">
-                                  <h2 class="mb-3">카페 등록</h2>
+                                <div class="input-form col-md-10 mx-auto" style="padding: 0em,5em" >
+                                  <h2 class="mb-3">장소등록</h2>
                                   <hr style="background-color: rgba(0, 0, 0, 0.2);"> 
                                    <form action="insertplace.do" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                    <input type="hidden" id="category" name="pCategory" value="카페">
-                                      <label for="name"><h5 style="color: rgba(0, 0, 0, 0.5);">카페명</h4></label>
+                                   <label for="name"><h5 style="color: rgba(0, 0, 0, 0.5);">카테고리</h5></h4></label>
+                                    <select name="pCategory" style="width: 50px; height: 60px; padding-bottom: 1em; border: 1px solid rgba(0, 0, 0, 0.2); ;">
+                                        <option value = "cafe" selected>카페</option>
+                                        <option value = "tourlist">관광지</option>
+                                        <option value = "restaurant">식당</option>
+                                        <option value = "rooms">숙소</option>
+                                     </select>
+                                      <label for="name"><h5 style="color: rgba(0, 0, 0, 0.5);">이름</h5></h4></label>
                                       <input
                                       	name="pName"
                                         type="text"
                                         class="form-control"
                                         id="customer-id"
-                                        placeholder="등록하실 카페명을 입력해주세요"
+                                        placeholder="등록하실 장소명을 입력해주세요"
                                         maxlength="12"
                                         required
                                         style="border: 1px solid rgba(0, 0, 0, 0.2);"
@@ -197,10 +210,10 @@
                                     <div class="mb-3">
                                       <label for="area"><h5 style="color: rgba(0, 0, 0, 0.5);">방향</h5></label><br>
                                       <select name="pArea" style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2); ;">
-                                        <option value = "동" selected>동</option>
-                                        <option value = "서">서</option>
-                                        <option value = "남">남</option>
-                                        <option value = "북">북</option>
+                                        <option value = "east" selected>동</option>
+                                        <option value = "west">서</option>
+                                        <option value = "south">남</option>
+                                        <option value = "north">북</option>
                                      </select>
 
                                       <div class="invalid-feedback">위치를입력해주세요.</div>
@@ -208,7 +221,7 @@
                                     
                                     
                                     <div class="mb-3">
-                                        <label for="tel"><h5 style="color: rgba(0, 0, 0, 0.5);">카페 전화번호</h5></label>
+                                        <label for="tel"><h5 style="color: rgba(0, 0, 0, 0.5);">장소전화번호</h5></label>
                                         <input
                                           type="text"
                                           name="pTell"
@@ -222,7 +235,7 @@
                                         <div class="invalid-feedback">전화번호를 입력해주세요.</div>
                                           </div>
                                           <div class="mb-3">
-                                              <label for="email"><h5 style="color: rgba(0, 0, 0, 0.5);">카페 주소</h5></label>
+                                              <label for="email"><h5 style="color: rgba(0, 0, 0, 0.5);">장소주소</h5></label>
                                               <input
                                                 type="text"
                                                 name="pAddress"
@@ -233,10 +246,10 @@
                                                 style="border: 1px solid rgba(0, 0, 0, 0.2);"
                                               />
                                                 
-                                        <div class="invalid-feedback">카페주소를 입력해주세요</div>
+                                        <div class="invalid-feedback">주소를 입력해주세요</div>
                                                 </div>
 
-                                            <label for="email"><h5 style="color: rgba(0, 0, 0, 0.5);" >카페 정보</h5></label>
+                                            <label for="email"><h5 style="color: rgba(0, 0, 0, 0.5);" >장소정보</h5></label>
                                                 <div class="mb-3">
                                                 <textarea style="border: 1px solid rgba(0, 0, 0, 0.2);"  
                                                 placeholder="가게를 소개해주세요"   

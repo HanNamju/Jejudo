@@ -25,13 +25,8 @@ public interface PlaceService {
 	List<PlaceFileVO> getPlaceFileList(int pSeq);
 	
 	// 11.25일 가게목록 구현
-			List<PlaceVO> getPlacelist(PlaceVO vo);
+			List<PlaceVO> getPlaceAllList(PlaceVO vo);
 			
-			List<PlaceVO> getCafeList(PlaceVO vo);
-			
-			List<PlaceVO> getRestaurantList(PlaceVO vo);
-			
-			List<PlaceVO> getRoomsList(PlaceVO vo);
-			
-			List<PlaceVO> getTourList(PlaceVO vo);
+			List<PlaceVO> getPlaceList(PlaceVO vo);
+		
 }

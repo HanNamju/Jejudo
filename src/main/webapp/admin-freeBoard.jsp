@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!doctype html>
 <html lang="ko">
   <head>
@@ -47,15 +49,15 @@
   <div class="content">
     
     <div class="container">
-      <h3>ìžìœ ê²Œì‹œíŒ</h3>
+      <h3>ÀÚÀ¯°Ô½ÃÆÇ</h3>
       <div style="width: 100%; border-radius: 10px; border: 1px solid rgba(0, 0, 0, .5) ">
         <ul style="text-align: center;">
-          <li>ë³¸ ê²Œì‹œíŒì€ ëˆ„êµ¬ë‚˜ ìžìœ ë¡­ê²Œ ì˜ê²¬ì„ ê²Œì‹œí•  ìˆ˜ ìžˆìœ¼ë©°, ê²Œì‹œëœ ì˜ê²¬ì— ëŒ€í•˜ì—¬ëŠ” ë‹µë³€ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</li>
-          <li>ì‹œì • ê´€ë ¨ ê±´ì˜ì‚¬í•­ ë˜ëŠ” ë‹µë³€ì„ ì›í•˜ëŠ” ë¯¼ì›ì‚¬ë¬´ ë“±ì€ 1577-1577 ë¥¼ ì´ìš©í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.</li>
-          <li>ìžìœ  ê²Œì‹œíŒì€</li>
-          <li>ì´ëŸ° ê³³ìž…ë‹ˆë‹¤</li>
-          <li>ìž˜ </li>
-          <li>ì“°ì„¸ìš”</li>
+          <li>º» °Ô½ÃÆÇÀº ´©±¸³ª ÀÚÀ¯·Ó°Ô ÀÇ°ßÀ» °Ô½ÃÇÒ ¼ö ÀÖÀ¸¸ç, °Ô½ÃµÈ ÀÇ°ß¿¡ ´ëÇÏ¿©´Â ´äº¯À» ÇÏÁö ¾Ê½À´Ï´Ù.</li>
+          <li>½ÃÁ¤ °ü·Ã °ÇÀÇ»çÇ× ¶Ç´Â ´äº¯À» ¿øÇÏ´Â ¹Î¿ø»ç¹« µîÀº 1577-1577 ¸¦ ÀÌ¿ëÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.</li>
+          <li>ÀÚÀ¯ °Ô½ÃÆÇÀº</li>
+          <li>ÀÌ·± °÷ÀÔ´Ï´Ù</li>
+          <li>Àß </li>
+          <li>¾²¼¼¿ä</li>
 
         </ul>
         
@@ -65,11 +67,11 @@
           <thead>
             <tr>
               <th></th>
-              <th scope="col">ë²ˆí˜¸</th>
-              <th scope="col">ì œëª©</th>
-              <th scope="col">ê¸€ì“´ì´</th>
-              <th scope="col">ë‚ ì§œ</th>
-              <th scope="col">ì¡°íšŒ ìˆ˜</th>
+              <th scope="col">¹øÈ£</th>
+              <th scope="col">Á¦¸ñ</th>
+              <th scope="col">±Û¾´ÀÌ</th>
+              <th scope="col">³¯Â¥</th>
+              <th scope="col">Á¶È¸ ¼ö</th>
             </tr>
           </thead>
           <tbody>
@@ -157,7 +159,7 @@
 <div class="row">
   <div class="col-10"></div>
   <div class="col-2">
-  <button style="width: 90%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.html'" >ê¸€ ì“°ê¸°</button>
+  <button style="width: 90%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.html'" >±Û ¾²±â</button>
   </div>
 </div>
 </div> 

@@ -45,7 +45,7 @@ public class PlaceFileUtils {
 			for(MultipartFile mf : list) {
 				if(mf.getSize() > 0) {
 					PlaceFileVO placeFile = new PlaceFileVO();
-					placeFile.setSeqq(seq);
+					placeFile.setSeq(seq);
 					placeFile.setFileSize(mf.getSize());
 					placeFile.setOriginalFileName(mf.getOriginalFilename());
 					placeFile.setFilePath(root_path + attach_path);

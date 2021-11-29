@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html lang="ko">
     <head>
@@ -164,39 +166,14 @@ input[type="checkbox"] { display: none; }
                                     </a>
                                 </li>
                                 <li>
-                                    <a href=getUserList.do>
+                                    <a href="getUserList.do">
                                         회원관리
                                     </a>
                                 </li>
                             </ul>
                             <hr>
                             <ul class="link-list">
-                                <li>
-                                    <a href="getRoomsList.do">
-                                        숙소
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="getRestaurantList.do">
-                                        식당
-                                    </a>
-                                </li>
-                                <li>
-                                
-                                
-                                	
-                                   <a href="getCafeList.do">
-                                        카페			
-                                    </a> 
-                                   
-                                </li>
-                                <li>
-                                	
-                                    <a href="getTourList.do">
-                                        관광지
-                                        
-                                    </a>
-                                </li>
+        
                             </ul>
                         </div>
                         <!--end widget-->
@@ -278,16 +255,31 @@ input[type="checkbox"] { display: none; }
                 <div style="margin-left: -40px;" class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">식당관리 페이지</h1>
+                    <h1 class="h3 mb-2 text-gray-800">장소 관리 페이지</h1>
                     </p>
                     <div class="card shadow mb-4" >
                         <div class="card-header py-3">
                             <div class="card-header py-3" style="display: flex; justify-content: space-between;">
+                            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+  style="backgroundcolor: white">
+  장소
+  </button>
+ <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=cafe">카페</a></li>
+    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=tourlist">관광지</a></li>
+    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=restaurant">음식점</a></li>
+    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=rooms">숙소</a></li>
+  </ul>
+</div>
+
                                 <div>
-                                <h2 class="m-0 font-weight-bold" style="color: rgba(0, 0, 0, .6);">식당목록</h2>
+                                <h2 class="m-0 font-weight-bold" style="color: rgba(0, 0, 0, .6);"></h2>
                             </div>
+                            
+                            
                             	<div style="text-align: right; margin-right: 80px;"> 
-                            	<a href="Tourlist_enrollment.html"><img src="img/등록하기-배경제거.png" alt="" style="width: 200px; height: 100px;"></a>
+                            	<a href="admin-CafeEnrollment.jsp"><img src="img/등록하기-배경제거.png" alt="" style="width: 200px; height: 100px;"></a>
                             	</div>
                                
                             </div>
@@ -297,10 +289,10 @@ input[type="checkbox"] { display: none; }
                                     <thead>
                                         <tr>
                                             <th>방향</th>
-                                            <th>식당이름</th>
-                                            <th>식당주소</th>
+                                            <th>이름</th>
+                                            <th>주소</th>
                                             <th>전화번호</th>
-                                            <th>식당정보</th>
+                                            <th>정보</th>
                                             <th>관리자권한</th>
                                         </tr>
                                     </thead>
@@ -317,45 +309,33 @@ input[type="checkbox"] { display: none; }
                                     </tfoot>
                                     <!--여기부터 1 찍어야함 위에는 바닥부분 설정-->
                                     <tbody>
-                                    	<c:forEach var="restaurant" items="${ restaurantList}">
+                                    	<c:forEach var="List" items="${ placeList}">
                                         <tr>
-                                            <th>${restaurant.pArea}</th>
-                                            <th>${restaurant.pName}</th>
-                                            <th>${restaurant.pAddress}</th>
-                                            <th>${restaurant.pTell}</th>
-                                            <th>${restaurant.pInfo}</th>
-                                            
+                                            <th>${List.pArea}</th>
+                                            <th>${List.pName}</th>
+                                            <th>${List.pAddress}</th>
+                                            <th>${List.pTell}</th>
+                                            <th>${List.pInfo}</th>
                                             <th>
                                             <div style="display: flex;">
                                             		<div>
-                                            		
-                                            		<input id="dele-btn" type="submit" class="btn btn-primary" value="삭제"> 
+                                            		<input id="dele-btn" onclick="location.href='deletePlace.do'"  
+                                            		type="submit" class="btn btn-primary" value="삭제"> 
                                             		</div>
                                             		<div>
-                                            		
-                                            		 <input id="dele-btn" onclick="location.href='getPlace.do?pSeq=${restaurant.pSeq }'"  type="submit" class="btn btn-primary" value="수정">
+                                            		 <input id="dele-btn" onclick="location.href='getPlace.do?pSeq=${List.pSeq }'"  
+                                            		 type="submit" class="btn btn-primary" value="수정">
                                             		</div>
-                                            		
                                             </div>
-                                            </th>
-                                            
-                                        	
-                                        	
+                                            </th>	
                                         </td>
                                         </tr>
                                         </c:forEach>
-                                        
-                                         
-                                        
-                                       
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
-         
-                   
             </section>
             <footer class="bg--dark footer-4">
                 <div class="container">
@@ -485,6 +465,8 @@ input[type="checkbox"] { display: none; }
         <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
