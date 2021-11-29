@@ -32,6 +32,9 @@
 	<div class="loader"></div>
 
 	<!-- nav -->
+	<!--  Header 인클루드  -->
+	<jsp:include page="Header_2.jsp" />
+	
 	<!--end of modal-container-->
 	<div class="main-container transition--fade">
 		<section class="imagebg height-60 parallax" data-overlay="5">
@@ -230,27 +233,24 @@
 		</section>
 
 		<!-- footer -->
-
+		<jsp:include page="tail.jsp" />
 
 	</div>
 	<script>
 		function namju123(obj) {
 			var pw = obj.value;
-			var inputpw = document.getElementById("nammju");
+			var inputpw = $("#nammju" + obj.id).val();
 
+			console.log(pw);
+			//console.log("inputpw.value" + $("#nammju" + obj.id).val());
+			console.log(inputpw);
 			
-			/* console.log(obj);
-			console.log(obj.id);
-			console.log(obj.value); */
-			console.log("pw" + pw);
-			console.log("inputpw.value" + $("#nammju" + obj.id).val());
-
-			/* if(pw==inputpw){
+			 if(pw==inputpw){
 				location.href='room-game.html';
 			}else{
 				alert("비밀번호가 틀렸습니다! 다시 생각해오세요!");
-				location.href='getTripList.do';
-			}  */
+				//location.href='getTripList.do';
+			}  
 			/* document.getElementById("nammju").value=""; */
 		}
 	</script>
