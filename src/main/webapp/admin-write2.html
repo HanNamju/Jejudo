@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+
+
+<style>
+
+body {
+
+  padding-top: 70px;
+
+  padding-bottom: 30px;
+
+}
+</style>
+</head>
+
+<body>
+
+	<article>
+
+		<div class="container" role="main">
+
+			<h2>글쓰기</h2>
+
+			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+
+				<div class="mb-3">
+
+					<label for="title">제목</label>
+
+					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+
+				</div>
+
+				
+
+				<div class="mb-3">
+
+					<label for="reg_id">작성자</label>
+
+					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+
+				</div>
+
+				
+      <div class="row">
+				<div class="col-md-6 mb-3">
+
+					<label for="content">내용</label>
+
+					<textarea class="form-control" rows="8" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+
+				</div>
+
+        <div class="col-md-6 mb-3" >
+          <div class="image-container" >
+              <img style="width: 430px; height: 200px; " id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+              <input style="display: block;" type="file" id="input-image">
+          </div>
+      </div>
+      </div>
+				
+
+				<div class="mb-3">
+
+					<label for="tag">TAG</label>
+
+					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
+
+				</div>
+
+
+
+			
+        <div style="text-align: center; margin-top: 30px;" >
+  
+          <button style="padding: 10px;" type="button" class="btn btn-primary" id="btnSave">저장</button>
+  
+          <button style="padding: 10px;" type="button" class="btn btn-primary" id="btnList">목록</button>
+  
+        </div>
+
+			</form>
+
+
+		</div>
+
+	</article>
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+<title>admin-write2</title>
+
+
+
+<script>
+
+	$(document).on('click', '#btnSave', function(e){
+
+		e.preventDefault();
+
+		
+
+		$("#form").submit();
+
+	});
+
+	
+
+	$(document).on('click', '#btnList', function(e){
+
+		e.preventDefault();
+
+		
+
+		location.href="${pageContext.request.contextPath}/board/getBoardList";
+
+	});
+
+</script>
+
+<script>
+  function readImage(input) {
+// 인풋 태그에 파일이 있는 경우
+if(input.files && input.files[0]) {
+  // 이미지 파일인지 검사 (생략)
+  // FileReader 인스턴스 생성
+  const reader = new FileReader()
+  // 이미지가 로드가 된 경우
+  reader.onload = e => {
+      const previewImage = document.getElementById("preview-image")
+      previewImage.src = e.target.result
+  }
+  // reader가 이미지 읽도록 하기
+  reader.readAsDataURL(input.files[0])
+}
+}
+// input file에 change 이벤트 부여
+const inputImage = document.getElementById("input-image")
+inputImage.addEventListener("change", e => {
+readImage(e.target)
+})
+
+</script>
+</body>
+
+</html>
