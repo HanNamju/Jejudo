@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.springbook.biz.common.MemberFileUtils;
+import com.springbook.biz.email.Email;
+import com.springbook.biz.email.EmailSender;
 import com.springbook.biz.member.MemberFileVO;
 import com.springbook.biz.member.MemberService;
 import com.springbook.biz.member.MemberVO;
@@ -174,5 +176,40 @@ public class MemberController {
 		memberService.updateMember(vo);
 		return "redirect:Mypage.jsp";
 	}
+	
+	   // 비밀번호 email로 전송 받긔			
+	   @Autowired
+	   private EmailSender emailSender;
+	   @Autowired
+	   private Email email;
+	    @RequestMapping("/findPWD.do")
+	    public String sendEmailAction (MemberVO vo, Model model) throws Exception {
+	    	
+	    	System.out.println("====> 이메일 컨트롤러 탐");
+
+	        if(memberService.findPassword(vo)==null) {	
+	        	
+	        	model.addAttribute("check", 3);
+	        
+	            return "find-account.jsp";
+	            
+	        }else {
+	        	  
+		       MemberVO memberPassword = memberService.findPassword(vo);
+		       
+		       String pw = memberPassword.getmPassword();  
+		       
+	        	model.addAttribute("check", 4);		        	
+	        	String id=memberPassword.getmId();
+			    String e_mail=memberPassword.getmEmail();
+	        	
+	            email.setContent("비밀번호는 "+pw+" 입니다.");
+	            email.setReceiver(e_mail);
+	            email.setSubject("랜덤제주" + id +"님 비밀번호 찾기 메일입니다.");
+	            emailSender.SendEmail(email);
+	            
+	            return "redirect:login.jsp";	  
+	    }
+	    }
 
 }

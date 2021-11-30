@@ -3,7 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!doctype html>
 <html lang="ko">
     <head>
         <meta charset="utf-8">
@@ -121,7 +120,7 @@
                                        
 
                                      <!-- form 영역-->   
-                                     <form action="findPWD.do" method="post">
+                                     <form action="findPWD.do" method="post" name="pwdfindform">
                                         <div class="row">
 
                                             <div class="col-sm-12" style="margin-bottom: 80px; text-align: center;">                                                                                                   
@@ -131,7 +130,7 @@
                                             <div class="col-sm-12" style="margin-bottom: 40px;">
                                                 <div class="input-with-icon">                                                    
                                                     <i class="icon icon-Male-2"></i>
-                                                    <input type="text" name="id" placeholder="아이디를 입력하세요." />
+                                                    <input type="text" name="mId" placeholder="아이디를 입력하세요." />
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +138,7 @@
                                             <div class="col-sm-12">
                                                 <div class="input-with-icon" style="margin-bottom: 40px;">                                                    
                                                     <i class="icon icon-Security-Check"></i>
-                                                    <input type="text" name="name" placeholder="이름을 입력하세요." />
+                                                    <input type="text" name="mName" placeholder="이름을 입력하세요." />
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +146,7 @@
                                             <div class="col-sm-12">
                                                 <div class="input-with-icon" style="margin-bottom: 40px;">                                                    
                                                     <i class="icon icon-Security-Check"></i>
-                                                    <input type="text" name="tell" placeholder="연락처를 입력하세요." />
+                                                    <input type="text" name="mEmail" placeholder="이메일을 입력하세요." />
                                                 </div>
                                             </div>
                                         </div>
@@ -155,10 +154,24 @@
                                         <div class="row">
                                             
                                             <div class="col-sm-6">
-                                                <button type="submit" class="btn" style="background-color: rgba(166, 208, 205, 0.8); border-style: none;"><span style="color: white; font-size: 20px;">비밀번호 찾기</span></button>
+                                                <button type="submit" id="findPwd" class="btn" onclick="tmpConsole()" style="background-color: rgba(166, 208, 205, 0.8); border-style: none;"><span style="color: white; font-size: 20px;">비밀번호 찾기</span></button>
                                             </div>
                                             
                                         </div>
+                                        
+                                        <!-- 아이디 이름과 이메일 이 같지 않을때-->
+										<c:if test="${check == 3}">
+											<!--  <script>
+												opener.document.pwdfindform.mId.value = "";
+												opener.document.pwdfindform.mName.value = "";
+												opener.document.pwdfindform.mEmail.value = "";
+											</script>-->
+											<label>일치하는 정보가 존재하지 않습니다.</label>
+										</c:if>								
+										<!-- 이름과 비밀번호가 일치하지 않을 때 -->
+										<c:if test="${check == 4 }">										
+										<!-- <label>입력하신 email로 비밀번호가 전송 되었습니다.</label>	-->							
+										</c:if>
                                         
                                     </form>
                                      
@@ -200,5 +213,8 @@
         <script src="js/scrollreveal.min.js"></script>
         <script src="js/parallax.js"></script>
         <script src="js/scripts.js"></script>
+        
+  
+        
     </body>
 </html>

@@ -129,10 +129,10 @@
 			WHERE M_NAME=#{mName} AND M_PASSWORD=#{mPassword}
 	</select>
 	
-	<!-- 비밀번호 찾기 -->
+<!-- 비밀번호 찾기 -->
 	<select id="findPassword" resultType="member">
 		SELECT * FROM MEMBER
-			WHERE M_ID={mId} and M_NAME=#{mName} AND M_TELL=#{mTell}
+			WHERE M_ID=#{mId} AND M_NAME=#{mName} AND M_EMAIL=#{mEmail}
 	</select>
 	
 
