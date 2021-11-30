@@ -140,11 +140,18 @@
 														<div class="col-md-9" style="height: 26px;">
 															<p name="license">
 																<c:choose>
-																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 있으신분들만 들어오세요.</c:when>
-																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 없으신분들만 가능합니다.</c:when>
+																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 O</c:when>
+																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 X</c:when>
 																	<c:otherwise>상관없음</c:otherwise>
 																</c:choose>
 															</p>
+														</div>
+														<br>
+														<div class="col-md-3">
+															<span><em>모드 :</em></span>
+														</div>
+														<div class="col-md-9">
+															<span> ${trip.trMode }</span>
 														</div>
 														<div class="col-md-12">
 															<p style="color: black; background-color: #eee;">${trip.trIntro }</p>
@@ -209,11 +216,18 @@
 														<div class="col-md-9" style="height: 26px;">
 															<p name="license">
 																<c:choose>
-																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 있으신분들만 들어오세요.</c:when>
-																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 없으신분들만 가능합니다.</c:when>
+																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 O</c:when>
+																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 X</c:when>
 																	<c:otherwise>상관없음</c:otherwise>
 																</c:choose>
 															</p>
+														</div>
+														<br>
+														<div class="col-md-3">
+															<span><em>모드 :</em></span>
+														</div>
+														<div class="col-md-9">
+															<span> ${trip.trMode }</span>
 														</div>
 														<div class="col-md-12">
 															<p style="color: black; background-color: #eee;">${trip.trIntro }</p>

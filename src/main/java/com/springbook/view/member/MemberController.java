@@ -1,6 +1,5 @@
 package com.springbook.view.member;
-
-import java.io.IOException;
+mport java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ import com.springbook.biz.member.MemberService;
 import com.springbook.biz.member.MemberVO;
 
 @Controller
-//board로 model 저장된 객체가 있으면 HttpSession 데이터 보관소에서 동일한 키 값(board)로 저장
+
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -173,7 +172,7 @@ public class MemberController {
 		System.out.println("운전면허 : " + vo.getmLicense());
 
 		// int mSeq = vo.getmSeq();
-
+		
 		memberService.updateMember(vo);
 		return "redirect:Mypage.jsp";
 	}

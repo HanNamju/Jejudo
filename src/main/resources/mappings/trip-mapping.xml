@@ -5,6 +5,7 @@
 
 <!-- mapper자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO명을 따라가는 경우가 일반적임 -->
 <mapper namespace="TripDAO">
+
 	<!-- mroom.jsp를통해 방 생성 할때 사용하는 insert sql구문 -->
 	<insert id="insertTrip" >
       <![CDATA[
@@ -37,6 +38,8 @@
    ]]> 
    </insert>
 
+
+
 	<!-- 참여하기 위해 방을 클릭했을때 방의 정보를 불러올때 사용 -->
 	<select id="getTrip" resultType="trip">
 		<![CDATA[
@@ -68,33 +71,32 @@
 		     AND A.TR_SEQ = B.SEQ
 	</select>
 
-	<!-- 인서트 할때 트립파일 테이블에 인서트하기위해 사용 -->
 	<select id="getTripSeq" resultType="int">
-		SELECT IFNULL(MAX(TR_SEQ),0)+1
-		FROM TRIP
+		SELECT IFNULL(MAX(TR_SEQ) ,0) + 1
+			FROM TRIP
 	</select>
 
 	
 	<insert id="insertTripFileList" parameterType="tripFile">
-      INSERT INTO TRIP_FILE (
-                           SEQ,
-                           F_SEQ,
-                           ORIGINAL_FILE_NAME,
-                           FILE_PATH,
-                           FILE_SIZE
-                        )
-                  VALUES (
-                           #{seq},
-                           (
-                              SELECT IFNULL(MAX(F_SEQ), 0) + 1
-                                 FROM TRIP_FILE A
-                              WHERE SEQ = #{seq}
-                           ),
-                           #{originalFileName},
-                           #{filePath},
-                           #{fileSize}
-                        )
-   </insert>
+		INSERT INTO TRIP_FILE (
+									SEQ,
+									F_SEQ,
+									ORIGINAL_FILE_NAME,
+									FILE_PATH,
+									FILE_SIZE
+								)
+						VALUES (
+									#{seq},
+									(
+										SELECT IFNULL(MAX(F_SEQ), 0) + 1
+											FROM TRIP_FILE A
+										WHERE SEQ = #{seq}
+									),
+									#{originalFileName},
+									#{filePath},
+									#{fileSize}
+								)
+	</insert>
 
 	<select id="getTripFileList" parameterType="int"
 		resultType="tripFile">
