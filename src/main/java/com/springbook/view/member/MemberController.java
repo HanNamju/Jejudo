@@ -58,7 +58,11 @@ public class MemberController {
 //			}
 //		}
 
-	// 의찬 로그인
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>							  		로그인												 >>>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String Login(@RequestParam("mId") String mId, @RequestParam("mPassword") String mPassword,
 			HttpSession session) throws Exception {
@@ -80,8 +84,14 @@ public class MemberController {
 		}
 
 		return path;
-
 	}
+	
+// ----------------------------------- END 로그인 END -------------------------------------------
+	
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>							  		로그 아웃												 >>>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	@RequestMapping(value = "/logout.do")
 	// Commedn 객체로HttepSession을 선언하게 되면 스프링컨테이너가 브라우저와 매핑된 세션 객체를 담아서 넘겨줌
@@ -90,7 +100,13 @@ public class MemberController {
 		session.invalidate();
 		return "index.jsp";
 	}
-
+// ----------------------------------- END 로그 아웃 END -------------------------------------------
+	
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// |||							  		회원 가입												 |||
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	
 	@RequestMapping(value = "/insertMember.do")
 	public String insertMember(MemberVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
 			throws IOException {
@@ -115,6 +131,12 @@ public class MemberController {
 		return "redirect:index.jsp";
 	}
 
+// ----------------------------------- END 회원 가입 END -------------------------------------------	
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// |||							  		아이디 찾기												 |||
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+	
 	// 아이디 찾기 페이지 이동
 	@RequestMapping(value = "findaccount.do")
 	public String findIdView() {
@@ -135,47 +157,14 @@ public class MemberController {
 
 		return "find-account.jsp";
 	}
-
-	// 회원정보 가져오기
-	@RequestMapping(value = "/getMember.do")
-	public String getMember(Model model, HttpServletRequest request) {
-
-		System.out.println("======> getmember 컨트롤러 탐");
-
-		// Model 객체는 RequestServlet 데이터 보관소에 저장
-		// RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
-		// request.setAttribute("board", boardDAO.getBoard(vo)) ==
-		// model.addAttribute("board", boardDAO.getBoard(vo))
-		HttpSession session = request.getSession();
-		MemberVO vo = (MemberVO) session.getAttribute("member");
-
-		System.out.println("======> 세션가져왔어");
-
-		System.out.println(memberService.getMember(vo).toString());
-		model.addAttribute("memberInfo", memberService.getMember(vo));
-
-		// model.addAttribute("mLicenseInfo",memberService.getMember(vo));
-
-		return "changeinfo.jsp";
-	}
-
-	// 회원정보 수정
-	@RequestMapping(value = "/updateMember.do")
-	public String updateBoard(MemberVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
-			throws IOException {
-		System.out.println("회원 정보 수정 처리");
-		System.out.println("닉네임 : " + vo.getmNickname());
-		System.out.println("이메일 : " + vo.getmEmail());
-		System.out.println("비밀번호 : " + vo.getmPassword());
-		System.out.println("전화번호 : " + vo.getmTell());
-		System.out.println("자기소개 : " + vo.getmIntroduce());
-		System.out.println("운전면허 : " + vo.getmLicense());
-
-		// int mSeq = vo.getmSeq();
-
-		memberService.updateMember(vo);
-		return "redirect:Mypage.jsp";
-	}
+	
+	
+// ----------------------------------- END 아이디 찾기 END -------------------------------------------	
+	
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// |||							  		비밀번호 찾기											 |||
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	
 	   // 비밀번호 email로 전송 받긔			
 	   @Autowired
@@ -211,5 +200,63 @@ public class MemberController {
 	            return "redirect:login.jsp";	  
 	    }
 	    }
+
+// ----------------------------------- END 비밀번호 찾기 END -------------------------------------------	
+
+	    
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// |||							  		회원정보 가져오기											 |||
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	    
+	
+	// 회원정보 가져오기
+	@RequestMapping(value = "/getMember.do")
+	public String getMember(Model model, HttpServletRequest request) {
+
+		System.out.println("======> getmember 컨트롤러 탐");
+
+		// Model 객체는 RequestServlet 데이터 보관소에 저장
+		// RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
+		// request.setAttribute("board", boardDAO.getBoard(vo)) ==
+		// model.addAttribute("board", boardDAO.getBoard(vo))
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+
+		System.out.println("======> 세션가져왔어");
+
+		System.out.println(memberService.getMember(vo).toString());
+		model.addAttribute("memberInfo", memberService.getMember(vo));
+
+		// model.addAttribute("mLicenseInfo",memberService.getMember(vo));
+
+		return "changeinfo.jsp";
+	}
+	
+// ----------------------------------- END 회원정보 가져오기 END -------------------------------------------	
+	
+
+	
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// |||							  		회원정보 수정											 |||
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+	    
+	// 회원정보 수정
+	@RequestMapping(value = "/updateMember.do")
+	public String updateBoard(MemberVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
+			throws IOException {
+		System.out.println("회원 정보 수정 처리");
+		System.out.println("닉네임 : " + vo.getmNickname());
+		System.out.println("이메일 : " + vo.getmEmail());
+		System.out.println("비밀번호 : " + vo.getmPassword());
+		System.out.println("전화번호 : " + vo.getmTell());
+		System.out.println("자기소개 : " + vo.getmIntroduce());
+		System.out.println("운전면허 : " + vo.getmLicense());
+
+		// int mSeq = vo.getmSeq();
+
+		memberService.updateMember(vo);
+		return "redirect:Mypage.jsp";
+	}
+	
+// ----------------------------------- END 회원정보 수정 END -------------------------------------------	
 
 }
