@@ -1,17 +1,17 @@
 package com.springbook.biz.place;
 
 public class PlaceFileVO {
-	private int seqq;
+	private int seq;
 	private int fSeq;
 	private String originalFileName;
 	private String filePath;
 	private long fileSize;
 	
-	public int getSeqq() {
-		return seqq;
+	public int getSeq() {
+		return seq;
 	}
-	public void setSeqq(int seqq) {
-		this.seqq = seqq;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 	public int getfSeq() {
 		return fSeq;
@@ -39,7 +39,7 @@ public class PlaceFileVO {
 	}
 	@Override
 	public String toString() {
-		return "PlaceFileVO [seqq=" + seqq + ", fSeq=" + fSeq + ", originalFileName=" + originalFileName + ", filePath="
+		return "PlaceFileVO [seq=" + seq + ", fSeq=" + fSeq + ", originalFileName=" + originalFileName + ", filePath="
 				+ filePath + ", fileSize=" + fileSize + "]";
 	}
 

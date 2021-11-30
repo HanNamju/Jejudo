@@ -56,28 +56,13 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 	
 	@Override
-	public List<PlaceVO> getPlacelist(PlaceVO vo) {
+	public List<PlaceVO> getPlaceList(PlaceVO vo) {
 		return placeDAO.getPlaceList(vo);
 	}
 	
 	@Override
-	public List<PlaceVO> getCafeList(PlaceVO vo) {
-		return placeDAO.getCafeList(vo);
-	}
-	
-	@Override
-	public List<PlaceVO> getRestaurantList(PlaceVO vo) {
-		return placeDAO.getRestaurantList(vo);
-	}
-	
-	@Override
-	public List<PlaceVO> getRoomsList(PlaceVO vo) {
-		return placeDAO.getRoomsList(vo);
-	}
-	
-	@Override
-	public List<PlaceVO> getTourList(PlaceVO vo) {
-		return placeDAO.getTourList(vo);
+	public List<PlaceVO> getPlaceAllList(PlaceVO vo) {
+		return placeDAO.getPlaceAllList(vo);
 	}
 
 

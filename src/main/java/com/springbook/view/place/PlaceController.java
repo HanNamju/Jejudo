@@ -1,6 +1,7 @@
 package com.springbook.view.place;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,43 +52,6 @@ public class PlaceController {
 		return "redirect:index.jsp";
 	}
 
-	@RequestMapping(value = "/deleteCafe.do")
-	public String deleteCafe(PlaceVO vo) throws IOException {
-		System.out.println("글 삭제 처리");
-		placeService.deletePlace(vo);
-
-		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
-		return "getCafeList.do";
-	}
-	
-	@RequestMapping(value = "/deleteRestaurant.do")
-	public String deleteRestaurant(PlaceVO vo) throws IOException {
-		System.out.println("글 삭제 처리");
-		placeService.deletePlace(vo);
-
-		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
-		return "getRestaurantList.do";
-	}
-	
-	@RequestMapping(value = "/deleteTourist.do")
-	public String deleteTourist(PlaceVO vo) throws IOException {
-		System.out.println("글 삭제 처리");
-		placeService.deletePlace(vo);
-
-		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
-		return "getTourList.do";
-	}
-	
-	@RequestMapping(value = "/deleteRooms.do")
-	public String deleteRooms(PlaceVO vo) throws IOException {
-		System.out.println("글 삭제 처리");
-		placeService.deletePlace(vo);
-
-		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
-		return "getRoomsList.do";
-	}
-	
-	
 	
 
 	//ModelAttribute로 세션에 board라는 이름으로 저장된 객체가 있는지 찾아서 Command객체에 담아줌
@@ -111,69 +75,58 @@ public class PlaceController {
 				placeService.insertPlaceFileList(fileList);
 			}
 			
-			placeService.updatePlace(vo);
-			if(vo.getpCategory().equals("숙소"))
-				return "getRoomsList.do";
-			else if(vo.getpCategory().equals("음식점"))
-				return "getRestaurantList.do";
-			else
-				return "getCafeList.do";
+			
+				return "getPlaceList.do";
 		}
 
 
-	@RequestMapping(value="/getPlace.do")
-	public String getPlace(PlaceVO vo, Model model) {
-		System.out.println("글 상세 조회 처리");
+		@RequestMapping(value="/getPlace.do")
+		public String getPlace(PlaceVO vo, Model model) {
+			System.out.println("글 상세 조회 처리");
+			
+			//Model 객체는 RequestServlet 데이터 보관소에 저장
+			//RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
+			//request.setAttribute("board", boardDAO.getPlace(vo)) == model.addAttribute("board", placeDAO.getPlace(vo))
+			model.addAttribute("getPlace", placeService.getPlace(vo));
+			model.addAttribute("fileList", placeService.getPlaceFileList(vo.getpSeq()));		
+			return "admin-Editpage.jsp";
+		}
 		
-		//Model 객체는 RequestServlet 데이터 보관소에 저장
-		//RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
-		//request.setAttribute("board", boardDAO.getPlace(vo)) == model.addAttribute("board", placeDAO.getPlace(vo))
-		model.addAttribute("getPlace", placeService.getPlace(vo));
-		model.addAttribute("fileList", placeService.getPlaceFileList(vo.getpSeq()));		
-		return "admin-Editpage.jsp";
-	}
-	
-	//카페 목록
-		@RequestMapping("/getCafeList.do")
-		public String UserGetBoardList(PlaceVO vo, Model model) {
+		@RequestMapping( "/getPlaceList.do")
+		public String getPlaceList(PlaceVO vo, Model model) {
 			System.out.println("글 목록 검색 처리");
+			System.out.println("cate================================" + vo.getpCategory());
 			
-			
-			model.addAttribute("cafeList", placeService.getCafeList(vo));
+			model.addAttribute("placeList", placeService.getPlaceList(vo));
 		
-			return "admin-CafeList.jsp";
+		
+				return "admin-RoomsList3.jsp";
+		
 			}
 		
-		//관광지 목록
-		@RequestMapping("/getTourList.do")
-		public String TourBoardList(PlaceVO vo, Model model) {
-			System.out.println("글 목록 검색 처리");
+		//
+			@RequestMapping( "/getPlaceAllList.do")
+			public String getPlaceAllList(PlaceVO vo, Model model) {
+				System.out.println("글 목록 검색 처리");
+				
+				
+				model.addAttribute("placeAllList", placeService.getPlaceAllList(vo));
 			
-			model.addAttribute("tourList", placeService.getTourList(vo));
-			return "admin-TourlistList.jsp";
+				return "admin-RoomsList2.jsp";
+				}
+
+			@RequestMapping(value = "/deletePlace.do")
+			public String deleteCafe(PlaceVO vo) throws IOException {
+				System.out.println("글 삭제 처리");
+				placeService.deletePlace(vo);
+				System.out.println("pSeq" + vo.getpSeq());
+				System.out.println(vo.getpCategory());
+			
+				return "redirect:getPlaceList.do?pCategory=" + vo.getpCategory();
 			}
-		
-		//식당 목록
-		@RequestMapping("/getRestaurantList.do")
-		public String RestaurantBoardList(PlaceVO vo, Model model) {
-			System.out.println("글 목록 검색 처리");
+
 			
-			model.addAttribute("restaurantList", placeService.getRestaurantList(vo));
-			
-			return "admin-RestauranList.jsp";
-			}
-		
-		
-		
-		//숙소 목록
-		@RequestMapping("/getRoomsList.do")
-		public String RoomsBoardList(PlaceVO vo, Model model) {
-			System.out.println("글 목록 검색 처리");
-			
-		
-			model.addAttribute("roomsList", placeService.getRoomsList(vo));
-			return "admin-RoomsList.jsp";
-			}
+
 	
 	
 }

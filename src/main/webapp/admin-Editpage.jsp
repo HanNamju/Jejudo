@@ -326,7 +326,7 @@
                                      </form>
                                      <!-- form 끝. -->
                                       <div class="sign-up-footer-items col-md-3 mb-3">
-                                        <a href="deleteCafe.do?pSeq=${getPlace.pSeq}" style="font-size: 25px; ">
+                                        <a href="deletePlace.do?pSeq=${getPlace.pSeq}&pCategory=${getPlace.pCategory}" style="font-size: 25px; ">
                                           <button type="button"  style="width: 15em;" class="btn btn-success btn-lg btn-danger button-custom"
                                             id="red" >삭제하기</button>
                                         </a>
