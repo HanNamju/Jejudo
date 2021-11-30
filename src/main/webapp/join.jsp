@@ -185,7 +185,7 @@ input[type="checkbox"] {
 							<div class="row">
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
-									placeholder="input your id" required>
+									placeholder="input your id" onblur = "idcheck()" required>
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 
@@ -381,6 +381,27 @@ input[type="checkbox"] {
             }
 
         }
+        
+        //id 동일 체크
+        function idcheck() {
+    		var id = $("#id").val();
+    		$.ajax({
+    			url : 'id_check.do',
+    			data : {id : id},
+    			success : function(data) {
+    				console.log(data);
+    				var status = $.trim(data);
+    				if(status == "fail") {
+    					alert("중복된 아이디입니다.");
+    				} else {
+    					alert("사용가능한 아이디입니다.");
+    				}
+    			},
+    			error:function(request,status,error){
+    	             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    	          }
+    		});
+    	}
     </script>
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/isotope.min.js"></script>

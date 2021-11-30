@@ -75,7 +75,15 @@ input[type], textarea, select, .imgup {
      padding-top:2vh;
 	margin-left : 1.5em;
    
-   }  
+   }
+
+.pos-vertical-center {
+	top : 50%; 
+}  
+
+.pos-vertical-center {
+	height : none;
+}
         </style>
     
     </head>
@@ -92,7 +100,7 @@ input[type], textarea, select, .imgup {
         <!--end of modal-container-->
         <div class="main-container transition--fade">
             <section class="cover cover-12 form--dark imagebg height-100 parallax" data-overlay="4" style=" height: 160vh;">
-                <div class="background-image-holder">
+                <div class="background-image-holder" style="height: inherit;">
                     <img alt="image" src="img/pch_img_1.jpg" />
                 </div>
                 <div class="container pos-vertical-center text-center-xs" id="con_2" >
@@ -179,7 +187,7 @@ input[type], textarea, select, .imgup {
                                         <div class="subscribe__title text-center">
                                             <h4>암호 입력</h4>
                                         </div>
-                                        <form class="" action="updateMember.do" method="post" >
+                                        <form id="subForm" action="Withdrawal.do" method="post" enctype="multipart/form-data">
                                             <div class="input-with-icon">
                                                 <label for="fieldName">PassWord</label>
                                                 <input id="checkcheck" name="cm-name" type="text" />
@@ -213,7 +221,8 @@ input[type], textarea, select, .imgup {
         function pspsps(pwd) {
         	var outout = document.getElementById("checkcheck").value;
         	if(outout==pwd){
-        		location.href='index.jsp';
+        		location.href="/Withdrawal.do?mSeq=${memberInfo.mSeq}";
+	
         	} else if(outout != pwd){
         		alert("비밀번호가 틀렸습니다! 다시 입력 부탁드립니다.");	
         		
