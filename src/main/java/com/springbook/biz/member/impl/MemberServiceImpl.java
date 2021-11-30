@@ -65,6 +65,19 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 	
+	// 아이디 중복 체크하기
+	@Override
+	public MemberVO idChk(String id) {
+		return memberDAO.idChk(id);
+	}
+	
+	
+	//회원 탈퇴
+	@Override
+	public void Withdrawal(MemberVO vo) {
+		memberDAO.Withdrawal(vo);
+		
+	}
 
 
 
