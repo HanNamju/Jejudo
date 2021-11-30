@@ -5,6 +5,40 @@
 
 <!-- mapper자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO명을 따라가는 경우가 일반적임 -->
 <mapper namespace="TripDAO">
+<<<<<<< HEAD
+
+
+	<insert id="insertTrip" >
+		<![CDATA[
+		INSERT INTO TRIP(
+							TR_SEQ
+						  , TR_NAME						  
+						  , TR_MODE
+						  , TR_AREA_SET
+						  , TR_DATE_SET
+						  , TR_GENDER_SET
+						  , TR_PERSONNEL_SET
+						  , TR_LICENSE_SET
+						  , TR_PASSWORD_SET
+						  ,	TR_TRANSPORTATION_SET
+						  , TR_INTRO
+						 )
+				  VALUES(
+				  			(SELECT IFNULL(MAX(TR_SEQ), 0) + 1 FROM TRIP A)
+				  		  , #{trName}
+				  		  , #{trMode}
+				  		  , #{trAreaSet}
+				  		  , #{trDateSet}
+				  		  , #{trGenderSet}
+				  		  , #{trPersonnelSet}
+				  		  , #{trLicenseSet}
+				  		  , #{trPasswordSet}
+				  		  , #{trTransportationSet}
+				  		  , #{trIntro}
+				  		) 
+	]]> 
+	</insert>
+=======
 	<!-- mroom.jsp를통해 방 생성 할때 사용하는 insert sql구문 -->
 	<insert id="insertTrip" >
       <![CDATA[
@@ -36,6 +70,8 @@
                     ) 
    ]]> 
    </insert>
+>>>>>>> edb5f0f6f60224cac8670af429e9b7c5b7c479ed
+
 
 	<!-- 참여하기 위해 방을 클릭했을때 방의 정보를 불러올때 사용 -->
 	<select id="getTrip" resultType="trip">
@@ -68,14 +104,39 @@
 		     AND A.TR_SEQ = B.SEQ
 	</select>
 
-	<!-- 인서트 할때 트립파일 테이블에 인서트하기위해 사용 -->
 	<select id="getTripSeq" resultType="int">
+<<<<<<< HEAD
+		SELECT IFNULL(MAX(TR_SEQ) ,0) + 1
+			FROM TRIP
+=======
 		SELECT IFNULL(MAX(TR_SEQ),0)+1
 		FROM TRIP
+>>>>>>> edb5f0f6f60224cac8670af429e9b7c5b7c479ed
 	</select>
 
 	
 	<insert id="insertTripFileList" parameterType="tripFile">
+<<<<<<< HEAD
+		INSERT INTO TRIP_FILE (
+									SEQ,
+									F_SEQ,
+									ORIGINAL_FILE_NAME,
+									FILE_PATH,
+									FILE_SIZE
+								)
+						VALUES (
+									#{seq},
+									(
+										SELECT IFNULL(MAX(F_SEQ), 0) + 1
+											FROM TRIP_FILE A
+										WHERE SEQ = #{seq}
+									),
+									#{originalFileName},
+									#{filePath},
+									#{fileSize}
+								)
+	</insert>
+=======
       INSERT INTO TRIP_FILE (
                            SEQ,
                            F_SEQ,
@@ -95,6 +156,7 @@
                            #{fileSize}
                         )
    </insert>
+>>>>>>> edb5f0f6f60224cac8670af429e9b7c5b7c479ed
 
 	<select id="getTripFileList" parameterType="int"
 		resultType="tripFile">
