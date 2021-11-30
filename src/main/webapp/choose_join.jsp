@@ -54,7 +54,7 @@
 					<div class="masonry masonry-blog">
 						<div class="masonry__container masonry--animate">
 							<div class="col-md-6 col-sm-6 masonry__item">
-								<a href="choose.html">
+								<a href="getTripList.do">
 									<div class="card card-4">
 										<div class="card__image">
 											<img alt="Pic" src="img/제주021.jpg" style="max-height: 50vh;" />
