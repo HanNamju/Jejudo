@@ -26,15 +26,9 @@ public class PlaceVO {
 	private String pImgpath;
 	private String pXaxis;
 	private String pYaxis;
-	
-	
 
 	@XmlTransient
 	private MultipartFile uploadFile;
-	
-	
-
-	
 
 	public int getpSeq() {
 		return pSeq;
