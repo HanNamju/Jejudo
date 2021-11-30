@@ -70,6 +70,9 @@ public class TripController {
 	public String getTripList( 
 			TripVO vo, Model model) {
 		System.out.println("글 목록 검색 처리");
+		
+		String path = System.getProperty("user.dir"); System.out.println("현재 작업 경로: " + path);
+
 
 //		List<TripVO> tripList = tripService.getTripList(vo);
 //

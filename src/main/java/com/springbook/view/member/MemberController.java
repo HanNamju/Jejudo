@@ -28,7 +28,7 @@ import com.springbook.biz.member.MemberVO;
 
 @Controller
 //board로 model 저장된 객체가 있으면 HttpSession 데이터 보관소에서 동일한 키 값(board)로 저장
-@SessionAttributes("member")
+@SessionAttributes("member")  // 값을 계속 해서 불러오는 얘
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -172,7 +172,7 @@ public class MemberController {
 		System.out.println("운전면허 : " + vo.getmLicense());
 
 		// int mSeq = vo.getmSeq();
-
+		
 		memberService.updateMember(vo);
 		return "redirect:Mypage.jsp";
 	}

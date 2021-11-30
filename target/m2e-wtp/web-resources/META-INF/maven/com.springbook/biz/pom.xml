@@ -157,7 +157,7 @@
 			<version>1.2</version>
 		</dependency>
 		
-		<!-- 이메일 api -->
+		<!-- 이메일 보내기 api -->
 		 <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
@@ -167,20 +167,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>		
-
-
-		<!-- java mail -->
-		<!-- <dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency> -->
+        </dependency>	
 
 
 		<!-- Test -->
