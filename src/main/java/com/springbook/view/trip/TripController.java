@@ -27,6 +27,7 @@ public class TripController {
 	@Autowired
 	private TripService tripService;
 
+<<<<<<< HEAD
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
@@ -47,10 +48,30 @@ public class TripController {
 		int seq = tripService.getTripSeq();
 		
 		System.out.println("seq= " + seq);
+=======
+//	@ModelAttribute("conditionMap")
+//	public Map<String, String> searchConditionMap() {
+//		Map<String, String> conditionMap = new HashMap<String, String>();
+//		conditionMap.put("제목", "TITLE");
+//		conditionMap.put("내용", "CONTENT");
+//		return conditionMap;
+//	}
 
-		FileUtils fileUtils = new FileUtils();
-		List<TripFileVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	// >>>                             여행 생성                                     >>>
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+	   @RequestMapping(value = "/insertTrip.do")
+	   public String insertTrip(TripVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
+	         throws IOException {
+	      System.out.println("======> insertTrip 컨트롤러 탐");
+>>>>>>> edb5f0f6f60224cac8670af429e9b7c5b7c479ed
+
+	      int seq = tripService.getTripSeq();
+	      
+	      System.out.println("seq= " + seq);
+
+<<<<<<< HEAD
 		if (CollectionUtils.isEmpty(fileList) == false) {
 			tripService.insertTripFileList(fileList);
 			System.out.println("======> check_1");
@@ -61,6 +82,23 @@ public class TripController {
 		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
 		return "redirect:index.jsp";
 	}
+=======
+	      FileUtils fileUtils = new FileUtils();
+	      List<TripFileVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
+
+	      if (CollectionUtils.isEmpty(fileList) == false) {
+	         tripService.insertTripFileList(fileList);
+	         System.out.println("======> check_1");
+	      }
+
+	      tripService.insertTrip(vo);
+	      System.out.println("======> check_2");
+	      // 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
+	      return "redirect:index.jsp";
+	   }
+	   
+	// ----------------------------------- END 여행 생성 END -------------------------------------------   
+>>>>>>> edb5f0f6f60224cac8670af429e9b7c5b7c479ed
 	
 // ----------------------------------- END 여행 생성 END -------------------------------------------	
 	
@@ -71,11 +109,11 @@ public class TripController {
 		
 		System.out.println("글 목록 검색 처리");
 
-		List<TripVO> tripList = tripService.getTripList(vo);
-
-		for (int i = 0; i < tripList.size(); i++) {
-			System.out.println(tripList.get(i).toString());
-		}
+//		List<TripVO> tripList = tripService.getTripList(vo);
+//
+//		for (int i = 0; i < tripList.size(); i++) {
+//			System.out.println(tripList.get(i).toString());
+//		}
 		model.addAttribute("tripList", tripService.getTripList(vo));
 		return "RoomCatagory.jsp";
 	}

@@ -1,6 +1,8 @@
 package com.springbook.biz.trip.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.springbook.biz.trip.TripFileVO;
 import com.springbook.biz.trip.TripFileVO;
 import com.springbook.biz.trip.TripVO;
-
-
 
 @Repository
 public class TripDAOMybatis {
@@ -40,12 +40,19 @@ public class TripDAOMybatis {
 	
 	public List<TripVO> getTripList(TripVO vo) {
 		System.out.println("====> Mybatis로 getTripList() 기능 처리");
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		list = mybatis.selectList("TripDAO.getTripList", vo);
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString());
+		}
 		return mybatis.selectList("TripDAO.getTripList", vo);
 	}
 	
 	public int getTripSeq() {
+		System.out.println("====> Mybatis로 getTripSeq() 기능 처리");
 		return mybatis.selectOne("TripDAO.getTripSeq");
 	}
+	
 	public void insertTripFileList(List<TripFileVO> fileList) {
 		for(TripFileVO tripFile : fileList) {
 			mybatis.insert("TripDAO.insertTripFileList", tripFile);

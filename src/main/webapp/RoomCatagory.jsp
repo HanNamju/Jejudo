@@ -95,7 +95,7 @@
 										<div class="hover-element hover-element-1 "
 											data-title-position="top,left" style="background: black;">
 											<div class="hover-element__initial">
-												<img alt="Pic" src="img/Game1.jpg" />
+												<img alt="Pic" src="/upload/${trip.orginalFileName}" />
 											</div>
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
@@ -164,7 +164,7 @@
 										<div class="hover-element hover-element-1 "
 											data-title-position="top,left" style="background: black;">
 											<div class="hover-element__initial">
-												<img alt="Pic" src="img/Game1.jpg" />
+												<img alt="Pic" src="/upload/${trip.orginalFileName}" />
 											</div>
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
