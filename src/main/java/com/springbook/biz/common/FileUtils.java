@@ -24,12 +24,12 @@ public class FileUtils {
 		List<TripFileVO> fileList = new ArrayList<TripFileVO>();
 		
 		//서버의 절대 경로 얻기
-		//String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "C:\\upload\\";
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "/upload/";
 		
 		//위 경로의 폴더가 없으면 폴더 생성
-		//File file = new File(root_path + attach_path);
-		File file = new File(attach_path);
+		File file = new File(root_path + attach_path);
+		//File file = new File(attach_path);
 		if(file.exists() == false) {
 			file.mkdir();
 		}
@@ -49,12 +49,12 @@ public class FileUtils {
 					tripFile.setSeq(seq);
 					tripFile.setFileSize(mf.getSize());
 					tripFile.setOriginalFileName(mf.getOriginalFilename());
-					//tripFile.setFilePath(root_path + attach_path);
-					tripFile.setFilePath(attach_path);
+					tripFile.setFilePath(root_path + attach_path);
+					//tripFile.setFilePath(attach_path);
 					fileList.add(tripFile);
 					
-					//file = new File(root_path + attach_path + mf.getOriginalFilename());
-					file = new File(attach_path + mf.getOriginalFilename());
+					file = new File(root_path + attach_path + mf.getOriginalFilename());
+					//file = new File(attach_path + mf.getOriginalFilename());
 					mf.transferTo(file);
 				} else {
 					fileList = null;
