@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO명을 따라가는 경우가 일반적임 -->
+<mapper namespace="PlaceDAO">
+<!-- <resultMap type="place" id="placeResult">
+		<id property="z_seq" column="P_SEQ"/>
+		<result property="pCategory" column="P_CATEGORY"/>
+		<result property="pArea" column="P_AREA"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pAddress" column="P_ADDRESS"/>
+		<result property="pTell" column="P_TELL"/>
+		<result property="pInfo;" column="P_INFO"/>
+		<result property="pImgpath" column="P_IMG_PATH"/>
+		<result property="pXaxis" column="P_X_AXIS"/>
+		<result property="pYaxis" column="P_Y_AXIS"/>
+	</resultMap> -->
+	
+	<insert id="insertPlace">
+	<![CDATA[
+
+ INSERT INTO PLACE( 
+					P_SEQ
+					, P_CATEGORY
+					, P_AREA
+					, P_NAME
+					, P_ADDRESS
+					, P_TELL
+					, P_INFO
+					, P_IMG_PATH
+					, P_X_AXIS
+					, P_Y_AXIS
+					)
+
+VALUES(
+					(SELECT IFNULL(MAX(P_SEQ), 0) + 1 FROM PLACE A)
+					 , #{pCategory}
+					 , #{pArea}
+					 , #{pName}
+					 , #{pAddress}
+					 , #{pTell}
+					 , #{pInfo}
+					 , #{pImgpath}
+					 , #{pXaxis}
+					 , #{pYaxis})
+					 
+					 
+					 
+					 
+	]]>
+	</insert>
+
+	
+	<update id="updatePlace">
+		<![CDATA[
+
+			UPDATE place
+SET
+
+`P_CATEGORY` = #{pCategory},
+`P_AREA` = #{pArea},
+`P_NAME` =  #{pName},
+`P_ADDRESS` =  #{pAddress},
+`P_TELL` =  #{pTell},
+`P_INFO` = #{pInfo},
+`P_IMG-PATH` =  #{pImgpath},
+`P_X-AXIS` = #{pXaxis},
+`P_Y-AXIS` = #{pYaxis})
+WHERE `P_SEQ` = #{pSeq};
+			
+			
+			
+			
+		]]>
+	</update>
+	
+	<delete id="deletePlace" >
+		<![CDATA[
+
+			DELETE FROM PLACE
+			WHERE P_SEQ = #{pSeq}
+			
+		]]>
+	</delete>
+	
+	<select id="getPlace" resultType="place">
+		<![CDATA[
+		SELECT * FROM PLACE
+			WHERE P_SEQ = #{pSeq}
+		]]> 
+	</select>
+	
+	
+	
+	<select id="getPlaceAllList" resultType="place">
+		<![CDATA[
+		SELECT * FROM PLACE
+		]]> 
+	</select>
+	
+	<select id="getPlaceSeq" resultType="int">
+		SELECT IFNULL(MAX(P_SEQ) ,0) + 1
+			FROM PLACE
+	</select>
+	
+	<insert id="insertPlaceFileList" parameterType="placeFile">
+		
+		INSERT INTO PLACE_FILE (
+									SEQ,
+									F_SEQ,
+									ORIGINAL_FILE_NAME,
+									FILE_PATH,
+									FILE_SIZE
+								)
+						VALUES (
+									#{seq},
+									(
+										SELECT IFNULL(MAX(F_SEQ), 0) + 1
+											FROM PLACE_FILE A
+										WHERE SEQ = #{seq}
+									),
+									#{originalFileName},
+									#{filePath},
+									#{fileSize}
+								)
+							
+	</insert>
+	
+	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
+		SELECT * FROM PLACE_FILE
+			WHERE SEQ = #{seq}
+	</select>
+	
+	<delete id="deleteFile" parameterType="placeFile">
+		DELETE FROM PLACE_FILE
+			WHERE SEQ = #{seq}
+			  AND F_SEQ = #{fSeq}
+	</delete>
+	
+	<delete id="deleteFileList" parameterType="int">
+		DELETE FROM PLACE_FILE
+			WHERE SEQ = #{seq}
+	</delete>
+	
+	
+	<select id="getPlaceList" resultType="place">
+		<![CDATA[
+		SELECT * FROM PLACE
+		WHERE P_CATEGORY = #{pCategory}
+		]]>
+
+	</select>
+	
+
+	
+</mapper>
