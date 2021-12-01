@@ -75,6 +75,21 @@ public class MemberDAOMybatis {
 		mybatis.update("MemberDAO.Withdrawal", vo);
 	}
 
+
+	//아이디 비교하기
+	public MemberVO existId(String mId) {
+		System.out.println("====> Mybatis로existId() 기능 처리");
+		MemberVO member = mybatis.selectOne("MemberDAO.existId", mId);
+		return member;
+	}
+
+	// 맴버스테이터스 얻기
+	public int getMemberAccountStatus(String mId) {
+		System.out.println("====> Mybatis로AccountStatus() 기능 처리");
+		return mybatis.selectOne("MemberDAO.getMemberAccountStatus", mId);
+	}
+
+
 	// 11.24일 유저목록 구현
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		System.out.println("====> Mybatis로 getMemberList() 기능 처리");
