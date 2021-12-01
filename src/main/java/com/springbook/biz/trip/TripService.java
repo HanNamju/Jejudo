@@ -16,9 +16,9 @@ public interface TripService {
 	//글 삭제
 	void deleteTrip(TripVO vo);
 	
-	//글 상세 조회
+	//여행 상세 조회
 	TripVO getTrip(TripVO vo);
-	
+
 	//글 목록 조회
 	List<TripVO> getTripList(TripVO vo);
 	

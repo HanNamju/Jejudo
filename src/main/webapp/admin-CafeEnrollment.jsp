@@ -66,34 +66,18 @@ section {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-MemberList.html">
+                                    <a href="getMemberList.do">
                                         회원관리
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="getPlaceAllList.do">
+                        장소관리 
                                     </a>
                                 </li>
                             </ul>
                             <hr>
-                            <ul class="link-list">
-                                <li>
-                                    <a href="admin-RoomsList.html">
-                                        숙소
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-RestauranList.html">
-                                        식당
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-CafeList.html">
-                                        카페
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-TourlistList.html">
-                                        관광지
-                                    </a>
-                                </li>
-                            </ul>
+                         
                         </div>
                         <!--end widget-->
                         <div class="sidebar__widget">

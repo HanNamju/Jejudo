@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 <meta charset="UTF-8">
-<title>°ü¸®ÀÚ | ÀÚÀ²°Ô½ÃÆÇ µî·Ï</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
@@ -20,82 +20,69 @@ body {
 	padding-top: 70px;
 	padding-bottom: 30px;
 }
+
+
 </style>
 </head>
 
 <body>
 
 	<article>
+
 		<div class="container" role="main" style="background-color: white;">
-			<h2>±Û¾²±â</h2>
-			<form method="post" action="insertBoard.do">
-
-
-
+			<div style="display: flex; justify-content: space-between;">
+			<div><h2>ê¸€ì“°ê¸°</h2></div>
+			<div><button class="btn btn-dark">ë‚˜ê°€ê¸°</button></div>
+			</div>
+			<form method="post" action="insertBoard.do" enctype="multipart/form-data">
 				<div class="mb-3">
-
-					<label for="title"><h6>Á¦¸ñ</h6></label> <input type="text"
+					<label for="title"><h6>ì œëª©</h6></label> <input type="text"
 						class="form-control" name="title" id="title"
-						placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä">
-
+						placeholder="ì œëª©ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”">
 				</div>
-
-
-				<!-- 
-				<div class="mb-3">
-
-					<label for="reg_id">ÀÛ¼ºÀÚ</label>
-
-					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä">
-
-				</div> -->
-
-
 				<div class="row">
 					<div class="col-md-6 mb-3">
-
-						<label for="content"><h6>³»¿ë</h6></label>
-
+						<label for="content"><h6>ë‚´ìš©</h6></label>
 						<textarea style="height: 400px;" class="form-control" rows="8"
-							name="content" id="content" placeholder="³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä"></textarea>
-
+							name="content" id="content" placeholder="ë‚´ìš©ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”"></textarea>
 					</div>
-
-
 					<div class="col-md-6 mb-3">
-						<label for="content"><h6>»çÁø</h6></label>
+						<label for="content"><h6>ì‚¬ì§„</h6></label>
 						<div class="image-container">
 							<img style="width: 100%; height: 100%;" id="preview-image"
 								src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
-							<input style="display: block;" type="file" id="input-image">
+							<input style="display: block;" type="file" id="input-image" name="uploadfile" >
 						</div>
 					</div>
 				</div>
-
-
 				<div class="mb-3">
-
 					<label for="tag">TAG</label> <input type="text"
-						class="form-control" id="tag" placeholder="ÅÂ±×¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä">
-
+						class="form-control" id="tag" placeholder="íƒœê·¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”">
 				</div>
-
-
-
-
-				<div style="text-align: center; margin-top: 30px;">
-
+				<div style="display: flex; justify-content: center;" >
+				
+				
+			
+<<<<<<< HEAD
+					<div>	<a href="getBoardList.do">
+					<button style="padding: 10px;" type="" class="btn btn-dark"
+							id="btnList">&nbspì €ìž¥&nbsp</button>
+							</a>
+=======
+					<div>	
 					<button style="padding: 10px;" type="submit" class="btn btn-dark"
-						id="btnSave">&nbspÀúÀå&nbsp</button>
+							id="btnList">&nbspì €ìž¥&nbsp</button>
+							
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 			</form>
-			<button style="padding: 10px;" type="submit" class="btn btn-dark"
-				id="btnList">&nbsp¸ñ·Ï&nbsp</button>
-
+				</div>
+				</div>
 		</div>
+		
 
 
 
-		</div>
+
 
 	</article>
 	<!-- jQuery -->
@@ -133,35 +120,27 @@ body {
 
 	
 
-	$(document).on('click', '#btnList', function(e){
 
-		e.preventDefault();
-
-		
-
-		location.href="${pageContext.request.contextPath}/board/getBoardList";
-
-	});
 
 </script>
 
 	<script>
   function readImage(input) {
-// ÀÎÇ² ÅÂ±×¿¡ ÆÄÀÏÀÌ ÀÖ´Â °æ¿ì
+// ì¸í’‹ íƒœê·¸ì— íŒŒì¼ì´ ìžˆëŠ” ê²½ìš°
 if(input.files && input.files[0]) {
-  // ÀÌ¹ÌÁö ÆÄÀÏÀÎÁö °Ë»ç (»ý·«)
-  // FileReader ÀÎ½ºÅÏ½º »ý¼º
+  // ì´ë¯¸ì§€ íŒŒì¼ì¸ì§€ ê²€ì‚¬ (ìƒëžµ)
+  // FileReader ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
   const reader = new FileReader()
-  // ÀÌ¹ÌÁö°¡ ·Îµå°¡ µÈ °æ¿ì
+  // ì´ë¯¸ì§€ê°€ ë¡œë“œê°€ ëœ ê²½ìš°
   reader.onload = e => {
       const previewImage = document.getElementById("preview-image")
       previewImage.src = e.target.result
   }
-  // reader°¡ ÀÌ¹ÌÁö ÀÐµµ·Ï ÇÏ±â
+  // readerê°€ ì´ë¯¸ì§€ ì½ë„ë¡ í•˜ê¸°
   reader.readAsDataURL(input.files[0])
 }
 }
-// input file¿¡ change ÀÌº¥Æ® ºÎ¿©
+// input fileì— change ì´ë²¤íŠ¸ ë¶€ì—¬
 const inputImage = document.getElementById("input-image")
 inputImage.addEventListener("change", e => {
 readImage(e.target)

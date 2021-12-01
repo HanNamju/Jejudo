@@ -1,13 +1,21 @@
 package com.springbook.view.member;
+<<<<<<< HEAD
+=======
+
+import java.io.File;
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -16,7 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.SessionAttributes;
+=======
+import org.springframework.web.multipart.MultipartFile;
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.springbook.biz.common.MemberFileUtils;
@@ -42,25 +54,10 @@ public class MemberController {
 		return conditionMap;
 	}
 
-	// 로그인
-//		@RequestMapping(value="/login.do", method=RequestMethod.POST)
-//		public String loginAction(MemberVO vo, Model model) {
-//			MemberVO loginMember = memberService.login(vo);
-//			
-//			if(loginMember == null) {
-//				model.addAttribute("check", 1);
-//				model.addAttribute("message", "아이디와 비밀번호를 확인해주세요.");
-//				return "login.jsp";
-//			}else {
-//				model.addAttribute("loginMember", loginMember);
-//				return "index.jsp";
-//			}
-//		}
-
 	// 의찬 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String Login(@RequestParam("mId") String mId, @RequestParam("mPassword") String mPassword,
-			HttpSession session) throws Exception {
+			HttpSession session, HttpServletResponse response) throws Exception {
 
 		String path = "";
 
@@ -75,6 +72,32 @@ public class MemberController {
 			session.setAttribute("member", member);
 			path = "index.jsp";
 		} else {
+			// 있는 아이디인지 체크
+			MemberVO existId = memberService.existId(mId);
+
+			if (existId != null && !existId.equals("")) {
+				int status = memberService.getMemberAccountStatus(mId);
+				if (status >= 3 && status < 99) {
+					response.setContentType("text/html; charset=UTF-8");
+
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('이용 정지된 회원입니다. 관리자에게 문의 부탁드립니다.'); </script>");
+					out.flush();
+				} else {
+					response.setContentType("text/html; charset=UTF-8");
+
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('회원 탈퇴된 아이디입니다. 관리자에게 문의 부탁드립니다.');</script>");
+					out.flush();
+				}
+			} else {
+				response.setContentType("text/html; charset=UTF-8");
+
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('회원 가입 후 로그인 부탁드립니다.');</script>");
+				out.flush();
+			}
+
 			path = "login.jsp";
 		}
 
@@ -82,6 +105,7 @@ public class MemberController {
 
 	}
 
+	// 로그아웃
 	@RequestMapping(value = "/logout.do")
 	// Commedn 객체로HttepSession을 선언하게 되면 스프링컨테이너가 브라우저와 매핑된 세션 객체를 담아서 넘겨줌
 	public String logout(HttpSession session) {
@@ -90,28 +114,56 @@ public class MemberController {
 		return "index.jsp";
 	}
 
+	// 회원 가입
 	@RequestMapping(value = "/insertMember.do")
-	public String insertMember(MemberVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
+	public String insertMember(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
 		System.out.println("=====> insertMember.do 컨트롤러 탐");
-
 		int seq = memberService.getMemberSeq();
 		System.out.println("====>> 시퀀스값 : " + seq);
 
-		MemberFileUtils memberfileUtils = new MemberFileUtils();
-		List<MemberFileVO> fileList = MemberFileUtils.parseFileInfo(seq, request, mhsr);
+		try {
 
-		if (CollectionUtils.isEmpty(fileList) == false) {
-			memberService.insertMemberFileList(fileList);
-			System.out.println("======> check_1");
+			System.out.println("======> check_2");
+
+			String root_path = request.getSession().getServletContext().getRealPath("/");
+			String attach_path = "/upload/";
+
+			File file = new File(root_path + attach_path);
+			// File file = new File(attach_path);
+			if (file.exists() == false) {
+				file.mkdir();
+			}
+
+			MultipartFile uploadFile = vo.getUploadFile();
+
+			if (!uploadFile.isEmpty()) {
+				String fileName = uploadFile.getOriginalFilename();
+				uploadFile.transferTo(new File(root_path + attach_path + fileName));
+
+				vo.setmImgPath(root_path + attach_path);
+				vo.setmImgName(uploadFile.getOriginalFilename());
+
+			}
+			memberService.insertMember(vo);
+			// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
+			System.out.println("=========> check_3");
+			return "redirect:index.jsp";
+
+		} catch (DuplicateKeyException e) {
+			response.setContentType("text/html; charset=UTF-8");
+
+			PrintWriter out = response.getWriter();
+			out.println("<script> alert('중복된 아이디가 아닌 새 아이디로 회원가입 부탁드립니다.');</script>");
+			out.flush();
+
+		} catch (Exception e) {
+			System.out.println("예외처리 종료");
+			return "index.jsp";
 		}
 
-		memberService.insertMember(vo);
-		System.out.println("======> check_2");
-
-		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
-		return "redirect:index.jsp";
+		return "join.jsp";
 	}
 
 	// 아이디 찾기 페이지 이동
@@ -136,6 +188,7 @@ public class MemberController {
 	}
 
 	// 회원정보 가져오기
+<<<<<<< HEAD
 	   @RequestMapping(value="/getMember.do")
 	   public String getMember(Model model, HttpSession session) throws IOException {
 	      
@@ -158,6 +211,30 @@ public class MemberController {
 	      return null;
 	      
 	   }
+=======
+	@RequestMapping(value = "/getMember.do")
+	public String getMember(Model model, HttpSession session) throws IOException {
+
+		System.out.println("======> getmember 컨트롤러 탐");
+		// Model 객체는 RequestServlet 데이터 보관소에 저장
+		// RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
+		// request.setAttribute("board", boardDAO.getBoard(vo)) ==
+		// model.addAttribute("board", boardDAO.getBoard(vo))
+		try {
+			MemberVO vo = (MemberVO) session.getAttribute("member");
+			System.out.println("======> 세션가져왔어");
+			System.out.println(memberService.getMember(vo).toString());
+			model.addAttribute("memberInfo", memberService.getMember(vo));
+			// model.addAttribute("mLicenseInfo",memberService.getMember(vo));
+
+			return "changeinfo.jsp";
+		} catch (Exception e) {
+
+		}
+		return null;
+
+	}
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 
 	// 회원정보 수정
 	@RequestMapping(value = "/updateMember.do")
@@ -172,10 +249,11 @@ public class MemberController {
 		System.out.println("운전면허 : " + vo.getmLicense());
 
 		// int mSeq = vo.getmSeq();
-		
+
 		memberService.updateMember(vo);
 		return "redirect:Mypage.jsp";
 	}
+<<<<<<< HEAD
 	
 	   // 비밀번호 email로 전송 받긔			
 	   @Autowired
@@ -244,7 +322,78 @@ public class MemberController {
 			memberService.Withdrawal(vo);
 			session.invalidate();
 			return "index.jsp";
+=======
+
+	// 비밀번호 email로 전송 받긔
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private Email email;
+
+	@RequestMapping("/findPWD.do")
+	public String sendEmailAction(MemberVO vo, Model model) throws Exception {
+
+		System.out.println("====> 이메일 컨트롤러 탐");
+
+		if (memberService.findPassword(vo) == null) {
+
+			model.addAttribute("check", 3);
+
+			return "find-account.jsp";
+
+		} else {
+
+			MemberVO memberPassword = memberService.findPassword(vo);
+
+			String pw = memberPassword.getmPassword();
+
+			model.addAttribute("check", 4);
+			String id = memberPassword.getmId();
+			String e_mail = memberPassword.getmEmail();
+
+			email.setContent("비밀번호는 " + pw + " 입니다.");
+			email.setReceiver(e_mail);
+			email.setSubject("랜덤제주" + id + "님 비밀번호 찾기 메일입니다.");
+			emailSender.SendEmail(email);
+
+			return "redirect:login.jsp";
 		}
+
+	}
+
+	// 아이디 중복 체크
+	@RequestMapping(value = "/id_check.do")
+	@ResponseBody
+	public String idCheck(@RequestParam("id") String id
+	/* HttpServletResponse response */) throws IOException {
+		MemberVO vo = memberService.idChk(id);
+
+		// response.setContentType("text/html;charset=UTF-8");
+		String msg = "";
+		if (vo != null) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		return msg;
+		// PrintWriter writer = response.getWriter();
+		// writer.println(msg);
+	}
+
+	// 마이페이지 회원 탈퇴
+	// 회원권한 정지
+	@RequestMapping(value = "/Withdrawal.do")
+	public String Withdrawal(MemberVO vo, HttpServletRequest request, Model model, HttpSession session)
+			throws IOException {
+		System.out.println("회원 탈퇴 처리");
+		System.out.println("카테고리 : " + vo.getmAccountStatus());
+
+		int seq = vo.getmSeq();
+
+		memberService.Withdrawal(vo);
+		session.invalidate();
+		return "index.jsp";
+	}
 		
 		// Member 목록 불러오기
 		@RequestMapping(value="/getMemberList.do", method= RequestMethod.GET)
@@ -296,6 +445,7 @@ public class MemberController {
 				
 			memberService.memberKeep(vo);
 			return "getMemberList.do";
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 		}
 
 }

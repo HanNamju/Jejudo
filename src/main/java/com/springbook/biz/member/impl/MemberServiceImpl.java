@@ -65,6 +65,23 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMember(vo);
 
 	}
+<<<<<<< HEAD
+	
+	// 아이디 중복 체크하기
+	@Override
+	public MemberVO idChk(String id) {
+		return memberDAO.idChk(id);
+	}
+	
+	
+	//회원 탈퇴
+	@Override
+	public void Withdrawal(MemberVO vo) {
+		memberDAO.Withdrawal(vo);
+		
+	}
+=======
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 
 	// 아이디 중복 체크하기
 	@Override
@@ -77,6 +94,18 @@ public class MemberServiceImpl implements MemberService {
 	public void Withdrawal(MemberVO vo) {
 		memberDAO.Withdrawal(vo);
 
+	}
+	
+	//DB에 있는 아이디인지 확인하기
+	@Override
+	public MemberVO existId(String mId) {
+		return memberDAO.existId(mId);
+	}
+	
+	//DB에 AccountStatus 확인하기
+	@Override
+	public int getMemberAccountStatus(String mId) {
+		return memberDAO.getMemberAccountStatus(mId);
 	}
 
 	// 회원목록 가져오기

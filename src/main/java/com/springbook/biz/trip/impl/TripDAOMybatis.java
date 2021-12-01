@@ -33,10 +33,12 @@ public class TripDAOMybatis {
 		mybatis.delete("TripDAO.deleteTrip", vo);
 	}
 	
+	//여행 상세 조회
 	public TripVO getTrip(TripVO vo) {
 		System.out.println("====> Mybatis로 getTrip() 기능 처리");
 		return (TripVO)mybatis.selectOne("TripDAO.getTrip", vo);
 	}
+
 	
 	public List<TripVO> getTripList(TripVO vo) {
 		System.out.println("====> Mybatis로 getTripList() 기능 처리");
@@ -72,7 +74,8 @@ public class TripDAOMybatis {
 		mybatis.delete("TripDAO.deleteFileList", seq);
 		
 	}
-	
+
+
 
 	
 	

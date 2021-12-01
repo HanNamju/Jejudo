@@ -17,16 +17,15 @@ public class TripServiceImpl implements TripService {
 
 	@Override
 	public void insertTrip(TripVO vo) {
-		tripDAO.insertTrip(vo);
-		
+		tripDAO.insertTrip(vo);		
 	}
 
 	@Override
 	public void deleteTrip(TripVO vo) {
-		tripDAO.deleteTrip(vo);
-		
+		tripDAO.deleteTrip(vo);		
 	}
-
+	
+	//여행 상세 조회
 	@Override
 	public TripVO getTrip(TripVO vo) {
 		// TODO Auto-generated method stub
