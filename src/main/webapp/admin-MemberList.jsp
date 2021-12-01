@@ -179,30 +179,14 @@ input[type="checkbox"] { display: none; }
                                         회원관리
                                     </a>
                                 </li>
+                                 <li>
+                                    <a href="getPlaceAllList.do">
+                     	장소관리 
+                                    </a>
+                                </li>
                             </ul>
                             <hr>
-                            <ul class="link-list">
-                                <li>
-                                    <a href="getRoomsList.do">
-                                        숙소
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="getRestaurantList.do">
-                                        식당
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="getCafeList.do">
-                                        카페
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="getTourList.do">
-                                        관광지
-                                    </a>
-                                </li>
-                            </ul>
+                         
                         </div>
                         <!--end widget-->
                         <div class="sidebar__widget">
