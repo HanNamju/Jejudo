@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html lang="ko">
   <head>
@@ -42,6 +45,19 @@
         <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <title>Table #1</title>
+    <style>
+      h1,h2,h3,h4,h5,h6,p,div,li,th,tr{
+                font-family: 'Noto Sans KR', sans-serif;
+                    }
+                    
+                    p{
+                    font-weight: medium;
+                    }
+            h5{
+            font-weight: medium
+            }
+            
+    </style>
   </head>
   <body>
   
@@ -49,16 +65,13 @@
   <div class="content">
     
     <div class="container">
-      <h3>자유게시판</h3>
+    <h3>${userName }</h3>
+      <h1 style="font-weight: bold;">자유게시판</h1><br>
       <div style="width: 100%; border-radius: 10px; border: 1px solid rgba(0, 0, 0, .5) ">
-        <ul style="text-align: center;">
-          <li>본 게시판은 누구나 자유롭게 의견을 게시할 수 있으며, 게시된 의견에 대하여는 답변을 하지 않습니다.</li>
-          <li>시정 관련 건의사항 또는 답변을 원하는 민원사무 등은 1577-1577 를 이용하시기 바랍니다.</li>
-          <li>자유 게시판은</li>
-          <li>이런 곳입니다</li>
-          <li>잘 </li>
-          <li>쓰세요</li>
-
+        <ul style="text-align: center; margin:1em; ">
+          <h5>본 게시판은 누구나 자유롭게 의견을 게시할 수 있으며, 게시된 의견에 대하여는 답변을 하지 않습니다.</h5>
+          <h5>시정 관련 건의사항 또는 답변을 원하는 민원사무 등은 1577-1577 를 이용하시기 바랍니다.</h5>
+         
         </ul>
         
       </div>
@@ -67,99 +80,49 @@
           <thead>
             <tr>
               <th></th>
-              <th scope="col">번호</th>
-              <th scope="col">제목</th>
-              <th scope="col">글쓴이</th>
-              <th scope="col">날짜</th>
-              <th scope="col">조회 수</th>
+              <th scope="col"><p>번호</p></th>
+              <th scope="col"><p>제목</p></th>
+              <th scope="col"><p>글쓴이</p></th>
+              <th scope="col"><p>날짜</p></th>
+              <th scope="col"><p>조회 수</p></th>
+              <th scope="col"><p>버튼</p></th>
+              
             </tr>
           </thead>
           <tbody>
+          <c:forEach var="board" items="${ boardList}">
             <tr>
               <th></th>
-              </th>
-              <td>1392</td>
-              <td>James Yatesdddddddddddddddddddddddddddddddddddddddddddd</td>
-              <td>Web Designer</td>
-              <td>+63 983 0962 971</td>
-              <td>23</td>
+              
+              <td><p>${board.seq}</p></td>
+<<<<<<< HEAD
+              <td ><p>${board.title}<a href="getBoard.do?seq=${board.seq }"></a></p></td>
+=======
+              <td ><a href="getBoard.do?seq=${board.seq }"><p>${board.title}</p></a></td>
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
+              <td><p>${board.writer}</p></td>
+              <td><p>${board.regDate}</p></td>
+              <td><p>${board.cnt}</p></td>
+              <td><a href="getBoard.do?seq=${board.seq }">
+					<button style="padding: 10px;" type="" class="btn btn-dark"
+							id="btnList">&nbsp수정&nbsp</button>
+							</a></td>
+<<<<<<< HEAD
             </tr>
-            <tr>
-              <th></th>
-              <td>4616</td>
-              <td>Matthew Wasil</td>
-              <td>Graphic Designer</td>
-              <td>+02 020 3994 929</td>
-              <td>41</td>
-            </tr>
-            <tr>
-              <th></th>
-              <td>9841</td>
-              <td>Sampson Murphy</td>
-              <td>Mobile Dev</td>
-              <td>+01 352 1125 0192</td>
-              <td>55</td>
-            </tr>
-            <tr>
-              <th></th>
-              <td>9548</td>
-              <td>Gaspar Semenov</td>
-              <td>Illustrator</td>
-              <td>+92 020 3994 929</td>
-              <td>22</td>
-            </tr>
-            <th></th>
-            <td>1392</td>
-            <td>James Yates</td>
-            <td>Web Designer</td>
-            <td>+63 983 0962 971</td>
-            <td>11</td>
-          </tr>
-          <th></th>
-          <td>1392</td>
-          <td>James Yates</td>
-          <td>Web Designer</td>
-          <td>+63 983 0962 971</td>
-          <td>34</td>
-        </tr>
-        <th></th>
-        <td>1392</td>
-        <td>James Yates</td>
-        <td>Web Designer</td>
-        <td>+63 983 0962 971</td>
-        <td>234</td>
-      </tr>
-      <th></th>
-      <td>1392</td>
-      <td>James Yates</td>
-      <td>Web Designer</td>
-      <td>+63 983 0962 971</td>
-      <td>2323</td>
-    </tr>
-    <th></th>
-    <td>1392</td>
-    <td>James Yates</td>
-    <td>Web Designer</td>
-    <td>+63 983 0962 971</td>
-    <td>2342</td>
-  </tr>
-  <th></th>
-  <td>1392</td>
-  <td>James Yates</td>
-  <td>Web Designer</td>
-  <td>+63 983 0962 971</td>
-  <td>2323</td>
-</tr>
-
-
-
+=======
+							
+			
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
+             </c:forEach>
+                  <tbody>
+                            
 </tbody>
 </table>
 </div>
 <div class="row">
   <div class="col-10"></div>
   <div class="col-2">
-  <button style="width: 90%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.html'" >글 쓰기</button>
+  <button style="width: 90%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.jsp?${Member.mId}'" >글 쓰기</button>
   </div>
 </div>
 </div> 

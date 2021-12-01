@@ -18,9 +18,12 @@ public class MemberVO {
 	private String mImgName;
 	private String mIntroduce;
 	private String mAccountStatus;
+<<<<<<< HEAD
 	
 	private MultipartFile uploadFile;
 
+=======
+>>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 	public int getmSeq() {
 		return mSeq;
 	}
@@ -124,11 +127,17 @@ public class MemberVO {
 	public void setmIntroduce(String mIntroduce) {
 		this.mIntroduce = mIntroduce;
 	}
+<<<<<<< HEAD
 
 	public String getmAccountStatus() {
 		return mAccountStatus;
 	}
 
+=======
+	public String getmAccountStatus() {
+		return mAccountStatus;
+	}
+>>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 	public void setmAccountStatus(String mAccountStatus) {
 		this.mAccountStatus = mAccountStatus;
 	}
@@ -149,5 +158,8 @@ public class MemberVO {
 				+ mImgName + ", mIntroduce=" + mIntroduce + ", mAccountStatus=" + mAccountStatus + ", uploadFile="
 				+ uploadFile + "]";
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 }

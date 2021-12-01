@@ -56,19 +56,33 @@ VALUES(
 	<update id="updatePlace">
 		<![CDATA[
 
+<<<<<<< HEAD
+			UPDATE PLACE SET
+				
+				  P_AREA = #{pArea}
+				, P_NAME =  #{pName}
+				, P_ADDRESS =  #{pAddress}
+				, P_TELL =  #{pTell}
+				, P_INFO = #{pInfo}
+				, P_IMG_PATH =  #{pImgpath}
+				, P_X_AXIS = #{pXaxis}
+				, P_Y_AXIS = #{pXaxis}
+			WHERE P_SEQ = #{pSeq}
+=======
 			UPDATE place
 SET
 
-`P_CATEGORY` = #{pCategory},
-`P_AREA` = #{pArea},
-`P_NAME` =  #{pName},
-`P_ADDRESS` =  #{pAddress},
-`P_TELL` =  #{pTell},
-`P_INFO` = #{pInfo},
-`P_IMG-PATH` =  #{pImgpath},
-`P_X-AXIS` = #{pXaxis},
-`P_Y-AXIS` = #{pYaxis})
+P_CATEGORY = #{pCategory},
+P_AREA = #{pArea},
+P_NAME =  #{pName},
+P_ADDRESS =  #{pAddress},
+P_TELL =  #{pTell},
+P_INFO = #{pInfo},
+P_IMG_PATH =  #{pImgpath},
+P_X_AXIS = #{pXaxis},
+P_Y_AXIS = #{pYaxis}
 WHERE `P_SEQ` = #{pSeq};
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 			
 			
 			
@@ -107,7 +121,7 @@ WHERE `P_SEQ` = #{pSeq};
 	
 	<insert id="insertPlaceFileList" parameterType="placeFile">
 		
-		INSERT INTO PLACE_FILE (
+				INSERT INTO PLACE_FILE  (
 									SEQ,
 									F_SEQ,
 									ORIGINAL_FILE_NAME,
@@ -126,17 +140,36 @@ WHERE `P_SEQ` = #{pSeq};
 									#{fileSize}
 								)
 							
+							
+							
 	</insert>
+<!--  	<update id="updatePlaceFileList" parameterType="placeFile">
+		
+		update PLACE_FILE set
+									ORIGINAL_FILE_NAME = #{originalFileName},
+									FILE_PATH = #{filePath},
+									FILE_SIZE = #{fileSize}
+									where `SEQ = #{seq} 
+					
+			
+	</update>-->
 	
+	
+	<!-- 파일 1개만 넣기 -->
 	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
 		SELECT * FROM PLACE_FILE
 			WHERE SEQ = #{seq}
+<<<<<<< HEAD
+			 AND F_SEQ = #{fSeq}
+=======
+			 AND F_SEQ = (SELECT MAX (F_SEQ) FROM PLACE_FILE A WHERE SEQ = #{seq}) 
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 	</select>
 	
 	<delete id="deleteFile" parameterType="placeFile">
 		DELETE FROM PLACE_FILE
 			WHERE SEQ = #{seq}
-			  AND F_SEQ = #{fSeq}
+			  AND F_SEQ = 1
 	</delete>
 	
 	<delete id="deleteFileList" parameterType="int">
@@ -153,6 +186,9 @@ WHERE `P_SEQ` = #{pSeq};
 
 	</select>
 	
-
+<select id="getPlaceFile" parameterType="int" resultType="placeFile">
+		SELECT FILE_PATH FROM PLACE_FILE
+			WHERE SEQ = #{seq}
+	</select>
 	
 </mapper>

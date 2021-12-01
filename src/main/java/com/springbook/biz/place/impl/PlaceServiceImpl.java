@@ -51,7 +51,7 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	
-	public List<PlaceFileVO> getPlaceFileList(int pSeq) {
+	public PlaceFileVO getPlaceFileList(int pSeq) {
 		return placeDAO.getPlaceFileList(pSeq);
 	}
 	
@@ -63,6 +63,12 @@ public class PlaceServiceImpl implements PlaceService{
 	@Override
 	public List<PlaceVO> getPlaceAllList(PlaceVO vo) {
 		return placeDAO.getPlaceAllList(vo);
+	}
+
+	@Override
+	public void updatePlaceFileList(List<PlaceFileVO> fileList) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
