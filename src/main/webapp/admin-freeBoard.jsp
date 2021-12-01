@@ -95,7 +95,11 @@
               <th></th>
               
               <td><p>${board.seq}</p></td>
+<<<<<<< HEAD
+              <td ><p>${board.title}<a href="getBoard.do?seq=${board.seq }"></a></p></td>
+=======
               <td ><a href="getBoard.do?seq=${board.seq }"><p>${board.title}</p></a></td>
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
               <td><p>${board.writer}</p></td>
               <td><p>${board.regDate}</p></td>
               <td><p>${board.cnt}</p></td>
@@ -103,8 +107,12 @@
 					<button style="padding: 10px;" type="" class="btn btn-dark"
 							id="btnList">&nbsp¼öÁ¤&nbsp</button>
 							</a></td>
+<<<<<<< HEAD
+            </tr>
+=======
 							
 			
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
              </c:forEach>
                   <tbody>
                             

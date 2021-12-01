@@ -56,6 +56,19 @@ VALUES(
 	<update id="updatePlace">
 		<![CDATA[
 
+<<<<<<< HEAD
+			UPDATE PLACE SET
+				
+				  P_AREA = #{pArea}
+				, P_NAME =  #{pName}
+				, P_ADDRESS =  #{pAddress}
+				, P_TELL =  #{pTell}
+				, P_INFO = #{pInfo}
+				, P_IMG_PATH =  #{pImgpath}
+				, P_X_AXIS = #{pXaxis}
+				, P_Y_AXIS = #{pXaxis}
+			WHERE P_SEQ = #{pSeq}
+=======
 			UPDATE place
 SET
 
@@ -69,6 +82,7 @@ P_IMG_PATH =  #{pImgpath},
 P_X_AXIS = #{pXaxis},
 P_Y_AXIS = #{pYaxis}
 WHERE `P_SEQ` = #{pSeq};
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 			
 			
 			
@@ -145,7 +159,11 @@ WHERE `P_SEQ` = #{pSeq};
 	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
 		SELECT * FROM PLACE_FILE
 			WHERE SEQ = #{seq}
+<<<<<<< HEAD
+			 AND F_SEQ = #{fSeq}
+=======
 			 AND F_SEQ = (SELECT MAX (F_SEQ) FROM PLACE_FILE A WHERE SEQ = #{seq}) 
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 	</select>
 	
 	<delete id="deleteFile" parameterType="placeFile">

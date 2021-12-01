@@ -22,6 +22,10 @@
 		
 		<typeAlias type="com.springbook.biz.board.BoardVO" alias="board"></typeAlias>
 		<typeAlias type="com.springbook.biz.board.BoardFileVO" alias="boardFile"></typeAlias>
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
