@@ -165,13 +165,13 @@ input[type], textarea, select, .imgup {
                                           </div>
                                     </div>
                                       <div class="input-with-icon forimg col-md-12">
-                                              <div style="color:#343434;font-size:0.625em; margin-left: 2.6em; margin-top: 0.125em;margin-bottom:0.3em;">프로필사진 변경</div>
+                                              <div style="color:#343434;font-size:0.625em;  margin-top: 0.125em;margin-bottom:0.3em;">
+                                              	<label>프로필사진 변경</label></div>
                                         <div class="filegr">
-                                           <label for="changeProfile" class="filelabel" >
-                                               <input type="file" class="form-control-file" id="changeProfile" style="display:none; " />
-                                             		  사진 선택
-                                            </label>
-                                            <input type="text" 	 style="margin-top:10px;" value="제주제주"/>
+                                         <label> <img
+										style="height: 150px; width: 150px; border-radius: 50%; overflow: hidden;"
+										id="preview-image"> <input style="display: block;"
+										type="file" id="input-image" name="input-image"></label>
                                         </div>
                                       <input type="submit" value="변경하기" class="btn" style="background-color:steelblue;'">
                                         <div class="modal-instance col-md-12" style="padding-top:10px">
@@ -216,6 +216,29 @@ input[type], textarea, select, .imgup {
           
         </div>
         <script>
+        
+        //첨부파일 관련 이벤트
+        function readImage(input) {
+            // 인풋 태그에 파일이 있는 경우
+            if (input.files && input.files[0]) {
+                // 이미지 파일인지 검사 (생략)
+                // FileReader 인스턴스 생성
+                const reader = new FileReader()
+                // 이미지가 로드가 된 경우
+                reader.onload = e => {
+                    const previewImage = document.getElementById("preview-image")
+                    previewImage.src = e.target.result
+                }
+                // reader가 이미지 읽도록 하기
+                reader.readAsDataURL(input.files[0])
+            }
+        }
+        // input file에 change 이벤트 부여
+        const inputImage = document.getElementById("input-image")
+        inputImage.addEventListener("change", e => {
+            readImage(e.target)
+        })
+        
         
         
         function pspsps(pwd) {
