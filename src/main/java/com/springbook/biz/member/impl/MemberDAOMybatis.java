@@ -11,59 +11,58 @@ import com.springbook.biz.member.MemberVO;
 
 @Repository
 public class MemberDAOMybatis {
-	
+
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	// 로그인
 	public MemberVO login(MemberVO vo) {
 		System.out.println("==> Mybatis로 login() 기능 처리");
 		return mybatis.selectOne("MemberDAO.login", vo);
 	}
-	
-	
+
 	// insert member (회원가입)
 	public void insertMember(MemberVO vo) {
 		System.out.println("===>MyBatis로 insertMember 기능처리");
-		mybatis.insert("MemberDAO.insertMember", vo);		
-	}		
-	
+		mybatis.insert("MemberDAO.insertMember", vo);
+	}
+
 	// insert file
 	public void insertMemberFileList(List<MemberFileVO> fileList) {
-		for(MemberFileVO MemberFile : fileList) {
+		for (MemberFileVO MemberFile : fileList) {
 			mybatis.insert("MemberDAO.insertMemberFileList", MemberFile);
 		}
 	}
-	
+
 	// 맴버시퀀스 얻기
-		public int getMemberSeq() {
-			return mybatis.selectOne("MemberDAO.getMemberSeq");
-		}
-	
+	public int getMemberSeq() {
+		return mybatis.selectOne("MemberDAO.getMemberSeq");
+	}
+
 	// 아이디찾기
 	public MemberVO findId(MemberVO vo) {
 		System.out.println("==> Mybatis로 findId() 기능 처리");
 		return mybatis.selectOne("MemberDAO.findId", vo);
 	}
-	
+
 	// 비밀번호 찾기
 	public MemberVO findPassword(MemberVO vo) {
 		System.out.println("==> Mybatis로 findPassword() 기능 처리");
 		return mybatis.selectOne("MemberDAO.findPassword", vo);
 	}
-	
+
 	// 회원정보 수정
 	public void updateMember(MemberVO vo) {
 		System.out.println("====> Mybatis로 updateMember() 기능 처리");
 		mybatis.update("MemberDAO.updateMember", vo);
 	}
-	
+
 	// 회원정보 가져오기
 	public MemberVO getMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.getMember", vo);
 	}
-	
-	//아이디 중복 체크
+
+	// 아이디 중복 체크
 	public MemberVO idChk(String id) {
 		System.out.println("====> Mybatis로idChk() 기능 처리");
 		MemberVO member = mybatis.selectOne("MemberDAO.idChk", id);
@@ -76,6 +75,20 @@ public class MemberDAOMybatis {
 		mybatis.update("MemberDAO.Withdrawal", vo);
 	}
 
-	
-	
+	// 11.24일 유저목록 구현
+	public List<MemberVO> getMemberList(MemberVO vo) {
+		System.out.println("====> Mybatis로 getMemberList() 기능 처리");
+		return mybatis.selectList("MemberDAO.getMemberList", vo);
+	}
+
+	public void memberBan(MemberVO vo) {
+
+		mybatis.update("MemberDAO.memberBan", vo);
+	}
+
+	public void memberKeep(MemberVO vo) {
+
+		mybatis.update("MemberDAO.memberKeep", vo);
+	}
+
 }

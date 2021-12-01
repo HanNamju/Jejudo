@@ -1,5 +1,5 @@
 package com.springbook.view.member;
-mport java.io.IOException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -237,13 +237,65 @@ public class MemberController {
 		public String Withdrawal(MemberVO vo, HttpServletRequest request, Model model, HttpSession session
 				) throws IOException {
 			System.out.println("회원 탈퇴 처리");
-			System.out.println("카테고리 : " + vo.getmAccount_status());
+			System.out.println("카테고리 : " + vo.getmAccountStatus());
 			
 			int seq = vo.getmSeq();
 			
 			memberService.Withdrawal(vo);
 			session.invalidate();
 			return "index.jsp";
+		}
+		
+		// Member 목록 불러오기
+		@RequestMapping(value="/getMemberList.do", method= RequestMethod.GET)
+		public String getMemberList( 
+									MemberVO vo, Model model) {
+			System.out.println("글 목록 검색 처리");
+			String A = vo.getmAccountStatus();
+			System.out.println("mAccountStatus =" + A);
+			System.out.println(vo.getmGender());
+			System.out.println(vo.getmId());
+			System.out.println(vo.getmSeq());
+			
+			
+			
+			
+			model.addAttribute("MemberList", memberService.getMemberList(vo));
+			return "admin-MemberList.jsp";
+		}
+		
+		//회원권한 정지
+		@RequestMapping(value="/memberBan.do")
+		public String memberBan(MemberVO vo, HttpServletRequest request, Model model
+				) throws IOException {
+			System.out.println("MemberBan 컨트롤러를 탐");
+			System.out.println("회원 정지 처리");
+			System.out.println("카테고리 : " + vo.getmAccountStatus());
+			System.out.println(vo.getmEmail());
+			System.out.println(vo.getmSeq());
+			int seq = vo.getmSeq();
+			
+			//model.addAttribute("MemberBan", memberService.getMember(vo));
+				
+			memberService.memberBan(vo);
+			return "getMemberList.do";
+		}
+		
+		//회원권한 복구
+		@RequestMapping(value="/memberKeep.do")
+		public String memberKeep(MemberVO vo, HttpServletRequest request, Model model
+				) throws IOException {
+			System.out.println("MemberKeep 컨트롤러를 탐");
+			System.out.println("회원 정지 처리");
+			System.out.println("카테고리 : " + vo.getmAccountStatus());
+			System.out.println(vo.getmEmail());
+			System.out.println(vo.getmSeq());
+			int seq = vo.getmSeq();
+			
+			//model.addAttribute("MemberBan", memberService.getMember(vo));
+				
+			memberService.memberKeep(vo);
+			return "getMemberList.do";
 		}
 
 }

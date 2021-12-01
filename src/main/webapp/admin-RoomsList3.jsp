@@ -7,7 +7,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <title>Pillar Multipurpose HTML Template</title>
+        <title>관리자 | 카테고리 리스트</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
@@ -166,7 +166,7 @@ input[type="checkbox"] { display: none; }
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="getUserList.do">
+                                    <a href="getMemberList.do">
                                         회원관리
                                     </a>
                                 </li>

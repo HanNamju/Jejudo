@@ -4,7 +4,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <title>Pillar Multipurpose HTML Template</title>
+        <title>관리자 | 가게등록</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
@@ -295,6 +295,7 @@ section {
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <div id="map" style="width:100%;height:350px;"></div>
+											<p><em>마커를 클릭해주세요!</em></p> 
                                         </div>
                                         <div class="col-md-6 mb-3" >
                                             <div class="image-container" >
@@ -437,6 +438,7 @@ section {
                     </div>
                     <!--end of row-->
                 </div>
+                
                 <!--end of container-->
                 <div class="footer__lower">
                     <div class="container">
@@ -485,123 +487,50 @@ section {
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3223cceebbc99daf72eb23b373491dd8"></script>
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3223cceebbc99daf72eb23b373491dd8"></script>
-<script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-        mapOption = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
+	<!-- kakao map -->	
+	<script type="text/javascript" src="http://localhost:9900/dapi.kakao.com/v2/maps/sdk.js?appkey=3223cceebbc99daf72eb23b373491dd8"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	  
+	// 마커를 표시할 위치입니다 
+	var position =  new kakao.maps.LatLng(33.450701, 126.570667);
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	  position: position,
+	  clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+	});
+	
+	// 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
+	// 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+	// marker.setClickable(true);
+	
+	// 마커를 지도에 표시합니다.
+	marker.setMap(map);
+	
+	// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+	var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+	
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    content : iwContent,
+	    removable : iwRemoveable
+	});
+	
+	// 마커에 클릭이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'click', function() {
+	      // 마커 위에 인포윈도우를 표시합니다
+	      infowindow.open(map, marker);  
+	});
+	</script>
+	   
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-    // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-    var positions = [
-        {
-            content: '<div>카카오</div>',
-            latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-        },
-        {
-            content: '<div>생태연못</div>',
-            latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-        },
-        {
-            content: '<div>텃밭</div>',
-            latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-        },
-        {
-            content: '<div>근린공원</div>',
-            latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-        }
-    ];
-
-    for (var i = 0; i < positions.length; i++) {
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng // 마커의 위치
-        });
-
-        // 마커에 표시할 인포윈도우를 생성합니다 
-        var infowindow = new kakao.maps.InfoWindow({
-            content: positions[i].content // 인포윈도우에 표시할 내용
-        });
-
-        // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-        // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-        // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-    }
-
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-    function makeOverListener(map, marker, infowindow) {
-        return function () {
-            infowindow.open(map, marker);
-        };
-    }
-
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-    function makeOutListener(infowindow) {
-        return function () {
-            infowindow.close();
-        };
-    }
-
-    /* 아래와 같이도 할 수 있습니다 */
-    /*
-    for (var i = 0; i < positions.length; i ++) {
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng // 마커의 위치
-        });
-    
-        // 마커에 표시할 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: positions[i].content // 인포윈도우에 표시할 내용
-        });
-    
-        // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-        // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-        (function(marker, infowindow) {
-            // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-                infowindow.open(map, marker);
-            });
-    
-            // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-        })(marker, infowindow);
-    }
-    */
-</script>
-
-<script>
-    function readImage(input) {
-// 인풋 태그에 파일이 있는 경우
-if(input.files && input.files[0]) {
-    // 이미지 파일인지 검사 (생략)
-    // FileReader 인스턴스 생성
-    const reader = new FileReader()
-    // 이미지가 로드가 된 경우
-    reader.onload = e => {
-        const previewImage = document.getElementById("preview-image")
-        previewImage.src = e.target.result
-    }
-    // reader가 이미지 읽도록 하기
-    reader.readAsDataURL(input.files[0])
-}
-}
-// input file에 change 이벤트 부여
-const inputImage = document.getElementById("input-image")
-inputImage.addEventListener("change", e => {
-readImage(e.target)
-})
-
-</script>
     </body>
 </html>

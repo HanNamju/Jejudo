@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <title>관리자 | 가게 전체 목록</title>
+        <title>관리자 | 회원관리</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
@@ -40,6 +38,30 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+}
+/*dele-btn*/
+#dele-btn1{
+	padding:0.3rem 1rem; 
+	background-color:#ccc;
+	text-align:center;
+	margin-top:0.4rem;
+	margin-left:0.4rem
+	}
+#dele-btn2{
+	padding:0.3rem 1rem; 
+	background-color:#ccc;
+	text-align:center;
+	margin-top:0.4rem;
+	margin-left:0.4rem
+	}
+
+#dele-btn1:hover{
+background-color: green;
+transition:0.7s;
+}
+#dele-btn2:hover{
+background-color: red;
+transition:0.7s;
 }
 
 /* Hide default HTML checkbox */
@@ -87,20 +109,7 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-/*dele-btn*/
-#dele-btn{
-	padding:0.3rem 1rem; 
-	background-color:#ccc;
-	text-align:center;
-	margin-top:0.4rem;
-	}
-	#dele-btn{
-	margin-left:0.4rem;
-	}
-#dele-btn:hover{
-background-color: #d4a451;
-transition:0.7s;
-}
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -173,7 +182,26 @@ input[type="checkbox"] { display: none; }
                             </ul>
                             <hr>
                             <ul class="link-list">
-        
+                                <li>
+                                    <a href="getRoomsList.do">
+                                        숙소
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="getRestaurantList.do">
+                                        식당
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="getCafeList.do">
+                                        카페
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="getTourList.do">
+                                        관광지
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <!--end widget-->
@@ -255,31 +283,14 @@ input[type="checkbox"] { display: none; }
                 <div style="margin-left: -40px;" class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">장소 관리 페이지</h1>
+                    <h1 class="h3 mb-2 text-gray-800">회원관리 페이지</h1>
                     </p>
                     <div class="card shadow mb-4" >
                         <div class="card-header py-3">
                             <div class="card-header py-3" style="display: flex; justify-content: space-between;">
-                            <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  장소
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=cafe">카페</a></li>
-    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=tourlist">관광지</a></li>
-    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=restaurant">음식점</a></li>
-    <li><a class="dropdown-item" href="getPlaceList.do?pCategory=rooms">숙소</a></li>
-  </ul>
-</div>
-
                                 <div>
-                                <h2 class="m-0 font-weight-bold" style="color: rgba(0, 0, 0, .6);"></h2>
+                                <h2 class="m-0 font-weight-bold" style="color: rgba(0, 0, 0, .6);">회원관리목록</h2>
                             </div>
-                            
-                            
-                            	<div style="text-align: right; margin-right: 80px;"> 
-                            	<a href="admin-CafeEnrollment.jsp"><img src="img/등록하기-배경제거.png" alt="" style="width: 200px; height: 100px;"></a>
-                            	</div>
                                
                             </div>
                         <div class="card-body">
@@ -287,11 +298,13 @@ input[type="checkbox"] { display: none; }
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>방향</th>
-                                            <th>이름</th>
-                                            <th>주소</th>
-                                            <th>전화번호</th>
-                                            <th>정보</th>
+                                            <th>Seq</th>
+                                            <th>ID</th>
+                                            <th>NAME</th>
+                                            <th>BIRTHDAY</th>
+                                            <th>EMAIL</th>
+                                            <th>TELL</th>
+                                            <th>신고횟수</th>
                                             <th>관리자권한</th>
                                         </tr>
                                     </thead>
@@ -304,37 +317,52 @@ input[type="checkbox"] { display: none; }
                                             <th></th>
                                             <th></th>
                                             <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <!--여기부터 1 찍어야함 위에는 바닥부분 설정-->
                                     <tbody>
-                                    	<c:forEach var="List" items="${ placeAllList}">
+                                    	<c:forEach var="member" items="${MemberList }" varStatus="status">
                                         <tr>
-                                            <th>${List.pArea}</th>
-                                            <th>${List.pName}</th>
-                                            <th>${List.pAddress}</th>
-                                            <th>${List.pTell}</th>
-                                            <th>${List.pInfo}</th>
-                                            <th>
-                                            <div style="display: flex;">
+                                            <th>${member.mSeq}</th>
+                                            <th>${member.mId}</th>
+                                            <th>${member.mName}</th>
+                                            <th>${member.mBirthday}</th>
+                                            <th>${member.mEmail}</th>
+                                            <th>${member.mTell}</th>
+                                            <th>${memeber.mAccountStatus}  </th>
+                                        	<td> 
+                                          		<div style="display: flex;">
                                             		<div>
-                                            		<input id="dele-btn" onclick="location.href='deleteCafe.do'"  
-                                            		type="submit" class="btn btn-primary" value="삭제"> 
+                                            		
+                                            		 <input id="dele-btn2" onclick="location.href='memberBan.do?mSeq=${member.mSeq}'"  type="submit" class="btn btn-primary" value="정지">
                                             		</div>
                                             		<div>
-                                            		 <input id="dele-btn" onclick="location.href='getPlace.do?pSeq=${List.pSeq }'"  
-                                            		 type="submit" class="btn btn-primary" value="수정">
+                                            		<input id="dele-btn1" onclick="location.href='memberKeep.do?mSeq=${member.mSeq}'"  type="submit" class="btn btn-primary" value="유지">
+                                            		
                                             		</div>
+                                            		
                                             </div>
-                                            </th>	
+                                          		
+                                                
+                                            </div>
+                                            </div>
                                         </td>
                                         </tr>
                                         </c:forEach>
+                                        
+                                         
+                                        
+                                       
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
+         
+                   
             </section>
             <footer class="bg--dark footer-4">
                 <div class="container">
@@ -464,8 +492,6 @@ input[type="checkbox"] { display: none; }
         <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -16,7 +16,6 @@ public class MemberVO {
 	private String mImgPath;  //나중에 삭제
 	private String mIntroduce;
 	private String mAccountStatus;
-	
 	public int getmSeq() {
 		return mSeq;
 	}
@@ -89,11 +88,11 @@ public class MemberVO {
 	public void setmIntroduce(String mIntroduce) {
 		this.mIntroduce = mIntroduce;
 	}
-	public String getmAccount_status() {
+	public String getmAccountStatus() {
 		return mAccountStatus;
 	}
-	public void setmAccount_status(String mAccount_status) {
-		this.mAccountStatus = mAccount_status;
+	public void setmAccountStatus(String mAccountStatus) {
+		this.mAccountStatus = mAccountStatus;
 	}
 	@Override
 	public String toString() {
@@ -102,13 +101,4 @@ public class MemberVO {
 				+ ", mLicense=" + mLicense + ", mNickname=" + mNickname + ", mImgPath=" + mImgPath + ", mIntroduce="
 				+ mIntroduce + ", mAccountStatus=" + mAccountStatus + "]";
 	}
-	
-	
-
-	
-	
-	
-
-
-
 }
