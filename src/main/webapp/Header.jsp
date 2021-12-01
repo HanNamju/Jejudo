@@ -34,7 +34,7 @@ P, h1, h2, h3, h4, h5, h6, div, a, i {
 					<ul class="multi-column">
 						<li>
 							<ul>
-								<li><a href="#"> 소개 </a></li>
+								<li><a href="about.jsp"> 소개 </a></li>
 								<li><a href="elements-buttons.html"> 이야기 </a></li>
 								<li><a href="elements-cards.html"> 개발자들 </a></li>
 							</ul>

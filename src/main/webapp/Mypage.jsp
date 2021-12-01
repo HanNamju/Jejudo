@@ -22,6 +22,7 @@
         <div class="loader"></div>
 
         <!-- nav -->
+        <jsp:include page="Header_2.jsp" />
         <!--end of modal-container-->
         <div class="main-container transition--fade">
             <section class="height-50 page-title page-title--animate">
@@ -114,6 +115,7 @@
             </section>
    
             <!-- footer -->
+            <jsp:include page="tail.jsp" />
         </div>
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/isotope.min.js"></script>

@@ -5,7 +5,7 @@
 	//HttpSession 데이터 보관소에 저장된 member 객체 꺼내서 사용
 	//Member member = (Member)session.getAttribute("Member");
 %>
-<nav class="transition--fade">
+<nav class="transition--fade" style = "background:white;" >
 	<div class="nav-bar" data-fixed-at="200">
 		<div class="nav-module logo-module left">
 			<a href="index.jsp"> <img class="rdjj_logo logo-dark" alt="logo"
@@ -24,7 +24,7 @@
 					<ul class="multi-column">
 						<li>
 							<ul>
-								<li><a href="#"> 소개 </a></li>
+								<li><a href="about.jsp"> 소개 </a></li>
 								<li><a href="elements-buttons.html"> 이야기 </a></li>
 								<li><a href="elements-cards.html"> 개발자들 </a></li>
 							</ul>
@@ -144,18 +144,18 @@
 		</div>
 
 		<!--end nav module-->
-				<div class="nav-module right">
+				<div class="nav-module right" >
 			 <c:choose>
          
              <c:when  test="${empty sessionScope.member}">
                    <li>
-                     <a class="nav-function" href="<%=request.getContextPath() %>/login.jsp"><i class="interface-icons">Login</i></a>
+                     <a class="nav-function" href="<%=request.getContextPath() %>/login.jsp"><i class="interface-icons" style="color:black;">Login</i></a>
                    </li>
             </c:when> 
                    
             <c:when test="${!empty sessionScope.member}">
                    <li>
-                  <a class="nav-function" href="<%=request.getContextPath() %>/logout.do"><i class="interface-icons"  >Logout</i></a>
+                  <a class="nav-function" href="<%=request.getContextPath() %>/logout.do"><i class="interface-icons" style="color:black;" >Logout</i></a>
                   
                   </li>   
             </c:when>   
@@ -170,7 +170,7 @@
 		<div class="nav-module right">
 			<a href="#" class="nav-function modal-trigger"
 				data-modal-id="search-form"> <i
-				class="interface-search icon icon--sm"></i> <span>Search</span>
+				class="interface-search icon icon--sm" style="color:black;"></i> <span>Search</span>
 			</a>
 		</div>
 
@@ -180,6 +180,6 @@
 
 	<!--end nav bar-->
 	<div class="nav-mobile-toggle visible-sm visible-xs">
-		<i class="icon-Align-Right icon icon--sm"></i>
+		<i class="icon-Align-Right icon icon--sm" ></i>
 	</div>
 </nav>

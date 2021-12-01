@@ -7,7 +7,7 @@
 <mapper namespace="TripDAO">
 
 	<!-- mroom.jsp를통해 방 생성 할때 사용하는 insert sql구문 -->
-	<insert id="insertTrip" >
+	<insert id="insertTrip">
       <![CDATA[
       INSERT INTO TRIP(
                      TR_SEQ
@@ -35,8 +35,8 @@
                       , #{trTransportationSet}
                       , #{trIntro}
                     ) 
-   ]]> 
-   </insert>
+   ]]>
+	</insert>
 
 
 
@@ -50,52 +50,54 @@
 
 	<!-- roomCatagory.jsp 에서 방들의 리스트를 뿌려줄때 사용 -->
 	<select id="getTripList" resultType="HashMap">
-		SELECT A.TR_SEQ as trSeq 
-				,A.TR_NAME as trName 
-				,A.TR_MODE as trMode 
-				,A.TR_AREA_SET as trAreaSet 
-				,A.TR_DATE_SET as trDateSet
-				,A.TR_STEPS as trSteps 
-				,A.TR_STEP_STATUS as trStepStatus 
-				,A.TR_GENDER_SET as trGenderSet 
-				,A.TR_PERSONNEL_SET as trPersonnelSet 
-			  	,A.TR_LICENSE_SET as trLicenseSet 
-			  	,A.TR_TRANSPORTATION_SET as trTransprotationSet 
-			  	,A.TR_PASSWORD_SET as trPasswordSet
-			  	,A.TR_INTRO as trIntro
-			  	,B.ORIGINAL_FILE_NAME AS orginalFileName
-			  	,B.FILE_PATH as filePath
-		    FROM TRIP A,
-		    	 TRIP_FILE B
-		   WHERE 1 = 1
-		     AND A.TR_SEQ = B.SEQ
+		SELECT A.TR_SEQ as trSeq
+		,A.TR_NAME as trName
+		,A.TR_MODE as trMode
+		,A.TR_AREA_SET as trAreaSet
+		,A.TR_DATE_SET as trDateSet
+		,A.TR_STEPS as trSteps
+		,A.TR_STEP_STATUS as trStepStatus
+		,A.TR_GENDER_SET as trGenderSet
+		,A.TR_PERSONNEL_SET as trPersonnelSet
+		,A.TR_LICENSE_SET as trLicenseSet
+		,A.TR_TRANSPORTATION_SET as trTransprotationSet
+		,A.TR_PASSWORD_SET as trPasswordSet
+		,A.TR_INTRO as trIntro
+		,B.ORIGINAL_FILE_NAME AS orginalFileName
+		,B.FILE_PATH as filePath
+		FROM TRIP A,
+		TRIP_FILE B
+		WHERE 1 = 1
+		AND A.TR_SEQ = B.SEQ
 	</select>
 
 	<select id="getTripSeq" resultType="int">
-		SELECT IFNULL(MAX(TR_SEQ) ,0) + 1
-			FROM TRIP
+		SELECT IFNULL(MAX(TR_SEQ) ,0)
+		+ 1
+		FROM TRIP
 	</select>
 
-	
+
 	<insert id="insertTripFileList" parameterType="tripFile">
-		INSERT INTO TRIP_FILE (
-									SEQ,
-									F_SEQ,
-									ORIGINAL_FILE_NAME,
-									FILE_PATH,
-									FILE_SIZE
-								)
-						VALUES (
-									#{seq},
-									(
-										SELECT IFNULL(MAX(F_SEQ), 0) + 1
-											FROM TRIP_FILE A
-										WHERE SEQ = #{seq}
-									),
-									#{originalFileName},
-									#{filePath},
-									#{fileSize}
-								)
+		INSERT INTO
+		TRIP_FILE (
+		SEQ,
+		F_SEQ,
+		ORIGINAL_FILE_NAME,
+		FILE_PATH,
+		FILE_SIZE
+		)
+		VALUES (
+		#{seq},
+		(
+		SELECT IFNULL(MAX(F_SEQ), 0) + 1
+		FROM TRIP_FILE A
+		WHERE SEQ = #{seq}
+		),
+		#{originalFileName},
+		#{filePath},
+		#{fileSize}
+		)
 	</insert>
 
 	<select id="getTripFileList" parameterType="int"
@@ -114,4 +116,12 @@
 		DELETE FROM TRIP_FILE
 		WHERE SEQ = #{seq}
 	</delete>
+
+	<!-- 방에서 댓글로 대화하기 -->
+	<select id="readComment"
+		resultType="com.springbook.biz.trip.CommentVO">
+		SELECT *
+		FROM COMMENT
+		WHERE CM_SEQ = #{trSeq}
+	</select>
 </mapper>

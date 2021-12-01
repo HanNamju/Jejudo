@@ -18,8 +18,8 @@
 					<li>(주)랜덤제주는 통신판매중개로서 통신판매의 당사자가 아니며 상품 거래정보 및 거래등에 대해 책임을 지지 않습니다.</li>
 					<br>
 					<br>
-					<li><a href="#">회사소개</a> &nbsp;|&nbsp; <a href="terms.html">서비스 이용약관</a> |&nbsp; 
-					<a href="Privacy.html">개인정보 처리 방침</a>
+					<li><a href="about.jsp" >회사소개</a> &nbsp;|&nbsp; <a href="terms.html" target="_blank">서비스 이용약관</a> |&nbsp; 
+					<a href="Privacy.html" target="_blank">개인정보 처리 방침</a>
 					</li>
 				</ul>
 			</div>

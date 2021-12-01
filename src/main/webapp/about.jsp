@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="utf-8">
@@ -54,7 +57,8 @@
     <div class="loader"></div>
 
     <!-- nev -->
-
+	<jsp:include page="Header_2.jsp" />
+	
     <!--end of modal-container-->
     <div class="main-container transition--fade">
         <section class="height-70 bg--dark imagebg page-title page-title--animate parallax" data-overlay="5">
@@ -247,7 +251,7 @@
         </section>
 
         <footer></footer>
-        
+        <jsp:include page="tail.jsp" />
     </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/isotope.min.js"></script>

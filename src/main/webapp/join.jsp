@@ -148,6 +148,7 @@ input[type="checkbox"] {
 	<a id="top"></a>
 	<div class="loader"></div>
 
+	<jsp:include page="Header_2.jsp" />
 	<!--end of modal-container-->
 	<div class="main-container transition--fade">
 		<section class="cover cover-8" style="height: 130em;">
@@ -163,7 +164,8 @@ input[type="checkbox"] {
 						회원가입 <br /> 즐거운 여행에 재밌는 요소를 더하세요!
 					</p>
 					<div class="text-left">
-						<form action="insertMember.do" method="post" class="validation-form" enctype="multipart/form-data" novalidate>
+						<form action="insertMember.do" method="post"
+							class="validation-form" enctype="multipart/form-data" novalidate>
 
 							<!-- 첫번째 줄 이름, 별명 입력창 -->
 							<div class="row">
@@ -185,7 +187,7 @@ input[type="checkbox"] {
 							<div class="row">
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
-									placeholder="input your id" onblur = "idcheck()" required>
+									placeholder="input your id" onblur="idcheck()" required>
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 
@@ -320,8 +322,10 @@ input[type="checkbox"] {
 		</section>
 
 		<!-- footer -->
+
 	</div>
 
+	<jsp:include page="tail.jsp" />
 	<script>
         // 부정 입력 방지 이벤트
         window.addEventListener('load', () => {
