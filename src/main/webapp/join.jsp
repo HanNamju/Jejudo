@@ -289,7 +289,7 @@ input[type="checkbox"] {
 									<label> <img
 										style="height: 150px; width: 150px; border-radius: 50%; overflow: hidden;"
 										id="preview-image"> <input style="display: block;"
-										type="file" id="input-image" name="input-image">
+										type="file" id="input-image" name="uploadFile">
 										<div class="invalid-feedback">프로필 사진을 입력해주세요.</div>
 									</label>
 								</div>
@@ -398,7 +398,7 @@ input[type="checkbox"] {
     				}
     			},
     			error:function(request,status,error){
-    	             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    	             alert("중복된 아이디를 그대로 사용하셨습니다. 다시 회원가입 부탁드립니다."+error);
     	          }
     		});
     	}

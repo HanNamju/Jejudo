@@ -78,6 +78,18 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.Withdrawal(vo);
 		
 	}
+	
+	//DB에 있는 아이디인지 확인하기
+	@Override
+	public MemberVO existId(String mId) {
+		return memberDAO.existId(mId);
+	}
+	
+	//DB에 AccountStatus 확인하기
+	@Override
+	public int getMemberAccountStatus(String mId) {
+		return memberDAO.getMemberAccountStatus(mId);
+	}
 
 
 

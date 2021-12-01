@@ -38,6 +38,12 @@ public interface MemberService {
 	
 	//회원 탈퇴
 	void Withdrawal(MemberVO vo);
+	
+	//DB에 있는 아이디인지 확인하기
+	MemberVO existId(String mId);
+	
+	//DB에 AccountStatus 확인하기
+	int getMemberAccountStatus(String mId);
 
 	
 }

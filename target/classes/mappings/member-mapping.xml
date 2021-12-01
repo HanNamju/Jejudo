@@ -48,9 +48,10 @@
 						  , M_EMAIL
 						  , M_GENDER
 						  , M_TELL
+						  , M_IMG_PATH
+						  , M_IMG_NAME
 						  , M_LICENSE
 						  , M_INTRODUCE
-						  , M_ACCOUNT_STATUS
 						  
 						 )
 				  VALUES(
@@ -63,9 +64,10 @@
 				  		  , #{mEmail}
 				  		  , #{mGender}
 				  		  , #{mTell}
+				  		  , #{mImgPath}
+				  		  , #{mImgName}
 				  		  , #{mLicense}  
 				  		  , #{mIntroduce}
-				  		  , #{mAccountStatus}
 				  		  		  
 				  		) 
 		]]>
@@ -115,7 +117,6 @@
 			  , M_TELL = #{mTell}
 			  , M_INTRODUCE = #{mIntroduce}
 			  , M_LICENSE = #{mLicense}
-			  , M_ACCOUNT_STATUS = #{mAccountStatus}
 			  WHERE M_ID = #{mId}
 		]]>
 	</update>
@@ -148,9 +149,23 @@
 	<update id="Withdrawal">
 		UPDATE MEMBER
 			SET
-				`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +3
+				`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +99
 					WHERE M_SEQ = #{mSeq}
 	</update>
+	
+	<!--  아이디 체크 -->
+	<select id="existId" resultType="member">		
+		SELECT * FROM MEMBER 
+			WHERE M_ID=#{mId}
+	</select>
+	
+	<!-- 맴버테이블에서 맴버Status 가져오기 -->
+	<select id="getMemberAccountStatus" parameterType="String" resultType="int">
+		SELECT M_ACCOUNT_STATUS FROM MEMBER 
+			  WHERE M_ID = #{mId}
+	</select>
+	
+	
 </mapper>
 	
 	
