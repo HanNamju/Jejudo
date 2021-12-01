@@ -120,7 +120,7 @@
                                     <img src="img/기본이미지.jpg" ;
                                         style="height: 150px; width: 150px; border-radius: 50%; overflow: hidden; border-style: none;"
                                         id="preview-image"> <input style="display: block;" type="file" id="input-image"
-                                        name="input-image">
+                                        name="uploadFile">
 
                                 </div>
                                 <div class="col-sm-5">

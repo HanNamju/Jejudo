@@ -1,5 +1,4 @@
 package com.springbook.view.member;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -27,8 +27,7 @@ import com.springbook.biz.member.MemberService;
 import com.springbook.biz.member.MemberVO;
 
 @Controller
-//board로 model 저장된 객체가 있으면 HttpSession 데이터 보관소에서 동일한 키 값(board)로 저장
-@SessionAttributes("member")  // 값을 계속 해서 불러오는 얘
+
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -137,27 +136,28 @@ public class MemberController {
 	}
 
 	// 회원정보 가져오기
-	@RequestMapping(value = "/getMember.do")
-	public String getMember(Model model, HttpServletRequest request) {
-
-		System.out.println("======> getmember 컨트롤러 탐");
-
-		// Model 객체는 RequestServlet 데이터 보관소에 저장
-		// RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
-		// request.setAttribute("board", boardDAO.getBoard(vo)) ==
-		// model.addAttribute("board", boardDAO.getBoard(vo))
-		HttpSession session = request.getSession();
-		MemberVO vo = (MemberVO) session.getAttribute("member");
-
-		System.out.println("======> 세션가져왔어");
-
-		System.out.println(memberService.getMember(vo).toString());
-		model.addAttribute("memberInfo", memberService.getMember(vo));
-
-		// model.addAttribute("mLicenseInfo",memberService.getMember(vo));
-
-		return "changeinfo.jsp";
-	}
+	   @RequestMapping(value="/getMember.do")
+	   public String getMember(Model model, HttpSession session) throws IOException {
+	      
+	      System.out.println("======> getmember 컨트롤러 탐");
+	      //Model 객체는 RequestServlet 데이터 보관소에 저장
+	      //RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
+	      //request.setAttribute("board", boardDAO.getBoard(vo)) == model.addAttribute("board", boardDAO.getBoard(vo))
+	      try {
+	         MemberVO vo = (MemberVO)session.getAttribute("member");
+	         System.out.println("======> 세션가져왔어");
+	          System.out.println(memberService.getMember(vo).toString());
+	         model.addAttribute("memberInfo", memberService.getMember(vo));   
+	         //model.addAttribute("mLicenseInfo",memberService.getMember(vo));
+	         
+	         return "changeinfo.jsp";
+	      }
+	      catch(Exception e ){
+	         
+	      }
+	      return null;
+	      
+	   }
 
 	// 회원정보 수정
 	@RequestMapping(value = "/updateMember.do")
@@ -211,5 +211,39 @@ public class MemberController {
 	            return "redirect:login.jsp";	  
 	    }
 	    }
+	    
+	    //아이디 중복 체크
+	    @RequestMapping(value = "/id_check.do")
+	    @ResponseBody
+		public String idCheck(@RequestParam("id") String id
+				/*HttpServletResponse response*/) throws IOException {
+			MemberVO vo = memberService.idChk(id);
+			
+			//response.setContentType("text/html;charset=UTF-8");
+			String msg = "";
+			if(vo != null) {
+				msg = "fail";
+			} else {
+				msg = "success";
+			}
+			 return msg;
+			//PrintWriter writer = response.getWriter();
+			//writer.println(msg);
+		}
+	    
+	    //마이페이지 회원 탈퇴
+	    //회원권한 정지
+		@RequestMapping(value="/Withdrawal.do")
+		public String Withdrawal(MemberVO vo, HttpServletRequest request, Model model, HttpSession session
+				) throws IOException {
+			System.out.println("회원 탈퇴 처리");
+			System.out.println("카테고리 : " + vo.getmAccountStatus());
+			
+			int seq = vo.getmSeq();
+			
+			memberService.Withdrawal(vo);
+			session.invalidate();
+			return "index.jsp";
+		}
 
 }

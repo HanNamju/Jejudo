@@ -32,6 +32,7 @@
 					</ul></li>
 
 				<!-- Trip -->
+				<c:if test="${not empty member or not empty member.mId }">
 				<li><a href="#"> Trip </a>
 					<ul class="multi-column">
 						<li>
@@ -44,8 +45,24 @@
 							</ul>
 						</li>
 					</ul></li>
+				</c:if>
+				<c:if test = "${empty member or empty member.mId }">
+				<li><a href="#"> Trip </a>
+					<ul class="multi-column">
+						<li>
+							<ul>
+								<li>
+									<ul>
+										<li><a href="login.jsp"> 여행 시작하기 </a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul></li>
+				</c:if>
 
 				<!-- Notice -->
+				<c:if test="${not empty member or not empty member.mId }">
 				<li><a href="#"> Notice </a>
 					<ul class="multi-column">
 						<li>
@@ -59,8 +76,24 @@
 							</ul>
 						</li>
 					</ul></li>
-
+				</c:if>
+				<c:if test = "${empty member or empty member.mId }">
+				<li><a href="#"> Notice </a>
+					<ul class="multi-column">
+						<li>
+							<ul>
+								<li>
+									<ul>
+										<li><a href="login.jsp"> 자유 게시판 </a></li>
+										<li><a href="login.jsp"> 장소 추천 게시판 </a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul></li>
+				</c:if>
 				<!-- Review -->
+				<c:if test="${not empty member or not empty member.mId }">
 				<li><a href="#"> Review </a>
 					<ul class="multi-column">
 						<li>
@@ -73,7 +106,21 @@
 							</ul>
 						</li>
 					</ul></li>
-
+				</c:if>
+				<c:if test = "${empty member or empty member.mId }">
+				<li><a href="#"> Review </a>
+					<ul class="multi-column">
+						<li>
+							<ul>
+								<li>
+									<ul>
+										<li><a href="login.jsp"> 리뷰 </a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul></li>
+				</c:if>
 				<li><a href="#">mypage</a>
 					<ul class="multi-column">
 						<li>
@@ -98,17 +145,21 @@
 
 		<!--end nav module-->
 				<div class="nav-module right">
-			<ul>
-				<li>
-				 <c:if test="${empty member or empty member.mId }">
-					<a class="nav-function" href="<%=request.getContextPath() %>/login.jsp"><i class="interface-icons">Login</i></a>
-				 </c:if> 
-				 
-				 <c:if test="${!empty member and !empty member.mId }">
-					<a href="<%=request.getContextPath() %>/logout.do"><i class="interface-icons">Logout</i></a>
-				  </c:if>				
-				</li>			
-			</ul>
+			 <c:choose>
+         
+             <c:when  test="${empty sessionScope.member}">
+                   <li>
+                     <a class="nav-function" href="<%=request.getContextPath() %>/login.jsp"><i class="interface-icons">Login</i></a>
+                   </li>
+            </c:when> 
+                   
+            <c:when test="${!empty sessionScope.member}">
+                   <li>
+                  <a class="nav-function" href="<%=request.getContextPath() %>/logout.do"><i class="interface-icons"  >Logout</i></a>
+                  
+                  </li>   
+            </c:when>   
+           </c:choose>
 			<!-- <a href="login.jsp" class="nav-function"> <i
 				class="interface-icons">Login</i>
 			</a> -->
