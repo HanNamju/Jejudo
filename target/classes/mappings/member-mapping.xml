@@ -146,7 +146,6 @@
 	<!-- 회원 탈퇴 -->
 	<update id="Withdrawal">
 		UPDATE MEMBER
-<<<<<<< HEAD
 			SET
 				`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +99
 					WHERE M_SEQ = #{mSeq}
@@ -163,13 +162,6 @@
 		SELECT M_ACCOUNT_STATUS FROM MEMBER 
 			  WHERE M_ID = #{mId}
 	</select>
-	
-	
-=======
-		SET
-		`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +3
-		WHERE M_SEQ = #{mSeq}
-	</update>
 
 	<!-- 유저 권한 정지 -->
 	<update id="memberBan">
@@ -192,7 +184,6 @@
 		SELECT * FROM MEMBER 
 		]]>
 	</select>
->>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 </mapper>
 	
 	

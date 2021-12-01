@@ -5,19 +5,14 @@
 
 <!-- mapper자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO명을 따라가는 경우가 일반적임 -->
 <mapper namespace="PlaceDAO">
-<!-- <resultMap type="place" id="placeResult">
-		<id property="z_seq" column="P_SEQ"/>
-		<result property="pCategory" column="P_CATEGORY"/>
-		<result property="pArea" column="P_AREA"/>
-		<result property="pName" column="P_NAME"/>
-		<result property="pAddress" column="P_ADDRESS"/>
-		<result property="pTell" column="P_TELL"/>
-		<result property="pInfo;" column="P_INFO"/>
-		<result property="pImgpath" column="P_IMG_PATH"/>
-		<result property="pXaxis" column="P_X_AXIS"/>
-		<result property="pYaxis" column="P_Y_AXIS"/>
-	</resultMap> -->
-	
+	<!-- <resultMap type="place" id="placeResult"> <id property="z_seq" column="P_SEQ"/> 
+		<result property="pCategory" column="P_CATEGORY"/> <result property="pArea" 
+		column="P_AREA"/> <result property="pName" column="P_NAME"/> <result property="pAddress" 
+		column="P_ADDRESS"/> <result property="pTell" column="P_TELL"/> <result property="pInfo;" 
+		column="P_INFO"/> <result property="pImgpath" column="P_IMG_PATH"/> <result 
+		property="pXaxis" column="P_X_AXIS"/> <result property="pYaxis" column="P_Y_AXIS"/> 
+		</resultMap> -->
+
 	<insert id="insertPlace">
 	<![CDATA[
 
@@ -52,45 +47,31 @@ VALUES(
 	]]>
 	</insert>
 
-	
+
 	<update id="updatePlace">
 		<![CDATA[
 
-<<<<<<< HEAD
-			UPDATE PLACE SET
-				
-				  P_AREA = #{pArea}
-				, P_NAME =  #{pName}
-				, P_ADDRESS =  #{pAddress}
-				, P_TELL =  #{pTell}
-				, P_INFO = #{pInfo}
-				, P_IMG_PATH =  #{pImgpath}
-				, P_X_AXIS = #{pXaxis}
-				, P_Y_AXIS = #{pXaxis}
-			WHERE P_SEQ = #{pSeq}
-=======
 			UPDATE place
-SET
+			SET
 
-P_CATEGORY = #{pCategory},
-P_AREA = #{pArea},
-P_NAME =  #{pName},
-P_ADDRESS =  #{pAddress},
-P_TELL =  #{pTell},
-P_INFO = #{pInfo},
-P_IMG_PATH =  #{pImgpath},
-P_X_AXIS = #{pXaxis},
-P_Y_AXIS = #{pYaxis}
-WHERE `P_SEQ` = #{pSeq};
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
+			P_CATEGORY = #{pCategory},
+			P_AREA = #{pArea},
+			P_NAME =  #{pName},
+			P_ADDRESS =  #{pAddress},
+			P_TELL =  #{pTell},
+			P_INFO = #{pInfo},
+			P_IMG_PATH =  #{pImgpath},
+			P_X_AXIS = #{pXaxis},
+			P_Y_AXIS = #{pYaxis}
+			WHERE `P_SEQ` = #{pSeq};
 			
 			
 			
 			
 		]]>
 	</update>
-	
-	<delete id="deletePlace" >
+
+	<delete id="deletePlace">
 		<![CDATA[
 
 			DELETE FROM PLACE
@@ -98,86 +79,80 @@ WHERE `P_SEQ` = #{pSeq};
 			
 		]]>
 	</delete>
-	
+
 	<select id="getPlace" resultType="place">
 		<![CDATA[
 		SELECT * FROM PLACE
 			WHERE P_SEQ = #{pSeq}
-		]]> 
+		]]>
 	</select>
-	
-	
-	
+
+
+
 	<select id="getPlaceAllList" resultType="place">
 		<![CDATA[
 		SELECT * FROM PLACE
-		]]> 
+		]]>
 	</select>
-	
+
 	<select id="getPlaceSeq" resultType="int">
-		SELECT IFNULL(MAX(P_SEQ) ,0) + 1
-			FROM PLACE
+		SELECT IFNULL(MAX(P_SEQ) ,0)
+		+ 1
+		FROM PLACE
 	</select>
-	
+
 	<insert id="insertPlaceFileList" parameterType="placeFile">
-		
-				INSERT INTO PLACE_FILE  (
-									SEQ,
-									F_SEQ,
-									ORIGINAL_FILE_NAME,
-									FILE_PATH,
-									FILE_SIZE
-								)
-						VALUES (
-									#{seq},
-									(
-										SELECT IFNULL(MAX(F_SEQ), 0) + 1
-											FROM PLACE_FILE A
-										WHERE SEQ = #{seq}
-									),
-									#{originalFileName},
-									#{filePath},
-									#{fileSize}
-								)
-							
-							
-							
+
+		INSERT INTO
+		PLACE_FILE (
+		SEQ,
+		F_SEQ,
+		ORIGINAL_FILE_NAME,
+		FILE_PATH,
+		FILE_SIZE
+		)
+		VALUES (
+		#{seq},
+		(
+		SELECT IFNULL(MAX(F_SEQ), 0) + 1
+		FROM PLACE_FILE A
+		WHERE SEQ =
+		#{seq}
+		),
+		#{originalFileName},
+		#{filePath},
+		#{fileSize}
+		)
+
+
+
 	</insert>
-<!--  	<update id="updatePlaceFileList" parameterType="placeFile">
-		
-		update PLACE_FILE set
-									ORIGINAL_FILE_NAME = #{originalFileName},
-									FILE_PATH = #{filePath},
-									FILE_SIZE = #{fileSize}
-									where `SEQ = #{seq} 
-					
-			
-	</update>-->
-	
-	
+	<!-- <update id="updatePlaceFileList" parameterType="placeFile"> update 
+		PLACE_FILE set ORIGINAL_FILE_NAME = #{originalFileName}, FILE_PATH = #{filePath}, 
+		FILE_SIZE = #{fileSize} where `SEQ = #{seq} </update> -->
+
+
 	<!-- 파일 1개만 넣기 -->
-	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
+	<select id="getPlaceFileList" parameterType="int"
+		resultType="placeFile">
 		SELECT * FROM PLACE_FILE
-			WHERE SEQ = #{seq}
-<<<<<<< HEAD
-			 AND F_SEQ = #{fSeq}
-=======
-			 AND F_SEQ = (SELECT MAX (F_SEQ) FROM PLACE_FILE A WHERE SEQ = #{seq}) 
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
+		WHERE SEQ = #{seq}
+		AND F_SEQ = (SELECT MAX (F_SEQ) FROM PLACE_FILE
+		A WHERE SEQ = #{seq})
 	</select>
-	
+
 	<delete id="deleteFile" parameterType="placeFile">
 		DELETE FROM PLACE_FILE
-			WHERE SEQ = #{seq}
-			  AND F_SEQ = 1
+		WHERE SEQ = #{seq}
+		AND F_SEQ = 1
 	</delete>
-	
+
 	<delete id="deleteFileList" parameterType="int">
 		DELETE FROM PLACE_FILE
-			WHERE SEQ = #{seq}
+		WHERE SEQ = #{seq}
 	</delete>
-	
-	
+
+
 	<select id="getPlaceList" resultType="place">
 		<![CDATA[
 		SELECT * FROM PLACE
@@ -185,10 +160,11 @@ WHERE `P_SEQ` = #{pSeq};
 		]]>
 
 	</select>
-	
-<select id="getPlaceFile" parameterType="int" resultType="placeFile">
+
+	<select id="getPlaceFile" parameterType="int"
+		resultType="placeFile">
 		SELECT FILE_PATH FROM PLACE_FILE
-			WHERE SEQ = #{seq}
+		WHERE SEQ = #{seq}
 	</select>
-	
+
 </mapper>

@@ -1,12 +1,8 @@
 package com.springbook.view.member;
-<<<<<<< HEAD
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-=======
-import java.io.IOException;
->>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,21 +46,6 @@ public class MemberController {
 		// conditionMap이라는 키 값으로 데이터가 저장
 		return conditionMap;
 	}
-
-	// 로그인
-//		@RequestMapping(value="/login.do", method=RequestMethod.POST)
-//		public String loginAction(MemberVO vo, Model model) {
-//			MemberVO loginMember = memberService.login(vo);
-//			
-//			if(loginMember == null) {
-//				model.addAttribute("check", 1);
-//				model.addAttribute("message", "아이디와 비밀번호를 확인해주세요.");
-//				return "login.jsp";
-//			}else {
-//				model.addAttribute("loginMember", loginMember);
-//				return "index.jsp";
-//			}
-//		}
 
 	// 의찬 로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -275,7 +256,7 @@ public class MemberController {
 
 			return "redirect:login.jsp";
 		}
-<<<<<<< HEAD
+
 	}
 
 	// 아이디 중복 체크
@@ -311,22 +292,6 @@ public class MemberController {
 		session.invalidate();
 		return "index.jsp";
 	}
-=======
-	    
-	    //마이페이지 회원 탈퇴
-	    //회원권한 정지
-		@RequestMapping(value="/Withdrawal.do")
-		public String Withdrawal(MemberVO vo, HttpServletRequest request, Model model, HttpSession session
-				) throws IOException {
-			System.out.println("회원 탈퇴 처리");
-			System.out.println("카테고리 : " + vo.getmAccountStatus());
-			
-			int seq = vo.getmSeq();
-			
-			memberService.Withdrawal(vo);
-			session.invalidate();
-			return "index.jsp";
-		}
 		
 		// Member 목록 불러오기
 		@RequestMapping(value="/getMemberList.do", method= RequestMethod.GET)
@@ -379,6 +344,5 @@ public class MemberController {
 			memberService.memberKeep(vo);
 			return "getMemberList.do";
 		}
->>>>>>> 7ae2c27dc538bec6b75c7aac590f5c780a6d9cd4
 
 }
