@@ -52,29 +52,6 @@
 	</select>
 
 	
-	<!-- roomCatagory.jsp 에서 방들의 리스트를 뿌려줄때 사용 -->
-<<<<<<< HEAD
-	<select id="getTripList" resultType="HashMap">
-		SELECT A.TR_SEQ as trSeq
-		,A.TR_NAME as trName
-		,A.TR_MODE as trMode
-		,A.TR_AREA_SET as trAreaSet
-		,A.TR_DATE_SET as trDateSet
-		,A.TR_STEPS as trSteps
-		,A.TR_STEP_STATUS as trStepStatus
-		,A.TR_GENDER_SET as trGenderSet
-		,A.TR_PERSONNEL_SET as trPersonnelSet
-		,A.TR_LICENSE_SET as trLicenseSet
-		,A.TR_TRANSPORTATION_SET as trTransprotationSet
-		,A.TR_PASSWORD_SET as trPasswordSet
-		,A.TR_INTRO as trIntro
-		,B.ORIGINAL_FILE_NAME AS orginalFileName
-		,B.FILE_PATH as filePath
-		FROM TRIP A,
-		TRIP_FILE B
-		WHERE 1 = 1
-		AND A.TR_SEQ = B.SEQ
-=======
 <!-- 	<select id="getTripList" resultType="HashMap">
 		SELECT   A.TR_SEQ as trSeq 
 				,A.TR_NAME as trName 
