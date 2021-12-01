@@ -95,7 +95,7 @@
 										<div class="hover-element hover-element-1 "
 											data-title-position="top,left" style="background: black;">
 											<div class="hover-element__initial">
-												<img alt="Pic" src="/upload/${trip.orginalFileName}" />
+												<img alt="Pic" src="upload/${trip.trImgName}" />
 											</div>
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
@@ -154,7 +154,7 @@
 															<span> ${trip.trMode }</span>
 														</div>
 														<div class="col-md-12">
-															<p style="color: black; background-color: #eee;">${trip.trIntro }</p>
+															<p style="color: black; background-color: #eee;">${trip.TR_INTRO }</p>
 														</div>
 													</div>
 												</div>
@@ -164,14 +164,16 @@
 								</a>
 							</c:when>
 							<c:when test="${empty trip.trPasswordSet }">
-								<a href="room-game.html">
+								<!-- <a href="entranceRoom.do?trSeq='${trip.trSeq  }"> -->
+								<!--  <a href="entranceRoom.do?trSeq=${trip.trSeq  }">-->
+								<a href="entranceRoom.do?trSeq=${trip.trSeq  }">
 
 									<div class="shop-item shop-item-1">
 										<div class="qwe" style="width: 40px; height: 40px;"></div>
 										<div class="hover-element hover-element-1 "
 											data-title-position="top,left" style="background: black;">
 											<div class="hover-element__initial">
-												<img alt="Pic" src="/upload/${trip.orginalFileName}" />
+												<img alt="Pic" src="upload/${trip.trImgName}" />
 											</div>
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
@@ -230,7 +232,7 @@
 															<span> ${trip.trMode }</span>
 														</div>
 														<div class="col-md-12">
-															<p style="color: black; background-color: #eee;">${trip.trIntro }</p>
+															<p style="color: black; background-color: #eee;">${trip.TR_INTRO }</p>
 														</div>
 													</div>
 												</div>

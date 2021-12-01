@@ -178,6 +178,7 @@ input[type="checkbox"] {
 									<label for="nickname">별명<span class="text-muted">&nbsp;(필수
 											아님)</span></label> <input type="text" class="form-control" id="nickname"
 										name="mNickname" placeholder="" value="">
+										
 									<div class="invalid-feedback">별명을 입력해주세요.</div>
 								</div>
 							</div>
@@ -185,8 +186,13 @@ input[type="checkbox"] {
 							<div class="row">
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
+<<<<<<< HEAD
+									placeholder="input your id" onblur = "idcheck()" required>
+									
+=======
 									placeholder="input your id" onblur="idcheck()" required>
 								<input type="hidden" name="mAccountStatus" value="0" />
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 
@@ -399,7 +405,11 @@ input[type="checkbox"] {
     				}
     			},
     			error:function(request,status,error){
+<<<<<<< HEAD
+    	             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+=======
     	             alert("중복된 아이디를 그대로 사용하셨습니다. 다시 회원가입 부탁드립니다."+error);
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
     	          }
     		});
     	}

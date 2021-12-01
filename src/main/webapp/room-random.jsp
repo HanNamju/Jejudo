@@ -1,9 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="utf-8">
-    <title>room-game</title>
+    <title>Random Jeju | Room Random</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
@@ -17,24 +23,27 @@
         type='text/css'>
     <!-- <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e35f6f46581e9c3e609a42f60484833"></script> -->
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-        <style>
-            h1,h2,h3,h4,h5,h6,p,div{
-                font-family: 'Noto Sans KR', sans-serif;
-            }
+
+
+    <style>
         .boxed {
             position: relative;
             overflow: hidden;
             padding: 1.4375em;
             margin-bottom: 30px;
         }
+     
+        
     </style>
 </head>
 
 <body class="scroll-assist">
     <a id="top"></a>
     <div class="loader"></div>
-  
+    
+    <!--  Header 인클루드  -->
+	<jsp:include page="Header_2.jsp" />
+
     <!-- nav -->
     <!--end of modal-container-->
 
@@ -42,7 +51,7 @@
         <section class="blog-post">
             <div class="blog-post__title bg--secondary">
                 <div style="text-align: center;">
-                    <h2 >방 이름 대충 아무거나</h2>
+                    <h2 >${trip.trName }</h2>
                 </div>
                 <div class="container" style="display: flex; flex-direction: row-reverse;" >
                     <div class="row" >
@@ -66,7 +75,7 @@
                                     <h4>여행하는 사람들</h4>
                                 </em>
                                 <div class="hover-element__initial">
-                                    <img alt="Pic" src="img/제주사진/제주001.jpg" />
+                                    <img alt="Pic" src="/upload/${trip.trImgName }" />
                                 </div>
                                 <div class="hover-element__reveal" data-overlay="9">
                                     <div class="boxed">
@@ -98,12 +107,7 @@
                     <div class="col-md-6">
                         <div>
                             <h5>오늘 여행은?</h5>
-                            <p>
-                                안녕하세요~ <br>함께 제주도 여행하실 분들을 찾습니다! 제주도 동쪽위주로 가 볼 생각이고요
-                                저는 승마를 꼭 하고 싶은데 말 타실 계획이 분들이 있으신 분들이 들어와주시면
-                                좋을 것 같아요 <br>저녁으로는 딱히 생각하고 있는 식당은 없지만 해산물 종류를 먹으려 합니다.
-
-                            </p>
+               				<p>${trip.trIntro }</p>
                         </div>
                         <div>
                             <h5>만나는 장소</h5>
@@ -135,7 +139,7 @@
                         <div class="col-md-3 col-sm-3 modal-instance">
                             <div class="card card-1">
                                 <div class="card__image">
-                                    <img alt="Pic" src="img/제주사진/제주028.jpg" />
+                                    <img alt="Pic" src="img/제주사진/제주030.jpg" />
                                 </div>
                                 <div class="card__body boxed bg--white">
                                     <div class="card__title">
@@ -178,7 +182,7 @@
                         <div class="col-md-3 col-sm-3 modal-instance">
                             <div class="card card-1">
                                 <div class="card__image">
-                                    <img alt="Pic" src="img/제주사진/제주028.jpg" />
+                                    <img alt="Pic" src="img/제주사진/제주030.jpg" />
                                 </div>
                                 <div class="card__body boxed bg--white">
                                     <div class="card__title">
@@ -221,7 +225,7 @@
                         <div class="col-md-3 col-sm-3 modal-instance">
                             <div class="card card-1">
                                 <div class="card__image">
-                                    <img alt="Pic" src="img/제주사진/제주028.jpg" />
+                                    <img alt="Pic" src="img/제주사진/제주030.jpg" />
                                 </div>
                                 <div class="card__body boxed bg--white">
                                     <div class="card__title">
@@ -264,7 +268,7 @@
                         <div class="col-md-3 col-sm-3 modal-instance">
                             <div class="card card-1">
                                 <div class="card__image">
-                                    <img alt="Pic" src="img/제주사진/제주028.jpg" />
+                                    <img alt="Pic" src="img/제주사진/제주030.jpg" />
                                 </div>
                                 <div class="card__body boxed bg--white">
                                     <div class="card__title">
@@ -294,9 +298,7 @@
                                                 <p>
                                                     예쁜 폭포임
                                                 </p>
-                                                <span class="btn__text">
-                                                    인증하기
-                                                </span>
+
                                               
                                             </div>
                                         </div>
@@ -307,51 +309,16 @@
                         </div>
 
 
-                        <!-- 게임모드 버튼 -->
-                        <div class="container modal-instance" style="display: flex; justify-content: space-around;">
-                            <a class="btn mb--1" href="#">
-                                <span class="btn__text" >
-                                    장소정하기
-                                </span>
-                            </a>
-                            <a class="btn mb--1 modal-trigger" href="#">
-                                <span class="btn__text">
-                                    인증하기
-                                </span>
-                            </a>
-                                        <div class="modal-container">
-                                            <div class="modal-content height--natural">
-                                                <div class="card card-1">
-                                                    <div class="boxed bg--white ">
-                                                        <form>
-                                                        <div class="card__title">
-                                                                <h5>인증하기</h5>
-                                                                <div id="imagePreview">
-                                                                    <img id="img" />
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="file" class="form-control-file" id="InputFile" />
-                                                                </div>
-                                                        </div>
-                                                        <a class="btn modal-trigger" href="#" style="padding-right: 1.25em;padding-left: 1.25em;">
-                                                            인증하기
-                                                        </a>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--end of modal-content-->
-                                        </div>
-                          
+                        <!-- 다시 추천하기 버튼 -->
+                        <div class="container" style="display: flex; justify-content: space-around;">
+          
                             <a class="btn mb--1" href="#">
                                 <span class="btn__text">
-                                    clear
+                                    다시 추천하기
                                 </span>
                             </a>
-                        </div>
-                  
                           
-                        
+                            </div>
                 
                 
 
@@ -365,7 +332,7 @@
 
             <!--end of row-->
             <div class="row">
-                <div class="col-md-12 col-sm-10 text-center">
+                <div class="col-sm-12 text-center">
                     <div class="blog-post__share">
                         <h5>방 공유하기</h5>
                         <a class="btn btn--sm bg--facebook" href="#">
@@ -436,6 +403,9 @@
     </div>
     <!--end of container-->
     </section>
+    
+     <!-- <<<<< footer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<jsp:include page="tail.jsp" />
 
     <!-- footer -->
     </div>

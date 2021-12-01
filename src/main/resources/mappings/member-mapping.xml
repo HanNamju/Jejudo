@@ -11,8 +11,13 @@
 		M_ID=#{mId} and M_PASSWORD=#{mPassword} </select> -->
 
 	<!-- 의찬 로그인 -->
+<<<<<<< HEAD
+	
+	 <select id="login" parameterType="Member" resultType="Member">
+=======
 
 	<select id="login" parameterType="Member" resultType="Member">
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 	 <![CDATA[
         SELECT *
           FROM MEMBER
@@ -20,6 +25,18 @@
            		AND M_PASSWORD = #{mPassword}
            			AND M_ACCOUNT_STATUS < 3
       ]]>
+<<<<<<< HEAD
+   	 </select>
+    
+    <!-- 회원 비밀번호 체크-->
+     <select id="passChk" resultType="int">
+     	 SELECT COUNT(*) FROM MEMBER
+      				WHERE M_ID= #{mPassword}
+     					 AND M_PASSWORD =#{mPassword}
+   </select>
+	
+	
+=======
 	</select>
 
 	<!-- 회원 비밀번호 체크 -->
@@ -30,6 +47,7 @@
 	</select>
 
 
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 
 	<!-- 회원가입 -->
 	<insert id="insertMember">
@@ -48,6 +66,10 @@
 						  , M_IMG_NAME
 						  , M_LICENSE
 						  , M_INTRODUCE
+<<<<<<< HEAD
+						  
+=======
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 						  
 						 )
 				  VALUES(
@@ -64,6 +86,10 @@
 				  		  , #{mImgName}
 				  		  , #{mLicense}  
 				  		  , #{mIntroduce}
+<<<<<<< HEAD
+				  		  
+=======
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 				  		  		  
 				  		) 
 		]]>
@@ -129,7 +155,11 @@
 		SELECT * FROM MEMBER
 		WHERE M_NAME=#{mName} AND M_PASSWORD=#{mPassword}
 	</select>
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 	<!-- 비밀번호 찾기 -->
 	<select id="findPassword" resultType="member">
 		SELECT * FROM MEMBER
@@ -157,6 +187,21 @@
 			WHERE M_ID=#{mId}
 	</select>
 	
+<<<<<<< HEAD
+	<!-- 아이디 중복체크 -->
+	<select id="idChk" parameterType="String" resultType="member">
+		SELECT * FROM MEMBER
+			WHERE M_ID = #{mId}
+	</select>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="Withdrawal">
+		UPDATE MEMBER
+			SET
+				`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +3
+					WHERE M_SEQ = #{mSeq}
+	</update>
+=======
 	<!-- 맴버테이블에서 맴버Status 가져오기 -->
 	<select id="getMemberAccountStatus" parameterType="String" resultType="int">
 		SELECT M_ACCOUNT_STATUS FROM MEMBER 
@@ -184,6 +229,7 @@
 		SELECT * FROM MEMBER 
 		]]>
 	</select>
+>>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 </mapper>
 	
 	
