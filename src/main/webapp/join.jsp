@@ -163,7 +163,8 @@ input[type="checkbox"] {
 						회원가입 <br /> 즐거운 여행에 재밌는 요소를 더하세요!
 					</p>
 					<div class="text-left">
-						<form action="insertMember.do" method="post" class="validation-form" enctype="multipart/form-data" novalidate>
+						<form action="insertMember.do" method="post"
+							class="validation-form" enctype="multipart/form-data" novalidate>
 
 							<!-- 첫번째 줄 이름, 별명 입력창 -->
 							<div class="row">
@@ -180,12 +181,12 @@ input[type="checkbox"] {
 									<div class="invalid-feedback">별명을 입력해주세요.</div>
 								</div>
 							</div>
-
 							<!-- 두번째 줄 : 아이디 입력 -->
 							<div class="row">
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
-									placeholder="input your id" onblur = "idcheck()" required>
+									placeholder="input your id" onblur="idcheck()" required>
+								<input type="hidden" name="mAccountStatus" value="0" />
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 
