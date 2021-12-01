@@ -17,7 +17,11 @@
 				  VALUES(
 				  			(SELECT IFNULL(MAX(SEQ), 0) + 1 FROM BOARD A)
 				  		  , #{title}
+<<<<<<< HEAD
 				  		  , '연습'
+=======
+				  		  , #{writer}
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 				  		  , #{content}
 				  		) 
 		]]>
@@ -29,7 +33,12 @@
 			SET 
 				TITLE = #{title}
 			  , CONTENT = #{content}
+<<<<<<< HEAD
 			WHERE SEQ = #{seq}
+=======
+			 
+				WHERE SEQ = #{seq}
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 		]]>
 	</update>
 	

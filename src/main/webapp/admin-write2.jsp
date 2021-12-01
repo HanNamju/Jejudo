@@ -63,10 +63,17 @@ body {
 				
 				
 			
+<<<<<<< HEAD
 					<div>	<a href="getBoardList.do">
 					<button style="padding: 10px;" type="" class="btn btn-dark"
 							id="btnList">&nbsp저장&nbsp</button>
 							</a>
+=======
+					<div>	
+					<button style="padding: 10px;" type="submit" class="btn btn-dark"
+							id="btnList">&nbsp저장&nbsp</button>
+							
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 			</form>
 				</div>
 				</div>

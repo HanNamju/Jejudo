@@ -37,6 +37,7 @@ public class PlaceController {
 
 		int seq = placeService.getPlaceSeq();
 		System.out.println("=====> seq= " + seq);
+		
 
 		PlaceFileUtils fileUtils = new PlaceFileUtils();
 		List<PlaceFileVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
@@ -71,7 +72,7 @@ public class PlaceController {
 		if (CollectionUtils.isEmpty(fileList) == false) {
 			placeService.insertPlaceFileList(fileList);
 		}
-
+		
 		placeService.updatePlace(vo);
 
 		return "redirect:getPlaceList.do?pCategory=" + vo.getpCategory();

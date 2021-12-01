@@ -28,5 +28,7 @@ public interface PlaceService {
 			List<PlaceVO> getPlaceAllList(PlaceVO vo);
 			
 			List<PlaceVO> getPlaceList(PlaceVO vo);
+
+			void updatePlaceFileList(List<PlaceFileVO> fileList);
 		
 }

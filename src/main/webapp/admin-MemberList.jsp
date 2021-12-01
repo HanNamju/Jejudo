@@ -181,7 +181,11 @@ input[type="checkbox"] { display: none; }
                                 </li>
                                  <li>
                                     <a href="getPlaceAllList.do">
+<<<<<<< HEAD
                         장소관리 
+=======
+                     	장소관리 
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
                                     </a>
                                 </li>
                             </ul>

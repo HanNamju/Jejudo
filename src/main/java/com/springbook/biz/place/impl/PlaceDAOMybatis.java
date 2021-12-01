@@ -43,6 +43,7 @@ public class PlaceDAOMybatis {
 
 
 		public PlaceFileVO getPlaceFileList(int pSeq) {
+
 	         return (PlaceFileVO)mybatis.selectOne("PlaceDAO.getPlaceFileList", pSeq);
 	      }
 

@@ -69,7 +69,11 @@
                                 </li>
                                  <li>
                                     <a href="getPlaceAllList.do">
+<<<<<<< HEAD
                         장소관리 
+=======
+                     	장소관리 
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
                                     </a>
                                 </li>
                             </ul>
@@ -170,7 +174,7 @@
                                       <label for="customer-id"><h5 style="color: rgba(0, 0, 0, 0.5);">장소명</h4></label>
                                       <input type="hidden" id="pSeq" name="pSeq" value="${getPlace.pSeq }">
                                      
-                                      <input
+                                       <input
                                         type="text"
                                         class="form-control"
                                         id="customer-id"
@@ -181,6 +185,7 @@
                                         style="border: 1px solid rgba(0, 0, 0, 0.2);"
                                         name="pName"
                                       />
+<<<<<<< HEAD
                              
                                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                                     </div>
@@ -191,10 +196,22 @@
 		                                <option value="tourlist" >관광지</option>
 		                                <option value="restaurant" >식당</option>
 		                                <option value="rooms" >숙소</option>
+=======
+                                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                                    </div>
+										 <div class="mb-3">
+                                      <label for="pCategory"><h5 style="color: rgba(0, 0, 0, 0.5);">카테고리</h5></label><br>
+                                      <select name="pCategory" style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2); ;">
+                                        <option selected value="cafe" <c:if test="${getPlace.pCategory eq 'cafe'}"> selected</c:if>>카페</option>
+		                                <option value="tourlist" <c:if test="${getPlace.pCategory eq 'tourlist'}"> selected</c:if>>관광지</option>
+		                                <option value="restaurant" <c:if test="${getPlace.pCategory eq 'restaurant'}"> selected</c:if>>식당</option>
+		                                <option value="rooms" <c:if test="${getPlace.pCategory eq 'rooms'}"> selected</c:if>>숙소</option>
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
                                      </select>
 
                                       <div class="invalid-feedback">아이디를 입력해주세요.</div>
                                     </div>
+<<<<<<< HEAD
 							                                                
                            
                                      <div class="mb-3">
@@ -204,10 +221,21 @@
 		                                <option value="서" >서</option>
 		                                <option value="남" >남</option>
 		                                <option value="북" >북</option>
+=======
+                           
+                                    <div class="mb-3">
+                                      <label for="password"><h5 style="color: rgba(0, 0, 0, 0.5);">방향</h5></label><br>
+                                      <select  name="pArea" style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2); ;">
+                                        <option selected value="east" <c:if test="${getPlace.pArea eq 'east'}"> selected</c:if>>동</option>
+		                                <option value="west" <c:if test="${getPlace.pArea eq 'west'}"> selected</c:if>>서</option>
+		                                <option value="south" <c:if test="${getPlace.pArea eq 'south'}"> selected</c:if>>남</option>
+		                                <option value="north" <c:if test="${getPlace.pArea eq 'north'}"> selected</c:if>>북</option>
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
                                      </select>
 
                                       <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                                     </div>
+                                    
                                     
                                     
                                     <div class="mb-3">
@@ -279,6 +307,7 @@
                                                    value="${getPlace.pYaxis}"
                                                     required
                                                   />
+                                                  <input type="hidden" name="F_SEQ"  value="${fileList.fSeq}">
                                                   <div class="invalid-feedback">경도를 입력해주세요.</div>
                                                 </div>
                                               </div>

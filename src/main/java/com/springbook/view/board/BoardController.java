@@ -29,7 +29,8 @@ import com.springbook.biz.board.BoardListVO;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.BoardFileUtils;
-import com.springbook.biz.common.FileUtils;
+
+import com.springbook.biz.member.MemberVO;
 
 @Controller
 //board로 model 저장된 객체가 있으면 HttpSession 데이터 보관소에서 동일한 키 값(board)로 저장
@@ -69,7 +70,11 @@ public class BoardController {
 	//              사용자 입력 input의 name 속성과 VO 멤버변수의 이름을 매핑해주는 것이 중요
 	public String insertBoard(BoardVO vo, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException {
+<<<<<<< HEAD
 		System.out.println("글 등록 처리");
+=======
+		
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 		
 		int seq = boardService.getBoardSeq();
 		
@@ -80,11 +85,34 @@ public class BoardController {
 			boardService.insertBoardFileList(fileList);
 		}
 		
+<<<<<<< HEAD
 		
 		boardService.insertBoard(vo);
 		
 		//화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
 		return "index.jsp";
+=======
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		
+		System.out.println(member.getmId());
+		
+		boardService.insertBoard(vo);
+		
+		
+		System.out.println("글 등록 처리");
+		System.out.println("일련번호 : " + vo.getSeq());
+		System.out.println("제목 : " + vo.getTitle());
+		System.out.println("작성자 이름 : " + vo.getWriter());
+		System.out.println("내용 : " + vo.getContent());
+		System.out.println("등록일 : " + vo.getRegDate());
+		System.out.println("조회수 : " + vo.getCnt());
+		
+		
+		//화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
+		return "redirect:getBoardList.do";
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 	}
 	
 	//ModelAttribute로 세션에 board라는 이름으로 저장된 객체가 있는지 찾아서 Command객체에 담아줌
@@ -163,6 +191,10 @@ public class BoardController {
 		//}
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo));
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 		return "admin-freeBoard.jsp";
 	}
 	
