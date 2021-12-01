@@ -22,7 +22,7 @@ public interface PlaceService {
 	//글 상세 조회
 	PlaceVO getPlace(PlaceVO vo);
 
-	List<PlaceFileVO> getPlaceFileList(int pSeq);
+	PlaceFileVO getPlaceFileList(int pSeq);
 	
 	// 11.25일 가게목록 구현
 			List<PlaceVO> getPlaceAllList(PlaceVO vo);

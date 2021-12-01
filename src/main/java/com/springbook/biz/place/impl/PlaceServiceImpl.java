@@ -51,9 +51,9 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	
-	public List<PlaceFileVO> getPlaceFileList(int pSeq) {
-		return placeDAO.getPlaceFileList(pSeq);
-	}
+	   public PlaceFileVO getPlaceFileList(int pSeq) {
+		      return placeDAO.getPlaceFileList(pSeq);
+		   }
 	
 	@Override
 	public List<PlaceVO> getPlaceList(PlaceVO vo) {

@@ -56,19 +56,17 @@ VALUES(
 	<update id="updatePlace">
 		<![CDATA[
 
-			UPDATE place
-SET
-
-`P_CATEGORY` = #{pCategory},
-`P_AREA` = #{pArea},
-`P_NAME` =  #{pName},
-`P_ADDRESS` =  #{pAddress},
-`P_TELL` =  #{pTell},
-`P_INFO` = #{pInfo},
-`P_IMG-PATH` =  #{pImgpath},
-`P_X-AXIS` = #{pXaxis},
-`P_Y-AXIS` = #{pYaxis})
-WHERE `P_SEQ` = #{pSeq};
+			UPDATE PLACE SET
+				
+				  P_AREA = #{pArea}
+				, P_NAME =  #{pName}
+				, P_ADDRESS =  #{pAddress}
+				, P_TELL =  #{pTell}
+				, P_INFO = #{pInfo}
+				, P_IMG_PATH =  #{pImgpath}
+				, P_X_AXIS = #{pXaxis}
+				, P_Y_AXIS = #{pXaxis}
+			WHERE P_SEQ = #{pSeq}
 			
 			
 			
@@ -131,6 +129,7 @@ WHERE `P_SEQ` = #{pSeq};
 	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
 		SELECT * FROM PLACE_FILE
 			WHERE SEQ = #{seq}
+			 AND F_SEQ = #{fSeq}
 	</select>
 	
 	<delete id="deleteFile" parameterType="placeFile">

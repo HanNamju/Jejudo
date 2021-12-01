@@ -157,7 +157,7 @@ input[type="checkbox"] { display: none; }
                             </form>
                         </div>
                         <!--end widget-->
-                        <div class="sidebar__widget">
+                         <div class="sidebar__widget">
                             <h6>Categories</h6>
                             <ul  class="link-list">
                                 <li>
@@ -170,11 +170,14 @@ input[type="checkbox"] { display: none; }
                                         회원관리
                                     </a>
                                 </li>
+                                 <li>
+                                    <a href="getPlaceAllList.do">
+                        장소관리 
+                                    </a>
+                                </li>
                             </ul>
                             <hr>
-                            <ul class="link-list">
-        
-                            </ul>
+                         
                         </div>
                         <!--end widget-->
                         <div class="sidebar__widget">

@@ -19,6 +19,10 @@
 
 		<typeAlias type="com.springbook.biz.place.PlaceVO" alias="place"></typeAlias>
 		<typeAlias type="com.springbook.biz.place.PlaceFileVO" alias="placeFile"></typeAlias>
+		
+		<typeAlias type="com.springbook.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.springbook.biz.board.BoardFileVO" alias="boardFile"></typeAlias>
+	
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
@@ -26,6 +30,7 @@
 		<mapper resource="mappings/trip-mapping.xml" />
 		<mapper resource="mappings/member-mapping.xml" />
 		<mapper resource="mappings/place-mapping.xml"/>
+		<mapper resource="mappings/board-mapping.xml" />
 	</mappers>
 </configuration>
 

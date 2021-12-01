@@ -54,7 +54,7 @@
                             </form>
                         </div>
                         <!--end widget-->
-                        <div class="sidebar__widget">
+                         <div class="sidebar__widget">
                             <h6>Categories</h6>
                             <ul  class="link-list">
                                 <li>
@@ -63,34 +63,18 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-MemberList.html">
+                                    <a href="getMemberList.do">
                                         회원관리
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="getPlaceAllList.do">
+                        장소관리 
                                     </a>
                                 </li>
                             </ul>
                             <hr>
-                            <ul class="link-list">
-                                <li>
-                                    <a href="admin-RoomsList.html">
-                                        숙소
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-RestauranList.html">
-                                        식당
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-CafeList.html">
-                                        카페
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="admin-TourlistList.html">
-                                        관광지
-                                    </a>
-                                </li>
-                            </ul>
+                         
                         </div>
                         <!--end widget-->
                         <div class="sidebar__widget">
@@ -178,7 +162,7 @@
                             <!--바디 영역-->
                             <div class="container">
                               <div class="input-form-backgroud row">
-                                <div class="input-form col-md-12 mx-auto">
+                                <div class="input-form col-md-10 mx-auto">
                                   <h2 class="mb-3">수정하기</h2>
                                   <hr style="background-color: rgba(0, 0, 0, 0.2);">
                                   <form action="updatePlace.do" method="post" enctype="multipart/form-data">
@@ -197,21 +181,29 @@
                                         style="border: 1px solid rgba(0, 0, 0, 0.2);"
                                         name="pName"
                                       />
+                             
+                                    <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                                    </div>
+                                 <div class="mb-3">
+                                      <label for="pCategory"><h5 style="color: rgba(0, 0, 0, 0.5);">카테고리</h5></label><br>
+                                      <select name="pCategory" style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2);">
+                                        <option selected value="cafe">카페</option>
+		                                <option value="tourlist" >관광지</option>
+		                                <option value="restaurant" >식당</option>
+		                                <option value="rooms" >숙소</option>
+                                     </select>
+
                                       <div class="invalid-feedback">아이디를 입력해주세요.</div>
                                     </div>
-							                                                <select id="DriveLicense" name="mLicense" style="height: 60%;">
-                                        
-                                
-                                  
-                                         </select>
+							                                                
                            
-                                    <div class="mb-3">
-                                      <label for="password"><h5 style="color: rgba(0, 0, 0, 0.5);">방향</h5></label><br>
-                                      <select style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2); ;">
-                                        <option selected value="동" <c:if test="${getPlace.pArea eq '동'}"> selected</c:if>>동</option>
-		                                <option value="서" <c:if test="${getPlace.pArea eq '서'}"> selected</c:if>>서</option>
-		                                <option value="남" <c:if test="${getPlace.pArea eq '남'}"> selected</c:if>>남</option>
-		                                <option value="북" <c:if test="${getPlace.pArea eq '북'}"> selected</c:if>>북</option>
+                                     <div class="mb-3">
+                                      <label for="area"><h5 style="color: rgba(0, 0, 0, 0.5);">방향</h5></label><br>
+                                      <select name="pArea" style="width: 50px; height: 60px; border: 1px solid rgba(0, 0, 0, 0.2);">
+                                        <option selected value="동">동</option>
+		                                <option value="서" >서</option>
+		                                <option value="남" >남</option>
+		                                <option value="북" >북</option>
                                      </select>
 
                                       <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
@@ -296,10 +288,10 @@
                                         <div class="col-md-6 mb-3">
                                             <div id="map" style="width:100%;height:350px;"></div>
                                         </div>
-                                        <div class="col-md-6 mb-3" >
+                                         <div class="col-md-6 mb-3" >
                                             <div class="image-container" >
-                                                <img style="width: 430px; height: 300px; " id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
-                                                <input style="display: block;" type="file" id="input-image">
+                                                <img style="width: 430px; height: 300px; " id="preview-image" src="upload/${fileList.originalFileName}">
+                                                <input style="display: block;" type="file" id="input-image" name="uploadfile">
                                             </div>
                                         </div>
                                     <!--사진 첨부 미리보기 끝-->
@@ -505,18 +497,6 @@
         {
             content: '<div>카카오</div>',
             latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-        },
-        {
-            content: '<div>생태연못</div>',
-            latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-        },
-        {
-            content: '<div>텃밭</div>',
-            latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-        },
-        {
-            content: '<div>근린공원</div>',
-            latlng: new kakao.maps.LatLng(33.451393, 126.570738)
         }
     ];
 
