@@ -1,9 +1,7 @@
 package com.springbook.view.member;
-<<<<<<< HEAD
-=======
 
 import java.io.File;
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -24,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.SessionAttributes;
-=======
+
 import org.springframework.web.multipart.MultipartFile;
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
+
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.springbook.biz.common.MemberFileUtils;
@@ -188,7 +186,7 @@ public class MemberController {
 	}
 
 	// 회원정보 가져오기
-<<<<<<< HEAD
+
 	   @RequestMapping(value="/getMember.do")
 	   public String getMember(Model model, HttpSession session) throws IOException {
 	      
@@ -211,30 +209,6 @@ public class MemberController {
 	      return null;
 	      
 	   }
-=======
-	@RequestMapping(value = "/getMember.do")
-	public String getMember(Model model, HttpSession session) throws IOException {
-
-		System.out.println("======> getmember 컨트롤러 탐");
-		// Model 객체는 RequestServlet 데이터 보관소에 저장
-		// RequestServlet 데이터 보관소에 저장하는 것과 동일하게 동작
-		// request.setAttribute("board", boardDAO.getBoard(vo)) ==
-		// model.addAttribute("board", boardDAO.getBoard(vo))
-		try {
-			MemberVO vo = (MemberVO) session.getAttribute("member");
-			System.out.println("======> 세션가져왔어");
-			System.out.println(memberService.getMember(vo).toString());
-			model.addAttribute("memberInfo", memberService.getMember(vo));
-			// model.addAttribute("mLicenseInfo",memberService.getMember(vo));
-
-			return "changeinfo.jsp";
-		} catch (Exception e) {
-
-		}
-		return null;
-
-	}
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
 
 	// 회원정보 수정
 	@RequestMapping(value = "/updateMember.do")
@@ -253,7 +227,7 @@ public class MemberController {
 		memberService.updateMember(vo);
 		return "redirect:Mypage.jsp";
 	}
-<<<<<<< HEAD
+
 	
 	   // 비밀번호 email로 전송 받긔			
 	   @Autowired
@@ -290,76 +264,7 @@ public class MemberController {
 	    }
 	    }
 	    
-	    //아이디 중복 체크
-	    @RequestMapping(value = "/id_check.do")
-	    @ResponseBody
-		public String idCheck(@RequestParam("id") String id
-				/*HttpServletResponse response*/) throws IOException {
-			MemberVO vo = memberService.idChk(id);
-			
-			//response.setContentType("text/html;charset=UTF-8");
-			String msg = "";
-			if(vo != null) {
-				msg = "fail";
-			} else {
-				msg = "success";
-			}
-			 return msg;
-			//PrintWriter writer = response.getWriter();
-			//writer.println(msg);
-		}
-	    
-	    //마이페이지 회원 탈퇴
-	    //회원권한 정지
-		@RequestMapping(value="/Withdrawal.do")
-		public String Withdrawal(MemberVO vo, HttpServletRequest request, Model model, HttpSession session
-				) throws IOException {
-			System.out.println("회원 탈퇴 처리");
-			System.out.println("카테고리 : " + vo.getmAccountStatus());
-			
-			int seq = vo.getmSeq();
-			
-			memberService.Withdrawal(vo);
-			session.invalidate();
-			return "index.jsp";
-=======
-
-	// 비밀번호 email로 전송 받긔
-	@Autowired
-	private EmailSender emailSender;
-	@Autowired
-	private Email email;
-
-	@RequestMapping("/findPWD.do")
-	public String sendEmailAction(MemberVO vo, Model model) throws Exception {
-
-		System.out.println("====> 이메일 컨트롤러 탐");
-
-		if (memberService.findPassword(vo) == null) {
-
-			model.addAttribute("check", 3);
-
-			return "find-account.jsp";
-
-		} else {
-
-			MemberVO memberPassword = memberService.findPassword(vo);
-
-			String pw = memberPassword.getmPassword();
-
-			model.addAttribute("check", 4);
-			String id = memberPassword.getmId();
-			String e_mail = memberPassword.getmEmail();
-
-			email.setContent("비밀번호는 " + pw + " 입니다.");
-			email.setReceiver(e_mail);
-			email.setSubject("랜덤제주" + id + "님 비밀번호 찾기 메일입니다.");
-			emailSender.SendEmail(email);
-
-			return "redirect:login.jsp";
-		}
-
-	}
+	 
 
 	// 아이디 중복 체크
 	@RequestMapping(value = "/id_check.do")
@@ -445,7 +350,7 @@ public class MemberController {
 				
 			memberService.memberKeep(vo);
 			return "getMemberList.do";
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
+
 		}
 
 }

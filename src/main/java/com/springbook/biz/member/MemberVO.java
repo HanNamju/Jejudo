@@ -124,17 +124,13 @@ public class MemberVO {
 	public void setmIntroduce(String mIntroduce) {
 		this.mIntroduce = mIntroduce;
 	}
-<<<<<<< HEAD
-	public String getmAccountStatus() {
-		return mAccountStatus;
-	}
-=======
+
 
 	public String getmAccountStatus() {
 		return mAccountStatus;
 	}
 
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
+
 	public void setmAccountStatus(String mAccountStatus) {
 		this.mAccountStatus = mAccountStatus;
 	}
