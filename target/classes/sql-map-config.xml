@@ -11,8 +11,9 @@
 	</settings>
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias type="com.springbook.biz.trip.TripVO" alias="trip"></typeAlias>
-		<typeAlias type="com.springbook.biz.trip.TripFileVO" alias="tripFile"></typeAlias>
+		<typeAlias type="com.springbook.biz.trip.TripVO" alias="trip"/>
+		<typeAlias type="com.springbook.biz.trip.TripFileVO" alias="tripFile"/>
+		<typeAlias type="com.springbook.biz.trip.TripMemberVO" alias="tripMember"/>
 
 		<typeAlias type="com.springbook.biz.member.MemberVO" alias="member" />
 		<typeAlias type="com.springbook.biz.member.MemberFileVO" alias="memberFile" />

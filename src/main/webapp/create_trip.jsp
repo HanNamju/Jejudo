@@ -82,6 +82,16 @@
     #name {
         padding-left: 5%;
     }
+    
+    #hostInfo {
+    
+    padding-left: 5%;
+    background-color: white
+    
+    
+    }
+    
+    
 
     label {
         font-size: 12px;
@@ -131,7 +141,24 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="input-with-icon">
+										<label>Host 정보</label> 											
+											<input type="text" name="tmId"
+											id="hostInfo" value="${hostInfo.mId }" readonly="readonly" />
+											
+											<input type="text" name="tmName"
+											id="hostInfo" value="${hostInfo.mName }" readonly="readonly" />	
+											
+											<input type="hidden" name="tmRole" value="h"/>		
+																			
+											<input type="hidden" name="mSeq" value="${hostInfo.mSeq }"/>										
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
                                 <div class="col-sm-12">
                                     <div class="input-with-icon">
                                         <label>여행 제목</label> <input type="text" name="trName" id="name"

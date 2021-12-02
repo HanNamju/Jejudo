@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.trip.CommentVO;
 import com.springbook.biz.trip.TripFileVO;
+import com.springbook.biz.trip.TripMemberVO;
 import com.springbook.biz.trip.TripService;
 import com.springbook.biz.trip.TripVO;
 
@@ -66,6 +68,25 @@ public class TripServiceImpl implements TripService {
 		tripDAO.deleteFileList(seq);
 		
 	}
+	
+	@Override
+	public void insertTripMembers(TripMemberVO vo) {
+		tripDAO.insertTripMembers(vo);
+		
+	}
+	
+	@Override
+	public int countMember() {
+		return tripDAO.countMember();
+	}
+	
+	//################################ ³²ÁÖ´Ô ¿µ¿ª ##################################
+	
+	@Override
+	public List<CommentVO> readComment(int seq) {		
+		return tripDAO.readComment(seq);
+	}
+	
 
 	
 }

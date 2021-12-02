@@ -41,6 +41,30 @@
                     ) 
    ]]> 
    </insert>
+   
+   	<insert id="insertTripMembers" parameterType="tripMember">
+		INSERT INTO TRIP_MEMBERS (
+									TM_SEQ,
+									TR_SEQ,
+									M_SEQ,
+									TM_ROLE,	
+									TM_NAME,
+									TM_ID							
+								)
+						VALUES (									
+									(SELECT IFNULL(MAX(TM_SEQ), 0) + 1 FROM TRIP_MEMBERS A),																	
+									(SELECT MAX(TR_SEQ) FROM TRIP),											
+									#{mSeq},
+									#{tmRole},
+									#{tmName},
+									#{tmId}									
+								)
+	</insert>
+	
+	<select id="countMember" resultType="int">
+		SELECT COUNT(*) FROM TRIP_MEMBERS WHERE TR_SEQ = (SELECT MAX(TR_SEQ) FROM TRIP)
+	</select>
+	
 
 
 
@@ -140,4 +164,37 @@
 		DELETE FROM TRIP_FILE
 		WHERE SEQ = #{seq}
 	</delete>
+	
+	
+	
+	<!-- ################################ 남주님 영역 ######################################################3 -->
+
+	<!-- 남주 1201 방에서 댓글로 대화하기 -->
+	<select id="readComment"
+		resultType="com.springbook.biz.trip.CommentVO">
+		SELECT *
+		FROM COMMENT
+		WHERE TR_SEQ = #{trSeq}
+		ORDER BY CM_SEQ DESC;
+	</select>
+
+	<!-- 남주 1202 방에 댓글 남기기 -->
+	<insert id="insertComment">
+		INSERT INTO COMMENT(
+		CM_SEQ
+		, TR_SEQ
+		, M_SEQ
+		, M_NAME
+		,CM_COMENT)
+		VALUES(
+
+		);
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

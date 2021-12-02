@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.trip.CommentVO;
 import com.springbook.biz.trip.TripFileVO;
+import com.springbook.biz.trip.TripMemberVO;
 import com.springbook.biz.trip.TripFileVO;
 import com.springbook.biz.trip.TripVO;
 
@@ -74,6 +76,26 @@ public class TripDAOMybatis {
 		mybatis.delete("TripDAO.deleteFileList", seq);
 		
 	}
+
+	public void insertTripMembers(TripMemberVO vo) {
+		mybatis.insert("TripDAO.insertTripMembers", vo);
+		
+	}
+
+	public int countMember() {
+		System.out.println("====> Mybatis로countMember() 기능 처리");
+		return mybatis.selectOne("TripDAO.countMember");
+		
+	}
+	
+	//######################## 남주님 영역################################
+	
+	public List<CommentVO> readComment(int seq){
+	      System.out.println("======> Mybatis로 readComment() 기능처리");
+	      return mybatis.selectList("TripDAO.readComment", seq);
+	   }
+	
+	
 
 
 

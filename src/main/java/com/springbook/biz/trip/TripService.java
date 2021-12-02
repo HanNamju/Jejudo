@@ -36,4 +36,15 @@ public interface TripService {
 	
 	//게시글 삭제시 해당 게시글의 첨부파일 모두 삭제
 	void deleteFileList(int seq);
+	
+	// 여행맴버 등록
+	void insertTripMembers(TripMemberVO vo);
+	
+	int countMember();
+	
+	//######################## 남주님 영역 ####################################
+	
+	//댓글 불러오기
+	List<CommentVO> readComment(int seq);
+	
 }
