@@ -65,6 +65,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMember(vo);
 
 	}
+
 	// 아이디 중복 체크하기
 	@Override
 	public MemberVO idChk(String id) {

@@ -12,6 +12,8 @@
 
 	<!-- 의찬 로그인 -->
 
+
+
 	<select id="login" parameterType="Member" resultType="Member">
 	 <![CDATA[
         SELECT *
@@ -46,7 +48,6 @@
 						  , M_IMG_NAME
 						  , M_LICENSE
 						  , M_INTRODUCE
-						  
 						 )
 				  VALUES(
 				  			(SELECT IFNULL(MAX(M_SEQ), 0) + 1 FROM MEMBER A)
@@ -62,8 +63,7 @@
 				  		  , #{mImgName}
 				  		  , #{mLicense}  
 				  		  , #{mIntroduce}
-				  		  		  
-				  		) 
+				  		  )
 		]]>
 	</insert>
 
@@ -153,6 +153,7 @@
 				`M_ACCOUNT_STATUS` = M_ACCOUNT_STATUS +3
 					WHERE M_SEQ = #{mSeq}
 	</update>
+
 	<!-- 맴버테이블에서 맴버Status 가져오기 -->
 	<select id="getMemberAccountStatus" parameterType="String" resultType="int">
 		SELECT M_ACCOUNT_STATUS FROM MEMBER 
@@ -180,6 +181,7 @@
 		SELECT * FROM MEMBER 
 		]]>
 	</select>
+
 </mapper>
 	
 	

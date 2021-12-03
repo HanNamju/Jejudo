@@ -51,6 +51,7 @@
         <section class="blog-post">
             <div class="blog-post__title bg--secondary">
                 <div style="text-align: center;">
+               		<h4>${trip.trMode }</h4>
                     <h2 >${trip.trName }</h2>
                 </div>
                 <div class="container" style="display: flex; flex-direction: row-reverse;" >
@@ -337,7 +338,7 @@
                         <h5>방 공유하기</h5>
                         <a class="btn btn--sm bg--facebook" href="#">
                             <span class="btn__text">
-                                <i class="fas fa-link"></i>링크 복사하기
+                                <i class="fas fa-link"></i>참여하기
                             </span>
                         </a>
 
@@ -345,61 +346,9 @@
                     </div>
                 </div>
             </div>
-            <!--end of row-->
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                    <div class="blog-post__comments">
-                        <hr>
-                        <h6>Comments:</h6>
-                        <ul>
-                            <li>
-                                <div class="comment">
-                                    <div class="comment__image">
-                                        <img alt="pic" src="img/avatar-small-4.png" />
-                                    </div>
-                                    <div class="comment__text">
-                                        <h5>허지윤</h5>
-                                        <span>
-                                            <em>March 17th, 2016</em>
-                                        </span>
-                                        <p>
-                                            안녕하세요~
-                                        </p>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <!--end comment-->
-                            <li>
-                                <div class="comment">
-                                    <div class="comment__image">
-                                        <img alt="pic" src="img/avatar-small-1.png" />
-                                    </div>
-                                    <div class="comment__text">
-                                        <h5>허지윤</h5>
-                                        <span>
-                                            <em>March 15th, 2016</em>
-                                        </span>
-                                        <p>
-                                            저 지금 공항 앞이에요
-                                        </p>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <!--end comment-->
-                            </li>
-                        </ul>
-                        <form class="comment__form form--square">
-                            <h6>Leave a Comment</h6>
-                            <!-- <input placeholder="Your Name" type="text" name="name" /> -->
-                            <!-- <input placeholder="Email Address" type="email" name="email" /> -->
-                            <textarea placeholder="Your Comment" name="comment" rows="4"></textarea>
-                            <button type="submit" class="btn btn--primary">Submit Comment</button>
-                        </form>
-                    </div>
-                    <!--end of blog comments-->
-                </div>
-            </div>
-            <!--end of row-->
+            
+            
+ 
     </div>
     <!--end of container-->
     </section>

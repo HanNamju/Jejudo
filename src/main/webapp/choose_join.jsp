@@ -74,7 +74,7 @@
 							</div>
 							<!--end item-->
 							<div class="col-md-6 col-sm-6 masonry__item">
-								<a href="create_trip.jsp">
+								<a href="createTrip.do">
 									<div class="card card-4">
 										<div class="card__image">
 											<img alt="Pic" src="img/제주002.jpg" style="max-height: 50vh;" />

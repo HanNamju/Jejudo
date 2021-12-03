@@ -53,6 +53,7 @@
         <section class="blog-post">
             <div class="blog-post__title bg--secondary">
                 <div style="text-align: center;">
+                	<h4>${trip.trMode }</h4>
                     <h2 >${trip.trName }</h2>
                 </div>
                 <div class="container" style="display: flex; flex-direction: row-reverse;" >
@@ -373,10 +374,10 @@
             <div class="row">
                 <div class="col-md-12 col-sm-10 text-center">
                     <div class="blog-post__share">
-                        <h5>방 공유하기</h5>
+                        <h5>공유하기</h5>
                         <a class="btn btn--sm bg--facebook" href="#">
                             <span class="btn__text">
-                                <i class="fas fa-link"></i>링크 복사하기
+                                <i class="fas fa-link"></i>참
                             </span>
                         </a>
 

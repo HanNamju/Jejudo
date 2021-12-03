@@ -1,4 +1,5 @@
 package com.springbook.view.member;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -258,6 +260,7 @@ public class MemberController {
 	    }
 	    }
 	    
+
 	    //아이디 중복 체크
 	    @RequestMapping(value = "/id_check.do")
 	    @ResponseBody

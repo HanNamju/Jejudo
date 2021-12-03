@@ -281,6 +281,6 @@
 	<script src="js/smooth-scroll.min.js"></script>
 	<script src="js/scrollreveal.min.js"></script>
 	<script src="js/parallax.js"></script>
-	<script src="js/scripts.js"></script>
+	<script language=JavaScript src="js/scripts.js" charset='euc-kr'></script>
 </body>
 </html>

@@ -39,10 +39,31 @@
                       , #{trImgName}
                       , #{trImgPath}
                     ) 
-   ]]>
+   ]]> 
+   </insert>
+   
+   	<insert id="insertTripMembers" parameterType="tripMember">
+		INSERT INTO TRIP_MEMBERS (
+									TM_SEQ,
+									TR_SEQ,
+									M_SEQ,
+									TM_ROLE,	
+									TM_NAME,
+									TM_ID							
+								)
+						VALUES (									
+									(SELECT IFNULL(MAX(TM_SEQ), 0) + 1 FROM TRIP_MEMBERS A),																	
+									(SELECT MAX(TR_SEQ) FROM TRIP),											
+									#{mSeq},
+									#{tmRole},
+									#{tmName},
+									#{tmId}									
+								)
 	</insert>
-
-
+	
+	<select id="countMember" resultType="int">
+		SELECT COUNT(*) FROM TRIP_MEMBERS WHERE TR_SEQ = (SELECT MAX(TR_SEQ) FROM TRIP)
+	</select>
 
 	<!-- 참여하기 위해 방을 클릭했을때 방의 정보를 불러올때 사용 -->
 	<select id="getTrip" resultType="trip">
@@ -50,31 +71,6 @@
 		SELECT * FROM TRIP WHERE TR_SEQ = #{trSeq}
 	]]>
 	</select>
-
-	
-<!-- 	<select id="getTripList" resultType="HashMap">
-		SELECT   A.TR_SEQ as trSeq 
-				,A.TR_NAME as trName 
-				,A.TR_MODE as trMode 
-				,A.TR_AREA_SET as trAreaSet 
-				,A.TR_DATE_SET as trDateSet
-				,A.TR_STEPS as trSteps 
-				,A.TR_STEP_STATUS as trStepStatus 
-				,A.TR_GENDER_SET as trGenderSet 
-				,A.TR_PERSONNEL_SET as trPersonnelSet 
-			  	,A.TR_LICENSE_SET as trLicenseSet 
-			  	,A.TR_TRANSPORTATION_SET as trTransprotationSet 
-			  	,A.TR_PASSWORD_SET as trPasswordSet
-			  	,A.TR_INTRO as trIntro
-			  	,B.ORIGINAL_FILE_NAME AS orginalFileName
-			  	,B.FILE_PATH as filePath
-		    FROM TRIP A,
-		    	 TRIP_FILE B
-		   WHERE 1 = 1
-		     AND A.TR_SEQ = B.SEQ
-	</select> 
-	 -->
-	
 
 		<!-- roomCatagory.jsp 에서 방들의 리스트를 뿌려줄때 사용 박찬호 수정 -->
 	<select id="getTripList" resultType="HashMap">
@@ -94,7 +90,6 @@
 				  	,TR_IMG_NAME as trImgName
 				  	,TR_IMG_PATH as trImgPath 
 				  	FROM TRIP 	
->>>>>>> cfd3d07b8e19f2ac682a79b440d5c7d2f8a2b784
 	</select>
 
 	<select id="getTripSeq" resultType="int">
@@ -143,11 +138,34 @@
 		WHERE SEQ = #{seq}
 	</delete>
 
+	
+	
+	
+	<!-- ################################ 남주님 영역 ######################################################3 -->
+
+	<!-- 남주 1201 방에서 댓글로 대화하기 -->
+
+
 	<!-- 방에서 댓글로 대화하기 -->
-	<select id="readComment"
-		resultType="com.springbook.biz.trip.CommentVO">
+
+	<select id="readComment" resultType="com.springbook.biz.trip.CommentVO">
 		SELECT *
 		FROM COMMENT
-		WHERE CM_SEQ = #{trSeq}
+		WHERE TR_SEQ = #{trSeq}
+		ORDER BY CM_SEQ DESC;
 	</select>
+	
+	<insert id ="insertComment">
+      INSERT INTO COMMENT(
+      CM_SEQ
+      , TR_SEQ
+      , M_SEQ
+      , M_NAME
+      ,CM_COMENT)
+      VALUES(
+      
+       );
+   </insert>
+	
 </mapper>
+
