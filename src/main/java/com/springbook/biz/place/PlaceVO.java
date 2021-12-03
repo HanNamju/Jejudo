@@ -2,7 +2,6 @@ package com.springbook.biz.place;
 
 import javax.xml.bind.annotation.XmlTransient;
 
-
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,6 +11,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class PlaceVO {
@@ -33,19 +33,23 @@ public class PlaceVO {
 	public int getpSeq() {
 		return pSeq;
 	}
+
 	public void setpSeq(int pSeq) {
 		this.pSeq = pSeq;
 	}
-	
+
 	public int getZ_seq() {
 		return z_seq;
 	}
+
 	public void setZ_seq(int z_seq) {
 		this.z_seq = z_seq;
 	}
+
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
+
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
@@ -53,57 +57,75 @@ public class PlaceVO {
 	public String getpCategory() {
 		return pCategory;
 	}
+
 	public void setpCategory(String pCategory) {
 		this.pCategory = pCategory;
 	}
+
 	public String getpArea() {
 		return pArea;
 	}
+
 	public void setpArea(String pArea) {
 		this.pArea = pArea;
 	}
+
 	public String getpName() {
 		return pName;
 	}
+
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
+
 	public String getpAddress() {
 		return pAddress;
 	}
+
 	public void setpAddress(String pAddress) {
 		this.pAddress = pAddress;
 	}
+
 	public String getpTell() {
 		return pTell;
 	}
+
 	public void setpTell(String pTell) {
 		this.pTell = pTell;
 	}
+
 	public String getpInfo() {
 		return pInfo;
 	}
+
 	public void setpInfo(String pInfo) {
 		this.pInfo = pInfo;
 	}
+
 	public String getpImgpath() {
 		return pImgpath;
 	}
+
 	public void setpImgpath(String pImgpath) {
 		this.pImgpath = pImgpath;
 	}
+
 	public String getpXaxis() {
 		return pXaxis;
 	}
+
 	public void setpXaxis(String pXaxis) {
 		this.pXaxis = pXaxis;
 	}
+
 	public String getpYaxis() {
 		return pYaxis;
 	}
+
 	public void setpYaxis(String pYaxis) {
 		this.pYaxis = pYaxis;
 	}
+
 	@Override
 	public String toString() {
 		return "PlaceVO [z_seq=" + z_seq + ", pSeq=" + pSeq + ", pCategory=" + pCategory + ", pArea=" + pArea
@@ -111,11 +133,5 @@ public class PlaceVO {
 				+ ", pImgpath=" + pImgpath + ", pXaxis=" + pXaxis + ", pYaxis=" + pYaxis + ", uploadFile=" + uploadFile
 				+ "]";
 	}
-
-	
-
-
-	
-	
 
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -20,8 +20,6 @@ body {
 	padding-top: 70px;
 	padding-bottom: 30px;
 }
-
-
 </style>
 </head>
 
@@ -31,47 +29,54 @@ body {
 
 		<div class="container" role="main" style="background-color: white;">
 			<div style="display: flex; justify-content: space-between;">
-			<div><h2>글 수정하기</h2></div>
-			<div><button class="btn btn-dark">나가기</button></div>
+				<div>
+					<h2>글 수정하기</h2>
+				</div>
+				<div>
+					<button class="btn btn-dark">나가기</button>
+				</div>
 			</div>
-			<form method="post" action="updateBoard.do" enctype="multipart/form-data">
+			<form method="post" action="updateBoard.do"
+				enctype="multipart/form-data">
 				<div class="mb-3">
 					<label for="title"><h6>제목</h6></label> <input type="text"
 						class="form-control" name="title" id="title"
 						value="${board.title }">
-					
+
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="content"><h6>내용</h6></label>
 						<textarea style="height: 400px;" class="form-control" rows="8"
-							name="content" id="content" >${board.content }</textarea>
+							name="content" id="content">${board.content }</textarea>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="content"><h6>사진</h6></label>
-						<div class="image-container" >
-              <img style="width: 100%; height: 100%; " id="preview-image" src="upload/${fileList.originalFileName}">
-              <input style="display: block;" type="file" id="input-image" name="uploadfile">
-          </div>
+						<div class="image-container">
+							<img style="width: 100%; height: 100%;" id="preview-image"
+								src="upload/${fileList.originalFileName}"> <input
+								style="display: block;" type="file" id="input-image"
+								name="uploadfile">
+						</div>
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="tag">TAG</label> <input type="text"
 						class="form-control" id="tag" placeholder="태그를 입력해 주세요">
 				</div>
-				<div style="display: flex; justify-content: center;" >
-				
-				
-			
-					<div>	
-					
-					<button style="padding: 10px;" type="submit" class="btn btn-dark"
+				<div style="display: flex; justify-content: center;">
+
+
+
+					<div>
+
+						<button style="padding: 10px;" type="submit" class="btn btn-dark"
 							id="btnList">&nbsp수정&nbsp</button>
-										</form>
-				</div>
-				</div>
+			</form>
 		</div>
-		
+		</div>
+		</div>
+
 
 
 
