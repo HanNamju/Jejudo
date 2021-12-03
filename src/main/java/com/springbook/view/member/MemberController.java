@@ -328,5 +328,23 @@ public class MemberController {
 			memberService.memberKeep(vo);
 			return "getMemberList.do";
 		}
+		
+		// Member 목록 불러오기
+		@RequestMapping(value="/getMemberList.do", method= RequestMethod.GET)
+		public String getMemberList( 
+									MemberVO vo, Model model) {
+			System.out.println("글 목록 검색 처리");
+			String A = vo.getmAccountStatus();
+			System.out.println("mAccountStatus =" + A);
+			System.out.println(vo.getmGender());
+			System.out.println(vo.getmId());
+			System.out.println(vo.getmSeq());
+			
+			
+			
+			
+			model.addAttribute("MemberList", memberService.getMemberList(vo));
+			return "admin-MemberList.jsp";
+		}
 
 }

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "placeList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PlaceListVO {
-	//@XmlElement : 각 각의 엘리먼트들의 이름 지정
+	// @XmlElement : 각 각의 엘리먼트들의 이름 지정
 	@XmlElement(name = "place")
 	private List<PlaceVO> placeList;
 
