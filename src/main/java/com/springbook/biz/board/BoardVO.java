@@ -23,6 +23,7 @@ public class BoardVO {
 	private String title;
 	private String writer;
 	private String content;
+	private String category;
 	private Date regDate;
 	private int cnt;
 	//@XmlTransient : xml변환시 특정값 제외 == @JsonIgnore
@@ -63,6 +64,12 @@ public class BoardVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public int getCnt() {
 		return cnt;
 	}
@@ -95,6 +102,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", cnt=" + cnt + "]";
-	}	
+				+ regDate + ", category=" + category + ", cnt=" + cnt + ", SearchCondition=" + SearchCondition
+				+ ", SearchKeyword=" + SearchKeyword + ", uploadFile=" + uploadFile + "]";
+	}
 }

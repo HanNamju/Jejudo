@@ -60,4 +60,12 @@ public class BoardDAOMybatis {
 	public void deleteFileList(int seq) {
 		mybatis.delete("deleteFileList", seq);
 	}
+
+	public List<BoardVO> getMyBoardList(BoardVO vo) {
+		return mybatis.selectList("BoardDAO.getMyBoardList", vo);
+	}
+
+	public List<BoardVO> getBoardCategory(BoardVO vo) {
+		return mybatis.selectList("BoardDAO.getBoardCategory", vo);
+	}
 }
