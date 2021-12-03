@@ -145,7 +145,7 @@ WHERE `P_SEQ` = #{pSeq};
 	<select id="getPlaceFileList" parameterType="int" resultType="placeFile">
 		SELECT * FROM PLACE_FILE
 			WHERE SEQ = #{seq}
-			 AND F_SEQ = (SELECT MAX (F_SEQ) FROM PLACE_FILE A WHERE SEQ = #{seq}) 
+			 AND F_SEQ = (SELECT MAX(F_SEQ) FROM PLACE_FILE A WHERE SEQ = #{seq}) 
 	</select>
 	
 	<delete id="deleteFile" parameterType="placeFile">

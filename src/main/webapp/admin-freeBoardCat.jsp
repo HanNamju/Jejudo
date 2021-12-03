@@ -77,8 +77,8 @@
       <br>
       
       <div style="display: flex; justify-content: flex-start;">
-      <div class="btn"style=""><a href="getBoardCategory.do?category=etc">기타/잡담</a></div>
-      <div class="btn"><a href="getBoardCategory.do?category=place">장소추천</a></div>
+      <div class="btn"style=""><a href="getBoardCategory.do?pCategory=etc">기타/잡담</a></div>
+      <div class="btn"><a href="getBoardCategory.do?pCategory=place">장소추천</a></div>
       </div>
       
      <div class="card-body">

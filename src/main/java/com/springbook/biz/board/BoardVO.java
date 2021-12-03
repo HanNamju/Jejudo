@@ -24,7 +24,9 @@ public class BoardVO {
 	private String writer;
 	private String content;
 	private Date regDate;
+	private String category;
 	private int cnt;
+	
 	//@XmlTransient : xml변환시 특정값 제외 == @JsonIgnore
 	@XmlTransient
 	private String SearchCondition;
@@ -32,7 +34,6 @@ public class BoardVO {
 	private String SearchKeyword;
 	@XmlTransient
 	private MultipartFile uploadFile;
-	
 	public int getSeq() {
 		return seq;
 	}
@@ -63,38 +64,43 @@ public class BoardVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public int getCnt() {
 		return cnt;
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	//@JsonIgnore : Json형식의 데이터 만들 때 특정값 제외
-	@JsonIgnore
 	public String getSearchCondition() {
 		return SearchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
 		SearchCondition = searchCondition;
 	}
-	@JsonIgnore
 	public String getSearchKeyword() {
 		return SearchKeyword;
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		SearchKeyword = searchKeyword;
 	}
-	@JsonIgnore
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", cnt=" + cnt + "]";
-	}	
+				+ regDate + ", category=" + category + ", cnt=" + cnt + ", SearchCondition=" + SearchCondition
+				+ ", SearchKeyword=" + SearchKeyword + ", uploadFile=" + uploadFile + "]";
+	}
+	
+	
+	
 }

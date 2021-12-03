@@ -39,9 +39,7 @@ body {
 					<label for="title"><h6>제목</h6></label> <input type="text"
 						class="form-control" name="title" id="title"
 						value="${board.title }">
-						<input type="hidden"
-						class="form-control" name="writer" id="writer"
-						value="${member.mId}">
+					
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3">
@@ -66,6 +64,7 @@ body {
 				
 			
 					<div>	
+					
 					<button style="padding: 10px;" type="submit" class="btn btn-dark"
 							id="btnList">&nbsp수정&nbsp</button>
 										</form>

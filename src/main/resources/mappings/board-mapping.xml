@@ -47,10 +47,16 @@
 			WHERE SEQ = #{seq}
 		]]> 
 	</select>
+	<select id="getBoardCategory" resultType="board">
+		<![CDATA[
+		SELECT * FROM BOARD
+			WHERE category = #{category}
+		]]> 
+	</select>
 	
 	<select id="getBoardList" resultType="board">
 		<![CDATA[
-		SELECT * FROM BOARD
+		SELECT * FROM BOARD ORDER BY SEQ DESC 
 		]]> 
 	<!-- 	WHERE 1 = 1
 			<if test="searchCondition == 'TITLE'">
@@ -60,6 +66,13 @@
 				AND CONTENT LIKE '%' || #{searchKeyword} || '%'
 			</if>
 			ORDER BY SEQ DESC -->	
+	</select>
+		<select id="getMyBoardList" resultType="board">
+		<![CDATA[
+		SELECT * FROM BOARD
+		WHERE WRITER = #{writer}
+		]]> 
+	
 	</select>
 	
 	<select id="getBoardSeq" resultType="int">
@@ -92,7 +105,7 @@
 	<select id="getBoardFileList" parameterType="int" resultType="boardFile">
 		SELECT * FROM BOARD_FILE
 			WHERE SEQ = #{seq}
-			 AND F_SEQ = 1
+			 AND F_SEQ = (SELECT MAX(F_SEQ) FROM BOARD_FILE A WHERE SEQ = #{seq}) 
 	</select>
 	
 	<delete id="deleteBoardFile" parameterType="boardFile">
