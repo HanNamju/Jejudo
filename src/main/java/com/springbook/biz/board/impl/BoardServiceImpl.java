@@ -63,4 +63,14 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteFileList(int seq) {
 		boardDAO.deleteFileList(seq);
 	}
+
+	@Override
+	public List<BoardVO> getMyBoardList(BoardVO vo) {
+		return boardDAO.getMyBoardList(vo);
+	}
+
+	@Override
+	public List<BoardVO> getBoardCategory(BoardVO vo) {
+		return boardDAO.getBoardCategory(vo);
+	}
 }

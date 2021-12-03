@@ -33,4 +33,8 @@ public interface BoardService {
 	
 	//게시글 삭제 시 해당 게시글의 첨부파일 모두 삭제
 	void deleteFileList(int seq);
+
+	List<BoardVO> getMyBoardList(BoardVO vo);
+
+	List<BoardVO> getBoardCategory(BoardVO vo);
 }
