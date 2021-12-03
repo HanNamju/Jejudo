@@ -69,13 +69,11 @@ public class MemberDAOMybatis {
 		return member;
 	}
 
-
 	// 회원 탈퇴
 	public void Withdrawal(MemberVO vo) {
 		System.out.println("===>MyBatis로 Withdrawal 기능처리");
 		mybatis.update("MemberDAO.Withdrawal", vo);
 	}
-
 
 	//아이디 비교하기
 	public MemberVO existId(String mId) {
@@ -106,6 +104,4 @@ public class MemberDAOMybatis {
 
 		mybatis.update("MemberDAO.memberKeep", vo);
 	}
-
-
 }

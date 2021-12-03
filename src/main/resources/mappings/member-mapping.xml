@@ -13,8 +13,8 @@
 	<!-- 의찬 로그인 -->
 
 
-	<select id="login" parameterType="Member" resultType="Member">
 
+	<select id="login" parameterType="Member" resultType="Member">
 	 <![CDATA[
         SELECT *
           FROM MEMBER
@@ -22,7 +22,6 @@
            		AND M_PASSWORD = #{mPassword}
            			AND M_ACCOUNT_STATUS < 3
       ]]>
-
 	</select>
 
 	<!-- 회원 비밀번호 체크 -->
@@ -31,9 +30,6 @@
 		WHERE M_ID= #{mPassword}
 		AND M_PASSWORD =#{mPassword}
 	</select>
-
-
-
 
 	<!-- 회원가입 -->
 	<insert id="insertMember">
@@ -68,7 +64,6 @@
 				  		  , #{mLicense}  
 				  		  , #{mIntroduce}
 				  		  )
-
 		]]>
 	</insert>
 
@@ -139,14 +134,12 @@
 		WHERE M_ID=#{mId} AND M_NAME=#{mName} AND M_EMAIL=#{mEmail}
 	</select>
 
-	
 	<!--  아이디 체크 -->
 	<select id="existId" resultType="member">		
 		SELECT * FROM MEMBER 
 			WHERE M_ID=#{mId}
 	</select>
 	
-
 	<!-- 아이디 중복체크 -->
 	<select id="idChk" parameterType="String" resultType="member">
 		SELECT * FROM MEMBER

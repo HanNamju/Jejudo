@@ -124,13 +124,9 @@ public class MemberVO {
 	public void setmIntroduce(String mIntroduce) {
 		this.mIntroduce = mIntroduce;
 	}
-
-
 	public String getmAccountStatus() {
 		return mAccountStatus;
 	}
-
-
 	public void setmAccountStatus(String mAccountStatus) {
 		this.mAccountStatus = mAccountStatus;
 	}

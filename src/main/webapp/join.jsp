@@ -148,6 +148,7 @@ input[type="checkbox"] {
 	<a id="top"></a>
 	<div class="loader"></div>
 
+	<jsp:include page="Header_2.jsp" />
 	<!--end of modal-container-->
 	<div class="main-container transition--fade">
 		<section class="cover cover-8" style="height: 130em;">
@@ -187,6 +188,10 @@ input[type="checkbox"] {
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
 									placeholder="input your id" onblur = "idcheck()" required>
+<<<<<<< HEAD
+=======
+								<input type="hidden" name="mAccountStatus" value="0" />
+>>>>>>> b376ad06570b07404ab00b802fb3c1795fda90e0
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 
@@ -321,8 +326,10 @@ input[type="checkbox"] {
 		</section>
 
 		<!-- footer -->
+
 	</div>
 
+	<jsp:include page="tail.jsp" />
 	<script>
         // 부정 입력 방지 이벤트
         window.addEventListener('load', () => {
@@ -399,11 +406,8 @@ input[type="checkbox"] {
     				}
     			},
     			error:function(request,status,error){
-<<<<<<< HEAD
-    	             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-=======
+
     	             alert("중복된 아이디를 그대로 사용하셨습니다. 다시 회원가입 부탁드립니다."+error);
->>>>>>> ed68082b732abcf5717eb20d79b57248152ff13b
     	          }
     		});
     	}

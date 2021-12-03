@@ -1,3 +1,4 @@
+
 package com.springbook.view.trip;
 
 import java.io.File;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -214,34 +216,53 @@ public class TripController {
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	// >>>                       여행에 참여하기									                     |||
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	
-	
+	//, produces = "application/text; charset=utf8"
+	   @ResponseBody
 	   @RequestMapping(value = "/attendTrip.do")
 	   public String attendTrip(TripMemberVO tmvo, HttpServletRequest request, Model model, HttpSession session
 			   ,HttpServletResponse response)
 	         throws IOException {
-	      System.out.println("======> attendTrip 컨트롤러 탐");
+	      System.out.println("======> 1) attendTrip 컨트롤러 탐");
 	      
 	      MemberVO vo = (MemberVO)session.getAttribute("member");
-	           
+	      System.out.println("======> 세션에서 가져온 MemberVO" + vo.toString());
+	      
+	      TripVO tvo = (TripVO)session.getAttribute("trip");
+	      System.out.println("======> 세션에서 가져온 TripVO" + tvo.toString());
+	      
 	      tmvo.setmSeq(vo.getmSeq());
 	      tmvo.setTmName(vo.getmName());
 	      tmvo.setTmId(vo.getmId());
-	      tmvo.setTmRole("g");
-
+	      tmvo.setTmRole("g");		      
+	      
+	      int trSeq = tvo.getTrSeq();
+	      System.out.println("=====> 여행 일련번호:" + trSeq);
+	      
+	      int tcnt = tvo.getTrPersonnelSet();
+	      System.out.println("=====> 설정한 인원:" + tcnt);
+	      
 	      int cnt = tripService.countMember();
+	      System.out.println("=====> 참가중인 인원:" + cnt);
+	      	      
+	      String resultmsg="";
+	      if(tcnt > cnt) {
+	    	  tripService.insertTripMembers(tmvo);	    	  
+	    	  System.out.println("=====> 참가 성공");
+	    	  
+	    	  response.setContentType("text/html; charset=utf-8");
+	    	  resultmsg="<script>alert('여행에 참가 하였습니다.');location.href='getTripList.do'</script>";	    	  
+
+	      } else {
+	    	  session.setAttribute("trip", tvo);
+	    	  System.out.println("=====> 참가 실패");
+	    	  
+	    	  response.setContentType("text/html; charset=utf-8");
+	    	  resultmsg="<script>alert('인원을 초과 하였습니다.');location.href='getTripList.do'</script>";	 
+
+	      }
 	      
-	      System.out.println("======참가중인 인원:" + cnt);
-	      PrintWriter out = response.getWriter();
-	      // 설정한 인원보다 참가한 사람수가 적을 경우 참가 가능
-	    	  
-	    tripService.insertTripMembers(tmvo);
-	    	  
-	    	  
-	    	 // out.println("<script>alert('참가 가능 인원을 초과 하였습니다.');</script>");
-	 
-	      
-	      return "redirect:index.jsp";
+	      	return resultmsg;
+	      	   	
 	   }
 	
 	
