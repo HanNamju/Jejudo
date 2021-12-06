@@ -188,10 +188,6 @@ input[type="checkbox"] {
 								<label for="id">아이디</label> <input type="text"
 									class="form-control" id="id" name="mId"
 									placeholder="input your id" onblur = "idcheck()" required>
-<<<<<<< HEAD
-=======
-								<input type="hidden" name="mAccountStatus" value="0" />
->>>>>>> b376ad06570b07404ab00b802fb3c1795fda90e0
 								<div class="invalid-feedback">아이디를 입력해주세요.</div>
 							</div>
 

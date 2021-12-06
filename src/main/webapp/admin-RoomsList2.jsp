@@ -157,11 +157,8 @@ input[type="checkbox"] { display: none; }
                             </form>
                         </div>
                         <!--end widget-->
-<<<<<<< HEAD
-                         <div class="sidebar__widget">
-=======
+
                        <div class="sidebar__widget">
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
                             <h6>Categories</h6>
                             <ul  class="link-list">
                                 <li>
@@ -176,11 +173,9 @@ input[type="checkbox"] { display: none; }
                                 </li>
                                  <li>
                                     <a href="getPlaceAllList.do">
-<<<<<<< HEAD
-                        장소관리 
-=======
+
                      	장소관리 
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
+
                                     </a>
                                 </li>
                             </ul>

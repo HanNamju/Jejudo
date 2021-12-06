@@ -4,7 +4,6 @@ public class CommentVO {
 	private int cmSeq;
 	private int trSeq;
 	private int mSeq;
-	private String mName;
 	private String cmTime;
 	private String cmComent;
 	
@@ -26,12 +25,6 @@ public class CommentVO {
 	public void setmSeq(int mSeq) {
 		this.mSeq = mSeq;
 	}
-	public String getmName() {
-		return mName;
-	}
-	public void setmName(String mName) {
-		this.mName = mName;
-	}
 	public String getCmTime() {
 		return cmTime;
 	}
@@ -46,9 +39,8 @@ public class CommentVO {
 	}
 	@Override
 	public String toString() {
-		return "CommentVO [cmSeq=" + cmSeq + ", trSeq=" + trSeq + ", mSeq=" + mSeq + ", mName=" + mName + ", cmTime="
-				+ cmTime + ", cmComent=" + cmComent + "]";
-	}
-	
-	
+		return "CommentVO [cmSeq=" + cmSeq + ", trSeq=" + trSeq + ", mSeq=" + mSeq + 
+				 ", cmTime=" + cmTime + ", cmComent=" + cmComent
+				+ "]";
+	}	
 }

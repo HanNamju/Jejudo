@@ -2,7 +2,6 @@ package com.springbook.biz.member;
 
 import java.util.List;
 
-import com.springbook.biz.member.MemberFileVO;
 import com.springbook.biz.member.MemberVO;
 
 public interface MemberService {
@@ -16,8 +15,6 @@ public interface MemberService {
 
 	// 맴버 스퀀스 조회
 	int getMemberSeq();
-
-	void insertMemberFileList(List<MemberFileVO> fileList);
 
 	// 아이디 찾기
 	MemberVO findId(MemberVO vo);

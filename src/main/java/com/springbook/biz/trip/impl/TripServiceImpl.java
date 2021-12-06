@@ -13,21 +13,21 @@ import com.springbook.biz.trip.TripVO;
 
 @Service("tripService")
 public class TripServiceImpl implements TripService {
-	
+
 	@Autowired
 	private TripDAOMybatis tripDAO;
 
 	@Override
 	public void insertTrip(TripVO vo) {
-		tripDAO.insertTrip(vo);		
+		tripDAO.insertTrip(vo);
 	}
 
 	@Override
 	public void deleteTrip(TripVO vo) {
-		tripDAO.deleteTrip(vo);		
+		tripDAO.deleteTrip(vo);
 	}
-	
-	//여행 상세 조회
+
+	// 여행 상세 조회
 	@Override
 	public TripVO getTrip(TripVO vo) {
 		// TODO Auto-generated method stub
@@ -49,7 +49,7 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public void insertTripFileList(List<TripFileVO> fileList) {
 		tripDAO.insertTripFileList(fileList);
-		
+
 	}
 
 	@Override
@@ -60,33 +60,43 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public void deleteFile(TripFileVO vo) {
 		tripDAO.deleteFile(vo);
-		
+
 	}
 
 	@Override
 	public void deleteFileList(int seq) {
 		tripDAO.deleteFileList(seq);
-		
+
 	}
-	
+
 	@Override
 	public void insertTripMembers(TripMemberVO vo) {
 		tripDAO.insertTripMembers(vo);
-		
+
 	}
-	
+
+	// 여행방 참여 인원수 조회
 	@Override
-	public int countMember() {
-		return tripDAO.countMember();
+	public int countMember(TripMemberVO vo) {
+		return tripDAO.countMember(vo);
 	}
-	
-	//################################ 남주님 영역 ##################################
-	
+
+	// 여행방 인원 중복 검사
 	@Override
-	public List<CommentVO> readComment(int seq) {		
+	public int checkContain(TripMemberVO vo) {
+		return tripDAO.checkContain(vo);
+	}
+
+	// ################################ 남주님 영역 ##################################
+
+	@Override
+	public List<CommentVO> readComment(int seq) {
 		return tripDAO.readComment(seq);
 	}
-	
 
-	
+	@Override
+	public void insertComment(CommentVO vo) {
+		tripDAO.insertComment(vo);
+	}
+
 }

@@ -25,8 +25,8 @@
 						<li>
 							<ul>
 								<li><a href="about.jsp"> 소개 </a></li>
-								<li><a href="elements-buttons.html"> 이야기 </a></li>
-								<li><a href="elements-cards.html"> 개발자들 </a></li>
+								<!-- <li><a href="elements-buttons.html"> 이야기 </a></li> -->
+								<li><a href="dev.jsp"> 개발자들 </a></li>
 							</ul>
 						</li>
 					</ul></li>
@@ -69,8 +69,8 @@
 							<ul>
 								<li>
 									<ul>
-										<li><a href="elements-accordions.html"> 자유 게시판 </a></li>
-										<li><a href="elements-buttons.html"> 장소 추천 게시판 </a></li>
+										<li><a href="getBoardList.do"> 자유 게시판 </a></li>
+										<li><a href="getReviewBoardList.do"> 장소 추천 게시판 </a></li>
 									</ul>
 								</li>
 							</ul>
@@ -92,35 +92,7 @@
 						</li>
 					</ul></li>
 				</c:if>
-				<!-- Review -->
-				<c:if test="${not empty member or not empty member.mId }">
-				<li><a href="#"> Review </a>
-					<ul class="multi-column">
-						<li>
-							<ul>
-								<li>
-									<ul>
-										<li><a href="elements-buttons.html"> 리뷰 </a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul></li>
-				</c:if>
-				<c:if test = "${empty member or empty member.mId }">
-				<li><a href="#"> Review </a>
-					<ul class="multi-column">
-						<li>
-							<ul>
-								<li>
-									<ul>
-										<li><a href="login.jsp"> 리뷰 </a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul></li>
-				</c:if>
+				
 				<li><a href="#">mypage</a>
 					<ul class="multi-column">
 						<li>

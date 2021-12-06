@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springbook.biz.member.MemberFileVO;
 import com.springbook.biz.member.MemberService;
 import com.springbook.biz.member.MemberVO;
 
@@ -27,11 +26,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.insertMember(vo);
 	}
 
-	// 회원가입시 프로필 이미지 저장
-	@Override
-	public void insertMemberFileList(List<MemberFileVO> fileList) {
-		memberDAO.insertMemberFileList(fileList);
-	}
 
 	// MEMBER TABLE 에서 시퀀서번호 가져오기
 	@Override

@@ -26,6 +26,27 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700%7CMontserrat:400,700'
 	rel='stylesheet' type='text/css'>
+	<style>
+		.wide-grid img{height:40vh;}
+	.row{
+		font-size:11px;
+		
+	}
+	.row .col-md-12{
+		display:table-cell;
+		text-align:center;
+		line-height:1em;
+	}
+	.masonry__item{
+		position:relative !important;
+		left:0px !important; right:0px  !important;
+		top:0px  !important;
+	}
+	.masonry__container{
+		height:auto !important;
+	}
+	
+	</style>
 </head>
 <body class="scroll-assist">
 	<a id="top"></a>
@@ -61,7 +82,7 @@
 
 				<c:forEach var="trip" items="${tripList}" varStatus="status">
 					<div
-						class="col-md-3 col-sm-4 col-xs-6 masonry__item modal-instance"
+						class="col-md-3 col-sm-6 col-xs-12 masonry__item modal-instance"
 						data-masonry-filter="${trip.trMode}">
 
 
@@ -99,60 +120,56 @@
 											</div>
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
-													<div class="row">
-														<div class="col-md-12"
+													<div class="row" style="display:flex; flex-wrap:wrap;">
+														<div class="col-md-12 col-sm-12"
 															style="height: 26px; border-bottom: 2px solid #eee; margin-bottom: 5px;">
 															<span><em>${trip.trName }</em></span>
 														</div>
 														<br>
-														<div class="col-md-3">
-															<span><em>인원 :</em></span>
+														<div class="col-md-12 col-sm-12">
+															<span><em>인원 :</em>&nbsp;
+															<em>  ${trip.trPersonnelSet }</em></span>
 														</div>
-														<div class="col-md-9">
-															<span><em> / ${trip.trPersonnelSet }</em></span>
-														</div>
-														<div class="col-md-3">
-															<span><em>성별 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="gender">
+														<br>
+														<div class="col-md-12 col-sm-12">
+															<span><em>성별 : </em>&nbsp;
+															<span name="gender">
 																<c:choose>
 																	<c:when test="${trip.trGenderSet eq 'F'}">여자만!</c:when>
 																	<c:when test="${trip.trGenderSet eq 'M'}">남자만!</c:when>
 																	<c:otherwise>무관</c:otherwise>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
-														<div class="col-md-3">
-															<span><em>암호 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="pwd">
+														<br>
+														<div class="col-md-12 col-sm-12">
+															<span><em>암호 : </em>&nbsp;
+															<span name="pwd">
 																<c:choose>
 																	<c:when test="${empty trip.trPasswordSet }">없음</c:when>
 																	<c:when test="${not empty trip.trPasswordSet }">있음</c:when>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
-														<div class="col-md-3">
-															<span><em>면허 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="license">
+														<br>
+														<div class="col-md-12 col-sm-12" style="height: 26px;">
+															<span><em>면허 : </em>&nbsp;
+															<span name="license">
 																<c:choose>
 																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 O</c:when>
 																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 X</c:when>
 																	<c:otherwise>상관없음</c:otherwise>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
 														<br>
-														<div class="col-md-3">
-															<span><em>모드 :</em></span>
-														</div>
-														<div class="col-md-9">
-															<span> ${trip.trMode }</span>
-														</div>
+														<div class="col-md-12 col-sm-12">
+															<span><em>모드 :</em>&nbsp;
+													        <em>${trip.trMode }</em>
+														</span>
 														<div class="col-md-12">
 															<p style="color: black; background-color: #eee;">${trip.TR_INTRO }</p>
 														</div>
@@ -160,6 +177,7 @@
 												</div>
 											</div>
 										</div>
+									</div>
 									</div>
 								</a>
 							</c:when>
@@ -178,61 +196,56 @@
 											<div class="hover-element__reveal" data-overlay="9">
 												<div class="boxed" style="padding: 1.5em;">
 													<div class="row">
-														<div class="col-md-12"
+														<div class="col-md-12 col-sm-12"
 															style="height: 26px; border-bottom: 2px solid #eee; margin-bottom: 5px;">
 															<span><em>${trip.trName }</em></span>
 														</div>
 														<br>
-														<div class="col-md-3">
-															<span><em>인원 :</em></span>
+														<div class="col-md-12 col-sm-12">
+															<span><em>인원 :</em>&nbsp;
+															<em>  ${trip.trPersonnelSet }</em></span>
 														</div>
-														<div class="col-md-9">
-															<span><em> / ${trip.trPersonnelSet }</em></span>
-														</div>
-														<div class="col-md-3">
-															<span><em>성별 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="gender">
+														<br>
+														<div class="col-md-12 col-sm-12">
+															<span><em>성별 : </em>&nbsp;
+															<span name="gender">
 																<c:choose>
 																	<c:when test="${trip.trGenderSet eq 'F'}">여자만!</c:when>
 																	<c:when test="${trip.trGenderSet eq 'M'}">남자만!</c:when>
 																	<c:otherwise>무관</c:otherwise>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
-														<div class="col-md-3">
-															<span><em>암호 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="pwd">
+														<br>
+														<div class="col-md-12 col-sm-12">
+															<span><em>암호 : </em>&nbsp;
+															<span name="pwd">
 																<c:choose>
 																	<c:when test="${empty trip.trPasswordSet }">없음</c:when>
 																	<c:when test="${not empty trip.trPasswordSet }">있음</c:when>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
-														<div class="col-md-3">
-															<span><em>면허 : </em></span>
-														</div>
-														<div class="col-md-9" style="height: 26px;">
-															<p name="license">
+														<br>
+														<div class="col-md-12 col-sm-12" style="height: 26px;">
+															<span><em>면허 : </em>&nbsp;
+															<span name="license">
 																<c:choose>
 																	<c:when test="${trip.trLicenseSet eq 'Y'}">면허 O</c:when>
 																	<c:when test="${trip.trLicenseSet eq 'N'}">면허 X</c:when>
 																	<c:otherwise>상관없음</c:otherwise>
 																</c:choose>
-															</p>
+															</span>
+															</span>
 														</div>
-														<br>
-														<div class="col-md-3">
-															<span><em>모드 :</em></span>
-														</div>
-														<div class="col-md-9">
-															<span> ${trip.trMode }</span>
+													<br>
+														<div class="col-md-12 col-sm-12">
+															<span><em>모드 :</em>&nbsp;<em>${trip.trMode }</em></span>
 														</div>
 														<div class="col-md-12">
-															<p style="color: black; background-color: #eee;">${trip.TR_INTRO }</p>
+															<em style="color: black; background-color: #eee;">${trip.TR_INTRO }</em>
 														</div>
 													</div>
 												</div>

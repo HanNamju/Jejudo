@@ -44,37 +44,6 @@ h1, h2, h3, h4, h5, h6, p, div {
 	padding: 1.4375em;
 	margin-bottom: 30px;
 }
-
-.comment {
-	margin-left: 5%;
-}
-
-.chatbox {
-	/* border: solid 1px gray; */
-	padding-left: 1em;
-	padding-right: 1em;
-	width: fit-content;
-	background-color: #d0d9f5;
-	border-radius: 10%/60%;
-	font-size: 13px;
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-top: 2%;
-	padding-bottom: 2%;
-}
-
-.cimg {
-	width: auto !important;
-}
-
-.csimg {
-	width: 3em;
-	margin-right: 1em;
-}
-
-em {
-	font-size: 12px;
-}
 </style>
 </head>
 
@@ -387,27 +356,26 @@ em {
 								<c:forEach items="${commentList}" var="commentList">
 									<li>
 										<div class="comment">
-											<div class="comment__image cimg">
-												<img alt="pic" src="/upload/${commentList.mImgName }" />
+											<div class="comment__image">
+												<img alt="pic" src="img/avatar-small-1.png" />
 											</div>
 											<div class="comment__text">
-												<div>
-													<b>${commentList.mNickname}</b> <em>${commentList.cmTime}</em>
-												</div>
-												<p class="chatbox">${commentList.cmComent}</p>
+												<h5>${commentList.mName}</h5>
+												<span> <em>${commentList.cmTime}</em>
+												</span>
+												<p>${commentList.cmComent}</p>
 											</div>
-
+											<hr>
 										</div> <!--end comment-->
 									</li>
 								</c:forEach>
 							</ul>
 						</div>
-						<form class="comment__form form--square" action="insertComment.do"
-							method="post">
+						<form class="comment__form form--square">
 							<h6>Leave a Comment</h6>
 							<!-- <input placeholder="Your Name" type="text" name="name" /> -->
 							<!-- <input placeholder="Email Address" type="email" name="email" /> -->
-							<textarea placeholder="Your Comment" name="cmComent" rows="4"></textarea>
+							<textarea placeholder="Your Comment" name="comment" rows="4"></textarea>
 							<button type="submit" class="btn btn--primary">Submit
 								Comment</button>
 						</form>
@@ -428,7 +396,7 @@ em {
 	<script>
 	setInterval(function(){
 		$("#CommentArea").load(location.href+ " #CommentArea");
-	},3000);
+	},500);
 	</script>
 
 	<script src="js/jquery-2.1.4.min.js"></script>

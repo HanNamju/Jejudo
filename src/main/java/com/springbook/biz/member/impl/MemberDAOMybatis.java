@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.springbook.biz.member.MemberFileVO;
 import com.springbook.biz.member.MemberVO;
 
 @Repository
@@ -25,13 +24,6 @@ public class MemberDAOMybatis {
 	public void insertMember(MemberVO vo) {
 		System.out.println("===>MyBatis로 insertMember 기능처리");
 		mybatis.insert("MemberDAO.insertMember", vo);
-	}
-
-	// insert file
-	public void insertMemberFileList(List<MemberFileVO> fileList) {
-		for (MemberFileVO MemberFile : fileList) {
-			mybatis.insert("MemberDAO.insertMemberFileList", MemberFile);
-		}
 	}
 
 	// 맴버시퀀스 얻기

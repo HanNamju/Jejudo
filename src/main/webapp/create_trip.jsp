@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!doctype html>
@@ -141,24 +141,24 @@
                                 </div>
                             </div>
 
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="input-with-icon">
-										<label>Host 정보</label> 											
-											<input type="text" name="tmId"
-											id="hostInfo" value="${hostInfo.mId }" readonly="readonly" />
-											
-											<input type="text" name="tmName"
-											id="hostInfo" value="${hostInfo.mName }" readonly="readonly" />	
-											
-											<input type="hidden" name="tmRole" value="h"/>		
-																			
-											<input type="hidden" name="mSeq" value="${hostInfo.mSeq }"/>										
-									</div>
-								</div>
-							</div>
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <div class="input-with-icon">
+                              <label>Host 정보</label>                                  
+                                 <input type="text" name="tmId"
+                                 id="hostInfo" value="${hostInfo.mId }" readonly="readonly" />
+                                 
+                                 <input type="text" name="tmName"
+                                 id="hostInfo" value="${hostInfo.mName }" readonly="readonly" />   
+                                 
+                                 <input type="hidden" name="tmRole" value="h"/>      
+                                                         
+                                 <input type="hidden" name="mSeq" value="${hostInfo.mSeq }"/>                              
+                           </div>
+                        </div>
+                     </div>
 
-							<div class="row">
+                     <div class="row">
                                 <div class="col-sm-12">
                                     <div class="input-with-icon">
                                         <label>여행 제목</label> <input type="text" name="trName" id="name"
@@ -210,7 +210,7 @@
                                             <div class="col-sm-8">
                                                 <label>인원</label>
                                                 <div class="input-with-icon">
-                                                    <input type="text" name="trPersonnelSet" id="personal" value="0"
+                                                    <input type="text" name="trPersonnelSet" id="personal" value="2"
                                                         readonly="readonly" />
                                                 </div>
                                             </div>
@@ -354,17 +354,36 @@
                 var $input = $(ths).parents("div").find("input[name='trPersonnelSet']");
                 var tCount = Number($input.val());
                 var maxNum = 10;
-                if (type == 'p') {
+                var minNum = 2;
+                
+                // +/- 버튼 구동 제약
+                
+                // 1) 입력한 버튼이 (+) 라면
+                if (type == 'p') { 
+                   
                     if (tCount < maxNum) {
-                        $input.val(Number(tCount) + 1);
-                    } else if (tCount >= maxNum) {
-                        alert("여행 인원은 최대" + maxNum + " 명 을 초과 할 수 없습니다.");
-                    } else {
-                        $input.val(Number(tCount) - maxNum);
-                    }
-                } else {
-                    if (tCount > 0) $input.val(Number(tCount) - 1);
+                       
+                           $input.val(Number(tCount) + 1);  
+                           
+                       } else if (tCount >= maxNum) {
+                          
+                           alert("여행 인원은 최대" + maxNum + " 인을 초과 할 수 없습니다.");
+                       } 
+                
+                // 2) 입력한 버튼이 (-) 라면
+                } else if (type == 'm') {
+                   
+                   if (tCount > minNum) {  
+                      
+                            $input.val(Number(tCount) - 1);
+                            
+                   } else if (tCount <= minNum) {
+                      
+                      alert("여행 인원은 최소" + minNum + " 인 이상이어야 합니다.");
+                      
+                   }
                 }
+ 
             }
         </script>
 

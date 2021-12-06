@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -21,7 +21,10 @@ body {
 	padding-bottom: 30px;
 }
 
-
+a:hover {
+	color: #224abe;
+	text-decoration: none;
+}
 </style>
 </head>
 
@@ -31,14 +34,33 @@ body {
 
 		<div class="container" role="main" style="background-color: white;">
 			<div style="display: flex; justify-content: space-between;">
-			<div><h2>글쓰기</h2></div>
-			<div><button class="btn btn-dark">나가기</button></div>
+				<div>
+					<h1 style="font-weight: bold;">
+						<a style="color: black" href="getBoardList.do">자유게시판</a>
+					</h1>
+					<br>
+					<h2>글쓰기</h2>
+				</div>
+				<div>
+					<a class="btn btn-dark"href="getBoardList.do">나가기</a>
+				</div>
 			</div>
-			<form method="post" action="insertBoard.do" enctype="multipart/form-data">
-				<div class="mb-3">
-					<label for="title"><h6>제목</h6></label> <input type="text"
-						class="form-control" name="title" id="title"
-						placeholder="제목을 입력해 주세요">
+			<form method="post" action="insertBoard.do"
+				enctype="multipart/form-data">
+				<div class="row">
+					<div class="mb-3 col-md-9">
+						<label for="title"><h6>제목</h6></label> <input type="text"
+							class="form-control" name="title" id="title"
+							placeholder="제목을 입력해 주세요">
+					</div>
+					<div class="mb-3 col-md-3 row">
+						<h6>카테고리</h6>
+						<br> <select name="category"
+							style="width: 100%; border: 1px solid rgba(0, 0, 0, 0.2);">
+							<option selected value="etc">기타/잡담</option>
+							<option value="place" selected>장소추천</option>
+						</select>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3">
@@ -51,34 +73,20 @@ body {
 						<div class="image-container">
 							<img style="width: 100%; height: 100%;" id="preview-image"
 								src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
-							<input style="display: block;" type="file" id="input-image" name="uploadfile" >
+							<input style="display: block;" type="file" id="input-image"
+								name="uploadfile">
 						</div>
 					</div>
 				</div>
-				<div class="mb-3">
-					<label for="tag">TAG</label> <input type="text"
-						class="form-control" id="tag" placeholder="태그를 입력해 주세요">
-				</div>
-				<div style="display: flex; justify-content: center;" >
-				
-				
-			
-<<<<<<< HEAD
-					<div>	<a href="getBoardList.do">
-					<button style="padding: 10px;" type="" class="btn btn-dark"
+				<div style="display: flex; justify-content: center;">
+					<div>
+						<button style="padding: 10px;" type="submit" class="btn btn-dark"
 							id="btnList">&nbsp저장&nbsp</button>
-							</a>
-=======
-					<div>	
-					<button style="padding: 10px;" type="submit" class="btn btn-dark"
-							id="btnList">&nbsp저장&nbsp</button>
-							
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
 			</form>
-				</div>
-				</div>
 		</div>
-		
+		</div>
+		</div>
+
 
 
 

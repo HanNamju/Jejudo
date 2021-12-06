@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -7,7 +7,7 @@
 <html lang="ko">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
@@ -66,74 +66,107 @@
     
     <div class="container">
     <h3>${userName }</h3>
-      <h1 style="font-weight: bold;">ÀÚÀ¯°Ô½ÃÆÇ</h1><br>
+      <h1 style="font-weight: bold;">ììœ ê²Œì‹œíŒ</h1><br>
       <div style="width: 100%; border-radius: 10px; border: 1px solid rgba(0, 0, 0, .5) ">
         <ul style="text-align: center; margin:1em; ">
-          <h5>º» °Ô½ÃÆÇÀº ´©±¸³ª ÀÚÀ¯·Ó°Ô ÀÇ°ßÀ» °Ô½ÃÇÒ ¼ö ÀÖÀ¸¸ç, °Ô½ÃµÈ ÀÇ°ß¿¡ ´ëÇÏ¿©´Â ´äº¯À» ÇÏÁö ¾Ê½À´Ï´Ù.</h5>
-          <h5>½ÃÁ¤ °ü·Ã °ÇÀÇ»çÇ× ¶Ç´Â ´äº¯À» ¿øÇÏ´Â ¹Î¿ø»ç¹« µîÀº 1577-1577 ¸¦ ÀÌ¿ëÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.</h5>
-         
+          <h5>ë³¸ ê²Œì‹œíŒì€ ëˆ„êµ¬ë‚˜ ììœ ë¡­ê²Œ ì˜ê²¬ì„ ê²Œì‹œí•  ìˆ˜ ìˆìœ¼ë©°, ê²Œì‹œëœ ì˜ê²¬ì— ëŒ€í•˜ì—¬ëŠ” ë‹µë³€ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</h5>
+          <h5>ì‹œì • ê´€ë ¨ ê±´ì˜ì‚¬í•­ ë˜ëŠ” ë‹µë³€ì„ ì›í•˜ëŠ” ë¯¼ì›ì‚¬ë¬´ ë“±ì€ 1577-1577 ë¥¼ ì´ìš©í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.</h5>
+         <br>
         </ul>
-        
       </div>
-      <div style="margin-top: 30px; " class="table-responsive card-body">
-        <table id="dataTable" class="table custom-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th scope="col"><p>¹øÈ£</p></th>
-              <th scope="col"><p>Á¦¸ñ</p></th>
-              <th scope="col"><p>±Û¾´ÀÌ</p></th>
-              <th scope="col"><p>³¯Â¥</p></th>
-              <th scope="col"><p>Á¶È¸ ¼ö</p></th>
-              <th scope="col"><p>¹öÆ°</p></th>
-              
-            </tr>
-          </thead>
-          <tbody>
-          <c:forEach var="board" items="${ boardList}">
-            <tr>
-              <th></th>
-              
-              <td><p>${board.seq}</p></td>
-<<<<<<< HEAD
-              <td ><p>${board.title}<a href="getBoard.do?seq=${board.seq }"></a></p></td>
-=======
-              <td ><a href="getBoard.do?seq=${board.seq }"><p>${board.title}</p></a></td>
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
-              <td><p>${board.writer}</p></td>
-              <td><p>${board.regDate}</p></td>
-              <td><p>${board.cnt}</p></td>
-              <td><a href="getBoard.do?seq=${board.seq }">
-					<button style="padding: 10px;" type="" class="btn btn-dark"
-							id="btnList">&nbsp¼öÁ¤&nbsp</button>
-							</a></td>
-<<<<<<< HEAD
-            </tr>
-=======
-							
-			
->>>>>>> 6c4030f15d0b31a443071b933a5d38a6661a5eef
-             </c:forEach>
-                  <tbody>
-                            
-</tbody>
-</table>
+      <br>
+      
+      <div style="display: flex; justify-content: flex-start;">
+      <div class="btn"style=""><a href="getBoardCategory.do?category=etc" style="color: black">ê¸°íƒ€/ì¡ë‹´</a></div>
+      <div class="btn"><a href="getBoardCategory.do?category=place" style="color: black">ì¥ì†Œì¶”ì²œ</a></div>
+      </div>
+      
+     <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ë²ˆí˜¸</th>
+                                            <th>ê¸€ì“´ì´</th>
+                                            <th>ì œëª© &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                            <th>ë“±ë¡ì¼</th>
+                                            <th>ì¡°íšŒ</th>
+                                            <th></th>
+                                            
+                                    </thead>
+
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                           
+                                        </tr>
+                                    </tfoot>
+                                    <!--ì—¬ê¸°ë¶€í„° 1 ì°ì–´ì•¼í•¨ ìœ„ì—ëŠ” ë°”ë‹¥ë¶€ë¶„ ì„¤ì •-->
+                                    <tbody>
+                                       <c:forEach var="board" items="${boardList }" varStatus="status">
+                                        <tr>
+                                            <th>${board.seq}</th>
+                                            <th>${board.writer}</th>
+                                            <th><a href="getBoard.do?seq=${board.seq }"><p>${board.title}</p></a></th>
+                                            <th>${board.regDate}</th>
+                                            <th>${board.cnt}</th>
+                                            
+                                            
+                                           <td> 
+                                        </td>
+                                        </tr>
+                                        </c:forEach>
+                                        
+                                         
+                                        
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        
 </div>
 <div class="row">
-  <div class="col-10"></div>
+  <div class="col-8"></div>
   <div class="col-2">
-  <button style="width: 90%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.jsp?${Member.mId}'" >±Û ¾²±â</button>
+  <button style="width: 100%; font-size: 200px;" class="btn btn-primary" onclick="location.href='admin-write2.jsp?${Member.mId}'" >ê¸€ ì“°ê¸°</button>
   </div>
 </div>
 </div> 
 
-  </div>
-    
-    
+ 
+    <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/isotope.min.js"></script>
+        <script src="js/ytplayer.min.js"></script>
+        <script src="js/easypiechart.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/twitterfetcher.min.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/scrollreveal.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/scripts.js"></script>
+        <!-- Bootstrap core JavaScript-->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
   </body>
 </html>

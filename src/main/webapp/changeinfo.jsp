@@ -99,115 +99,133 @@ input[type], textarea, select, .imgup {
      
         <!--end of modal-container-->
         <div class="main-container transition--fade">
-            <section class="cover cover-12 form--dark imagebg height-100 parallax" data-overlay="4" style=" height: 160vh;">
-                <div class="background-image-holder" style="height: inherit;">
-                    <img alt="image" src="img/pch_img_1.jpg" />
-                </div>
-                <div class="container pos-vertical-center text-center-xs" id="con_2" >
-                    <div class="row pos-vertical-align-columns">
-                        <div class="col-md-7 col-sm-8 col-sm-offset-2">
-                            <h2>
-                            <c:if test="${!empty member and !empty memberInfo.mId }">
-                           ${memberInfo.mId}</c:if> 
-                                <br>회원정보 수정</h2>
-                           
-                            <!--end of modal instance-->
-                        </div>
-                        <div class="col-md-5 col-sm-8 col-sm-offset-2">
-                            <div class="form-subscribe-1 bg--white text-center box-shadow-wide"
-                            style="margin-right: none; background-color: rgba(255, 255, 255, 0.8); padding : 2em;">
-                                <h4 style="margin-bottom: 0.5em;">회원정보 수정</h4>
-                              
-				  		  
-                                <form class="" action="updateMember.do" method="post" id="subForm"  enctype="multipart/form-data">
-                                	<input type="hidden" name="mId" value="${memberInfo.mId }">
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changeName">이름</label>
-                                        <input id="changeName" name="mName" type="text" value="${memberInfo.mName}"
-                                        readonly="readonly" style="height: 60%;"/>
-                                    </div>
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changeGender">성별</label>
-                                        <input id="changeName" name="mGender" type="text" value="${memberInfo.mGender}" 
-                                        readonly="readonly" style="height: 60%;"/>
-                                    </div>
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changeNickname">닉네임</label>
-                                        <input id="changeNickname" name="mNickname" type="text" value="${memberInfo.mNickname}" style="height: 60%;"/>
-                                    </div>
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changeEmail">이메일</label>
-                                        <input id="changeEmail" name="mEmail" type="text" value="${memberInfo.mEmail}" style="height: 60%;"/>
-                                    </div>
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changePassword">비밀번호 </label>
-                                        <input id="changePassword" name="mPassword" type="text" value="${memberInfo.mPassword}" style="height: 60%;"/>
-                                    </div>
-                                    <div class="input-with-icon col-md-6">
-                                        <label for="changetell">전화번호</label>
-                                        <input id="changetell" name="mTell" type="text" value="${memberInfo.mTell}" style="height: 60%;"/>
-                                    </div>
-                                     <div class="input-with-icon col-md-6">
-                                        <label for="changeLicense">운전면허</label>
-                                        <select id="DriveLicense" name="mLicense" style="height: 60%;">
-                                        
-											 <option value="Y" <c:if test="${memberInfo.mLicense eq 'Y'}"> selected</c:if>>있음</option>
-											<option value="N" <c:if test="${memberInfo.mLicense eq 'N'}"> selected</c:if>>없음</option>
-								 			
-                                         </select>
-                                    </div>
+            <section class="cover cover-12 form--dark imagebg height-100 parallax"
+         data-overlay="4" style="height: 160vh;">
+         <div class="background-image-holder" style="height: inherit;">
+            <img alt="image" src="img/pch_img_1.jpg" />
+         </div>
+         <div class="container pos-vertical-center text-center-xs" id="con_2">
+            <div class="row pos-vertical-align-columns">
+               <div class="col-md-7 col-sm-8 col-sm-offset-2">
+                  <h2>
+                     <c:if test="${!empty member and !empty memberInfo.mId }">
+                           ${memberInfo.mId}</c:if>
+                     <br>회원정보 수정
+                  </h2>
 
-                                    <div class="input-with-icon col-md-12">
-                                        <label for="">자기소개</label>
-                                        <div class="form-floating">
-                                            <textarea class="form-control" name="mIntroduce" placeholder="간단한 자기소개 작성 부탁드립니다." 
-                                            id="floatingTextarea2" style=" resize: none; height: 80px">${memberInfo.mIntroduce}</textarea>
-                                          </div>
-                                    </div>
-                                      <div class="input-with-icon forimg col-md-12">
-                                              <div style="color:#343434;font-size:0.625em;  margin-top: 0.125em;margin-bottom:0.3em;">
-                                              	<label>프로필사진 변경</label></div>
-                                        <div class="filegr">
-                                         <label> <img
-										style="height: 150px; width: 150px; border-radius: 50%; overflow: hidden;"
-										id="preview-image"> <input style="display: block;"
-										type="file" id="input-image" name="input-image"></label>
-                                        </div>
-                                      <input type="submit" value="변경하기" class="btn" style="background-color:steelblue;'">
-                                        <div class="modal-instance col-md-12" style="padding-top:10px">
-                                        <a class="modal-trigger col-md-12" href="#"
-                                        style=" padding-right:15px; position:relative; text-align: -webkit-center; font-size:0.25em;">
-                                        	회원 탈퇴
-                                        	
-                                       </a>
-                                       
-                                       <div class="modal-container">
-                                <div class="modal-content bg--white height--natural">
-                                    <div class="form-subscribe-1 boxed bg--white box-shadow-wide" style="margin-bottom : 0;">
-                                        <div class="subscribe__title text-center">
-                                            <h4>암호 입력</h4>
-                                        </div>
-                                        <form id="subForm" action="Withdrawal.do" method="post" enctype="multipart/form-data">
-                                            <div class="input-with-icon">
-                                                <label for="fieldName">PassWord</label>
-                                                <input id="checkcheck" name="cm-name" type="text" />
-                                            </div>
-												<button class="btn btn-success" onclick="pspsps('${memberInfo.mPassword}')" type="submit">회원탈퇴</button>
-												<button class="cencle btn btn-danger modal-close " type="button">취소</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                
-                                        </div>
-                                      </div>
-                                </form>
-                            </div>
+                  <!--end of modal instance-->
+               </div>
+               <div class="col-md-5 col-sm-8 col-sm-offset-2">
+                  <div
+                     class="form-subscribe-1 bg--white text-center box-shadow-wide"
+                     style="margin-right: none; background-color: rgba(255, 255, 255, 0.8); padding: 2em;">
+                     <h4 style="margin-bottom: 0.5em;">회원정보 수정</h4>
+
+
+                     <form class="" action="updateMember.do" method="post"
+                        id="subForm" enctype="multipart/form-data">
+                        <input type="hidden" name="mId" value="${memberInfo.mId }">
+                        <div class="input-with-icon col-md-6">
+                           <label for="changeName">이름</label> <input id="changeName"
+                              name="mName" type="text" value="${memberInfo.mName}"
+                              readonly="readonly" style="height: 60%;" />
                         </div>
-                    </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
-            </section>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changeGender">성별</label> <input id="changeName"
+                              name="mGender" type="text" value="${memberInfo.mGender}"
+                              readonly="readonly" style="height: 60%;" />
+                        </div>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changeNickname">닉네임</label> <input
+                              id="changeNickname" name="mNickname" type="text"
+                              value="${memberInfo.mNickname}" style="height: 60%;" />
+                        </div>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changeEmail">이메일</label> <input id="changeEmail"
+                              name="mEmail" type="text" value="${memberInfo.mEmail}"
+                              style="height: 60%;" />
+                        </div>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changePassword">비밀번호 </label> <input
+                              id="changePassword" name="mPassword" type="text"
+                              value="${memberInfo.mPassword}" style="height: 60%;" />
+                        </div>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changetell">전화번호</label> <input id="changetell"
+                              name="mTell" type="text" value="${memberInfo.mTell}"
+                              style="height: 60%;" />
+                        </div>
+                        <div class="input-with-icon col-md-6">
+                           <label for="changeLicense">운전면허</label> <select
+                              id="DriveLicense" name="mLicense" style="height: 60%;">
+
+                              <option value="Y"
+                                 <c:if test="${memberInfo.mLicense eq 'Y'}"> selected</c:if>>있음</option>
+                              <option value="N"
+                                 <c:if test="${memberInfo.mLicense eq 'N'}"> selected</c:if>>없음</option>
+
+                           </select>
+                        </div>
+
+                        <div class="input-with-icon col-md-12">
+                           <label for="">자기소개</label>
+                           <div class="form-floating">
+                              <textarea class="form-control" name="mIntroduce"
+                                 placeholder="간단한 자기소개 작성 부탁드립니다." id="floatingTextarea2"
+                                 style="resize: none; height: 80px">${memberInfo.mIntroduce}</textarea>
+                           </div>
+                        </div>
+                        <div class="input-with-icon forimg col-md-12">
+                           <div
+                              style="color: #343434; font-size: 0.625em; margin-top: 0.125em; margin-bottom: 0.3em;">
+                              <label>프로필사진 변경</label>
+                           </div>
+                           <div class="filegr col-md-12">
+                              <label style="margin-left : inherit; padding-top:10px"> <img
+                                 style="height: 150px; width: 150px; border-radius: 50%; overflow: hidden;"
+                                 id="preview-image" alt="Pic" src="upload/${memberInfo.mImgName}"> 
+                                 <input style="display: block;"
+                                 type="file" id="input-image" name="uploadFile"></label>
+                           </div>
+                           <input type="submit" value="변경하기" class="btn"
+                              style="background-color: steelblue;'">
+                           <div class="modal-instance col-md-12" style="padding-top: 10px">
+                              <a class="modal-trigger col-md-12" href="#"
+                                 style="padding-right: 32px; position: relative; text-align: -webkit-center; font-size: 0.25em;">
+                                 회원 탈퇴 </a>
+
+                              <div class="modal-container">
+                                 <div class="modal-content bg--white height--natural">
+                                    <div
+                                       class="form-subscribe-1 boxed bg--white box-shadow-wide"
+                                       style="margin-bottom: 0;">
+                                       <div class="subscribe__title text-center">
+                                          <h4>암호 입력</h4>
+                                       </div>
+                                       <form id="subForm" action="Withdrawal.do" method="post"
+                                          enctype="multipart/form-data">
+                                          <div class="input-with-icon">
+                                             <label for="fieldName">PassWord</label> <input
+                                                id="checkcheck" name="cm-name" type="text" />
+                                          </div>
+                                          <button class="btn btn-success"
+                                             onclick="pspsps('${memberInfo.mPassword}')" type="submit">회원탈퇴</button>
+                                          <button class="cencle btn btn-danger modal-close "
+                                             type="button">취소</button>
+                                       </form>
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <!--end row-->
+         </div>
+         <!--end container-->
+      </section>
 
            
            
